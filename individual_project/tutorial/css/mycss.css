@@ -1,0 +1,7 @@
+.header{
+  height: 500px;
+  display: grid;
+  grid-template-rows: 180px 1fr;
+  background-image: url("img/1.png") no-repeat；
+}
+

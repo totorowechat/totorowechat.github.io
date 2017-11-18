@@ -1,0 +1,28 @@
+
+.wrapper {
+
+    display: grid;
+    grid-template-columns: repeat(9, 1fr);
+    grid-template-areas:
+      "hd hd hd hd   hd   hd   hd   hd   hd  "
+      "sd sd sd main main main main main main"
+      "sd sd sd  ft  ft   ft   ft   ft   ft";
+}
+
+.header {
+    grid-area: hd;
+
+}
+.footer {
+    grid-area: ft;
+    margin: 20px;
+}
+.content {
+    
+    grid-area: main;
+    margin: 20px;
+}
+.sidebar {
+    grid-area: sd;
+    margin: 20px;
+}

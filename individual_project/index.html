@@ -15,6 +15,7 @@
     <!-- self-define css -->
     <!-- <link rel="stylesheet" href="./css/clean-blog.min.css"> -->
     <link rel="stylesheet" href="./css/mystyle.css" />
+
 </head>
  
 <body>
@@ -25,7 +26,7 @@
     
     <!-- navigation -->
 
-    <nav class="navbar navbar-default navbar-fixed-top navbar-inverse">
+    <nav class="navbar navbar-default navbar-fixed-top navbar-inverse my-navbar navbar-inner">
       <div class="container-fluid">
         <div class="navbar-header">
           <button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#myNavbar">
@@ -49,26 +50,79 @@
         </div>
       </div>
     </nav>
+    <script>  
+        $(window).scroll(function () {  
+            if ($(".navbar").offset().top > 50) {$(".navbar-fixed-top").addClass("top-nav");  
+            }else {$(".navbar-fixed-top").removeClass("top-nav");}  
+        })</script>  
 
     <!-- header -->
-    <header class="masthead" style="background-image: url('img/home-bg.jpg')">
+    <header class="masthead" style="background-image: url('img/home-bg.jpg') ">
       <div class="container">
         <div class="row">
           <div class="mx-auto">
             <div class="site-heading">
               <h1>Web Tutorial</h1>
-              <span class="subheading">A Web Tutorial by Start Bootstrap</span>
+              <span class="subheading">A Web Tutorial Made by Start Bootstrap</span>
             </div>
           </div>
         </div>
       </div>
     </header>
  
-    <!-- main body -->
- 
+    <!-- main content -->
+    <div class="container">
+      <div class="row">
+        <div class="col-md-offset-2 col-md-8">
+          <a href="#">
+            <h2>
+                Man must explore, and this is exploration at its greatest
+            </h2>
+            <h3>
+              Based on a ture story. 
+            </h3>
+          </a>
+          <p>on September 24, 2017</p>
+          <hr />
+          <a href="#">
+            <h2>
+                Man must explore, and this is exploration at its greatest
+            </h2>
+            <h3>
+              Based on a ture story. 
+            </h3>
+          </a>
+          <p>on September 24, 2017</p>
+          <hr />
+          <a href="#">
+            <h2>
+                Man must explore, and this is exploration at its greatest
+            </h2>
+            <h3>
+              Based on a ture story. 
+            </h3>
+          </a>
+          <p>on September 24, 2017</p>
+          <hr />
+          <div class="clearfix">
+              <a class="btn btn-secondary float-right"href="#">
+                More
+              </a>
+            </div>
+        </div>
+      </div>
+    </div>    
+
+
     <footer>
+      <hr>
         <div class="container">
-            -- Copyright information 
+          <div class="row">
+            <div class="col-md-offset-2 col-md-8">
+                <p class="copyright text-muted text-center">Copyright © Your Website 2017</p>
+            </div>
+          </div>
+            
         </div>
     </footer>
 
