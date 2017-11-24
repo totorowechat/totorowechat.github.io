@@ -45,7 +45,7 @@ h1{
 }
 
 .article li{
-  padding: 5rem 10px;
+  padding: 5rem 1px;
   border-radius: 1em;
   text-align: center;
   background-color: blue;
@@ -57,7 +57,7 @@ h1{
 .foot_background{
   background-color: gray;
   margin: 2rem 1rem;
-  border-radius: 1em;
-  padding: 1rem 10px;
+  border-radius: 1rem;
+  padding: 1rem 1px;
   opacity: 0.8;
 }
