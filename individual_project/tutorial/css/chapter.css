@@ -1,0 +1,38 @@
+.content .chapter-nav-fullpage a{
+  position: fixed;
+  top: 0;
+  height: 100%;
+  width: 4rem;
+  background-image: linear-gradient(#ff4136, #b10dc9);
+  background-size: 1.5rem 100%;
+  background-repeat: no-repeat;
+  transition: background-position 1s;
+}
+
+.content .next-chapter{
+  background-position: 5.5rem;
+  right: 0;
+  opacity: 0;
+}
+
+.content .chapter-nav-fullpage .title{
+  position: absolute;
+  top: 0;
+  height: 2.5rem;
+  bottom: 0;
+  margin: auto;
+  padding: 0.3rem;
+  right: 0.5rem;
+  transition: opacity 0.4s, right 0.4s;;
+}
+
+
+.content .chapter-nav-fullpage a:hover{
+  background-position: 3rem;
+  opacity: 1;
+}
+
+.content .chapter-nav-fullpage .title:hover{
+  opacity: 1;
+  right: 1.5rem;
+}
