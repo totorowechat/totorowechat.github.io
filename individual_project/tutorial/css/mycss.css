@@ -4,6 +4,7 @@ body{
 }
 a {
   color: #0074d9;
+  outline:none
 }
 @media (min-width:72rem){
   body{
@@ -18,8 +19,8 @@ h1{
   text-decoration: none ;
 
 }
-.header{
-  
+.head1 a{
+  color: white;
 }
 
 .head1{
@@ -73,4 +74,34 @@ th, td {
 }
 tr:hover {
   background-color: #f5f5f5;
+}
+
+.content-list{
+  list-style-type: none;
+  background-color: #f1f1f1;
+  overflow: auto;
+  margin: 0.5rem auto;
+}
+
+.content-list li  {
+  margin: 0.5rem auto;
+  padding: 0.25rem;
+  width: 100%;
+}
+
+.content-list li a {
+  display: block;
+  padding: 0.25rem;
+  
+  
+}
+
+.content-list li a.active {
+  background-color: #4CAF50;
+  color: white;
+}
+
+.content-list li a:hover{
+  background-color: #555;
+  color: white;
 }

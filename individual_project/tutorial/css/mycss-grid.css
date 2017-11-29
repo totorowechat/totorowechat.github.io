@@ -71,7 +71,7 @@ ul .spanall{
 
 .artList{
     display: grid;
-    grid-template-rows: repeat(10, minmax(150px , 200px));
-
+    grid-template-rows: repeat(5, minmax(150px , 200px));
+    list-style-type: none;
 }
 
