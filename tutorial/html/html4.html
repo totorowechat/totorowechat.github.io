@@ -1,0 +1,126 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="utf-8">
+    <title>HTML TUTORIAL</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="../css/mycss.css">
+    <link rel="stylesheet" href="../css/mycss-grid.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+    <link rel="stylesheet" href="../css/chapter.css">
+    <link rel="icon" type="image/png" href="../img/fav.PNG" sizes="32x32" />
+  </head>
+  <body>
+    <div class="row">
+      <div class="header" style="background-image: url('../img/1.png')">
+        <div>
+          <a href="/"><h1 class="head1">HTML TUTORIAL</h1></a>
+          <p style="color: white">Everything you need to learn</p>
+        </div>
+        <!-- navigation bar -->
+        <div class="nav" >
+            
+            <a href="../index.html"><div class="button-text">HOME</div></a>
+            <a href="./htmlMainPage.html"><div class="button-text">HTML</div></a>
+            <a href="./cssMainPage.html"><div class="button-text">CSS</div></a>
+            <a href="../about.html"><div class="button-text">ABOUT</div></a>
+            
+          </div>
+      </div>
+      <div class="content">
+
+        <!-- list     -->
+
+        <div>
+            <ul class="content-list">
+              <li><a href="html1.html">Overview</a></li>
+              <li><a href="html2.html">Basic Tags</a></li>
+              <li><a href="html3.html">Attributes</a></li>
+              <li><a class="active" href="html4.html">Forms</a></li>
+              <li><a href="html5.html">Meta Tags</a></li>
+           </ul>
+          </div>
+  
+        <!-- this is main content  -->
+        <div>
+          <h1>HTML - Forms</h1>
+          <p>
+              HTML Forms are required, when you want to collect some data from 
+              the site visitor. For example, during user registration you would 
+              like to collect information such as name, email address, credit card, etc.
+          </p>
+          <p>
+              A form will take input from the site visitor and then will post it to a 
+              back-end application such as CGI, ASP Script or PHP script etc. The 
+              back-end application will perform required processing on the passed 
+              data based on defined business logic inside the application.
+          </p>
+          <p>
+              There are various form elements available like text fields, textarea 
+              fields, drop-down menus, radio buttons, checkboxes, etc.
+          </p>
+          <h2>Form Attributes</h2>
+          <p>
+              Apart from common attributes, following is a list of the most frequently 
+              used form attributes −
+          </p>
+          <table>
+            <tr>
+              <th>Sr.No</th>
+              <th>Attribute &#38; Description</th>
+            </tr>
+            <tr>
+              <td>1</td>
+              <td>action
+                  <br>
+                  Backend script ready to process your passed data.</td>
+            </tr>
+            <tr>
+              <td>2</td>
+              <td>method
+                  <br>
+                  Method to be used to upload data. The most frequently used are GET and POST methods.</td>
+            </tr>
+            <tr>
+              <td>3</td>
+              <td>target
+                  <br>
+                  Specify the target window or frame where the result of the script 
+                  will be displayed. It takes values like _blank, _self, _parent etc.
+              </td>
+            </tr>
+            <tr>
+              <td>4</td>
+              <td>
+                  enctype
+                  <br>
+                  You can use the enctype attribute to specify how the browser 
+                  encodes the data before it sends it to the server. Possible 
+                  values are − <strong>application/x-www-form-urlencoded</strong> 
+                  − This is the standard method most forms use in simple scenarios.
+                  <strong> mutlipart/form-data </strong>− This is used when you 
+                  want to upload binary data in the form of files like image, word file etc.
+              </td>
+            </tr>
+          </table>
+        </div>
+
+        <!-- this is next page button  -->
+        <div class="chapter-nav-fullpage">
+          <a class="next-chapter" href="./html5.html">
+            <span class="title">Next</span>
+          </a>
+        </div>
+      </div>
+      <div class="footer" style="background-image: url('../img/1.png')">
+        <div class="foot_background">
+            <p>This is a website teach you little tricks about html and css.</p>
+            <p style="margin: 0px">Copyright By Lingao Jin. All Rights Reserved.</p>
+            <span style="margin:1rem">Contact me</span><a href="mailto:jinlingao@outlook.com"><i class="fa fa-envelope-o fa-2x" aria-hidden="true"></i></a>
+            <span style="margin:1rem">Buy me a beer</span> <i class="fa fa-cny fa-2x" ></i>
+        </div>
+      </div>
+    </div>
+      
+  </body>
+</html>

@@ -1,0 +1,148 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="utf-8">
+    <title>HTML TUTORIAL</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="../css/mycss.css">
+    <link rel="stylesheet" href="../css/mycss-grid.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+    <link rel="stylesheet" href="../css/chapter.css">
+    <link rel="icon" type="image/png" href="../img/fav.PNG" sizes="32x32" />
+  </head>
+  <body>
+    <div class="row">
+      <div class="header" style="background-image: url('../img/1.png')">
+        <div>
+          <h1 class="head1"><a href="/">HTML TUTORIAL</a></h1>
+          <p style="color: white">Everything you need to learn</p>
+        </div>
+        <!-- navigation -->
+        <div class="nav" >
+            
+          <a href="../index.html"><div class="button-text">HOME</div></a>
+          <a href="./htmlMainPage.html"><div class="button-text">HTML</div></a>
+          <a href="./cssMainPage.html"><div class="button-text">CSS</div></a>
+          <a href="../about.html"><div class="button-text">ABOUT</div></a>
+        
+        </div>
+      </div>
+      <div class="content">   
+
+        <!-- list     -->
+
+        <div>
+          <ul class="content-list">
+            <li><a href="css1.html">Introduction</a></li>
+            <li><a href="css2.html">Syntax and Selectors</a></li>
+            <li><a class="active" href="css3.html">Display Property</a></li>
+
+         </ul>
+        </div>
+
+        <!-- this is main content  -->
+        
+        <div>
+          <h1>CSS Layout - The display Property</h1>
+          <hr>
+          <p>The display property is the most important CSS property for 
+            controlling layout.
+          </p>
+          <h2>The display Property</h2>
+
+          <p>
+            The display property specifies if/how an element is displayed.
+            <br>
+            Every HTML element has a default display value depending on 
+            what type of element it is. The default display value for most 
+            elements is block or inline.
+            <br>
+          </p>
+          <h2>Block-level Elements</h2>
+          <p>
+              A block-level element always starts on a new line and takes up the full 
+              width available (stretches out to the left and right as far as it can).
+              <div style="border-color:rgb(0, 167, 0);border-width:3px;
+              border-style: solid;">The &lt;div> 
+                element is a block-level element.
+              </div>
+              Examples of block-level elements:
+              <ul>
+                <li>&lt;div></li>
+                <li>&lt;h1> - &lt;h6></li>
+                <li>&lt;p></li>
+                <li>&lt;from></li>
+                <li>&lt;header></li>
+                <li>&lt;footer></li>
+                <li>&lt;section></li>
+              </ul>
+    
+          </p>
+          <h2>Inline Elements</h2>
+          <p>
+              An inline element does not start on a new line and only takes up as much width as necessary.
+              
+              This is an <span style="border-color:rgb(0, 167, 0);border-width:3px;
+              border-style: solid;">inline &lt;span> element</span> inside a paragraph.
+              
+              Examples of inline elements:
+              <ul>
+                <li>&lt;span></li>
+                <li>&lt;a></li>
+                <li>&lt;img></li>
+              </ul>
+                 
+              
+          </p>
+          <h2>Display: none</h2>
+          <p>
+              As mentioned, every element has a default display value. However, you can override this.
+              <br>
+              Changing an inline element to a block element, or vice versa, can be useful for making the 
+              page look a specific way, and still follow the web standards.
+          </p>
+          <h2>Override The Default Display Value</h2>
+          <p>
+              The class selector selects elements with a specific class attribute.
+              <br>
+              To select elements with a specific class, write a period (.) character, 
+              followed by the name of the class.
+              <br>
+              You can also specify that only specific HTML elements should be affected 
+              by a class.
+              <br>
+              HTML elements can also refer to more than one class.
+          </p>
+          <h2>Hide an Element - display:none or visibility:hidden?</h2>
+          <p>
+              Hiding an element can be done by setting the display property to none. The 
+              element will be hidden, and the page will be displayed as if the element 
+              is not there
+              <br>
+              visibility:hidden; also hides an element.
+              <br>
+              However, the element will still take up the same space as before. The 
+              element will be hidden, but still affect the layout:
+          </p>
+          
+        </div>
+
+        <!-- this is next page button  -->
+        <div class="chapter-nav-fullpage">
+          <a class="next-chapter" href="html2.html">
+            <span class="title">Next</span>
+          </a>
+        </div>
+      </div>
+      <div class="footer" style="background-image: url('../img/1.png')">
+        <div class="foot_background">
+            <p>This is a website teach you little tricks about html and css.</p>
+            <p style="margin: 0px">Copyright By Lingao Jin. All Rights Reserved.</p>
+            <span style="margin:1rem">Contact me</span><a href="mailto:jinlingao@outlook.com"><i class="fa fa-envelope-o fa-2x" aria-hidden="true"></i></a>
+            <span style="margin:1rem">Buy me a beer</span> <i class="fa fa-cny fa-2x" ></i>
+        </div>
+      </div>
+    </div>
+      
+  </body>
+</html>

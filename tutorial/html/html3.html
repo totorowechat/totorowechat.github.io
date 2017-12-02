@@ -1,0 +1,165 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="utf-8">
+    <title>HTML TUTORIAL</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="../css/mycss.css">
+    <link rel="stylesheet" href="../css/mycss-grid.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+    <link rel="stylesheet" href="../css/chapter.css">
+    <link rel="icon" type="image/png" href="../img/fav.PNG" sizes="32x32" />
+  </head>
+  <body>
+    <div class="row">
+      <div class="header" style="background-image: url('../img/1.png')">
+        <div>
+          <a href="/"><h1 class="head1">HTML TUTORIAL</h1></a>
+          <p style="color: white">Everything you need to learn</p>
+        </div>
+        <!-- navigation bar -->
+        <div class="nav" >
+            
+            <a href="../index.html"><div class="button-text">HOME</div></a>
+            <a href="./htmlMainPage.html"><div class="button-text">HTML</div></a>
+            <a href="./cssMainPage.html"><div class="button-text">CSS</div></a>
+            <a href="../about.html"><div class="button-text">ABOUT</div></a>
+            
+          </div>
+      </div>
+      <div class="content">
+
+        <!-- list     -->
+
+        <div>
+            <ul class="content-list">
+              <li><a href="html1.html">Overview</a></li>
+              <li><a href="html2.html">Basic Tags</a></li>
+              <li><a class="active" href="html3.html">Attributes</a></li>
+              <li><a href="html4.html">Forms</a></li>
+              <li><a href="html5.html">Meta Tags</a></li>
+           </ul>
+          </div>
+  
+        <!-- this is main content  -->
+        <div>
+          <h1>HTML - Attributes</h1>
+          <p>
+              We have seen few HTML tags and their usage like heading tags 
+              &lt;h1&gt;, &lt;h2&gt;, paragraph tag &lt;&gt; and other tags. 
+              We used them so far in their simplest form, but most of the 
+              HTML tags can also have attributes, which are extra bits of information.
+          </p>
+          <p>
+            An attribute is used to define the characteristics of an HTML 
+            element and is placed inside the element's opening tag. All 
+            attributes are made up of two parts − a name and a value
+          </p>
+          <ul>
+            <li>
+              The name is the property you want to set. For example, 
+              the paragraph &lt;p> element in the example carries an attribute 
+              whose name is align, which you can use to indicate the alignment 
+              of paragraph on the page.  
+            </li>
+            <br>
+            <li>
+              The value is what you want the value of the property to be set 
+              and always put within quotations. The below example shows three
+              possible values of align attribute: left, center and right.
+            </li>
+          </ul>
+          <p>
+            Attribute names and attribute values are case-insensitive. 
+            However, the World Wide Web Consortium (W3C) recommends lowercase 
+            attributes/attribute values in their HTML 4 recommendation.
+          </p>
+          <h2>Core Attributes</h2>
+          <p>
+              The four core attributes that can be used on the majority of HTML 
+              elements (although not all) are −
+          </p>
+          <ul>
+            <li>Id</li>
+            <li>Title</li>
+            <li>Class</li>
+            <li>Style</li>
+          </ul>
+          <h3>The Id Attribute</h3>
+          <p>
+              The id attribute of an HTML tag can be used to uniquely identify 
+              any element within an HTML page. There are two primary reasons 
+              that you might want to use an id attribute on an element −</p>
+          <ul>
+            <li>If an element carries an id attribute as a unique identifier, 
+              it is possible to identify just that element and its content.</li>
+            <li>If you have two elements of the same name within a Web page 
+              (or style sheet), you can use the id attribute to distinguish 
+              between elements that have the same name.</li>
+          </ul>
+         <h3>The title Attribute</h3>
+         <p>The title attribute gives a suggested title for the element. 
+           They syntax for the title attribute is similar as explained for 
+           <strong>id</strong> attribute −</p>
+         <p>The behavior of this attribute will depend upon the element that 
+           carries it, although it is often displayed as a tooltip when cursor 
+           comes over the element or while the element is loading.</p>
+         <h3>The class Attribute</h3>
+         <p>
+            The <strong>class</strong> attribute is used to associate an element with a style 
+            sheet, and specifies the class of element. You will learn more 
+            about the use of the class attribute when you will learn Cascading 
+            Style Sheet (CSS). So for now you can avoid it.
+         </p>
+         <h3>The style Attribute</h3>
+         <p>
+            The style attribute allows you to specify Cascading Style Sheet (CSS) rules within the element.
+         </p>
+         <h3>Generic Attributes</h3>
+         <p>
+            Here's a table of some other attributes that are readily usable with many of the HTML tags.
+         </p>
+         <table>
+           <tr>
+             <th>Attribute</th>
+             <th>Options</th>
+             <th>Function</th>
+           </tr>
+           <tr>
+             <td>align</td>
+             <td>right, left, center</td>
+             <td>Horizontally aligns tags</td>
+           </tr>
+           <tr>
+             <td>bgcolor</td>
+             <td>numeric, hexidecimal, RGB values</td>
+             <td>Places a background color behind an element</td>
+           </tr>
+           <tr>
+             <td>background</td>
+             <td>URL</td>
+             <td>Places a background image behind an element</td>
+           </tr>
+           
+         </table>
+        </div>
+
+        <!-- this is next page button  -->
+        <div class="chapter-nav-fullpage">
+          <a class="next-chapter" href="./html4.html">
+            <span class="title">Next</span>
+          </a>
+        </div>
+      </div>
+      <div class="footer" style="background-image: url('../img/1.png')">
+        <div class="foot_background">
+            <p>This is a website teach you little tricks about html and css.</p>
+            <p style="margin: 0px">Copyright By Lingao Jin. All Rights Reserved.</p>
+            <span style="margin:1rem">Contact me</span><a href="mailto:jinlingao@outlook.com"><i class="fa fa-envelope-o fa-2x" aria-hidden="true"></i></a>
+            <span style="margin:1rem">Buy me a beer</span> <i class="fa fa-cny fa-2x" ></i>
+        </div>
+      </div>
+    </div>
+      
+  </body>
+</html>
