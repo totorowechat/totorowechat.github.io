@@ -1,0 +1,163 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8">
+    <title>How to implement a programming language in JavaScript</title>
+    <link rel="stylesheet" href="./styles/default.css">
+    <script src="highlight.pack.js"></script>
+    <script>hljs.initHighlightingOnLoad();</script>
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <style>
+      body {
+	  margin: 0% 10%;
+      }
+      * {
+	  box-sizing: border-box;
+      }
+
+      .row {
+	  display: flex;
+      }
+
+      /* Create two equal columns that sits next to each other */
+      .column {
+	  flex: 50%;
+	  padding: 10px;
+	  /*height: 300px;  Should be removed. Only for demonstration */
+      }
+
+      .columnL {
+	  flex: 50%;
+	  padding: 0 2%;
+	  background-color:#aaa;
+      }
+
+      .columnR {
+	  flex: 50%;
+	  padding: 0 2%;
+	  background-color:#bbb;
+      }
+    </style>
+  </head>
+  <body>
+
+    <h2>How to implement a programming language in JavaScript</h2>
+    <h2>使用JS实现一门编程语言</h2>
+    翻译自：http://lisperator.net/pltut/
+
+    <div class="row">
+      <div class="columnL">
+	<p>
+	  This is a tutorial on how to implement a programming language. If you ever wrote an interpreter or a compiler, then there is probably nothing new for you here. But, if you're using regexps to <a href="https://github.com/angular/angular.js/blob/d7a78e420adad0869cf811ea14a6d801695dbfa0/src/ng/directive/select.js#L170">"parse"</a> anything that looks like a programming language, then please read at least the section on parsing. Let's write less buggy code!
+	</p>
+      </div>
+      <div class="columnR">
+	<p>
+	  这是一个关于如何实现一门编程语言的教程。如果你写过解释器或者编译器，那么这里可能并没有新的东西可以教给你。不过，如果你曾经使用正则表达式去“解析”像编程语言一样的东西，那么请你至少去阅读Parsing这一章。那么，让我们开始写更少bug的程序吧。
+	</p>
+      </div>
+    </div>
+    <div class="row">
+      <div class="columnL">
+	<p>
+	  The ToC on the right is in “simple-to-advanced” order. I'd recommend you not to skip forward, unless you know the subject well. You can always refer back if you don't understand something. Also, questions and feedback are <a href="mailto:mihai.bazon@gmail.com">
+	    very much appreciated
+	  </a>				
+	</p>
+      </div>
+      <div class="columnR">
+	<p>
+	  右边的目录（译者注：目录在原网站）是以初级到高级的顺序排列。我建议你不要跳过，除非你对这些章节掌握的很好。如果你看不懂，可以跳回来再看一遍。同时，欢迎
+	  <a href="mailto:mihai.bazon@gmail.com">
+	    提问以及反馈
+	  </a>
+	  。 
+	</p>
+      </div>
+    </div>
+    <div class="row">
+      <div class="columnL">
+	<p>
+	  The target audience is the average JavaScript / NodeJS programmer.
+	</p>
+      </div>
+      <div class="columnR">
+	<p>
+	  本教程的目标用户为普通的JavaScript / NodeJS 程序员。
+	</p>
+      </div>
+    </div>
+
+    <div class="row">
+      <div class="columnL">
+	<h3>
+	  What are we going to learn
+	</h3>
+	<ul>
+	  <li>What is a parser, and how to write one.</li>
+	  <li>How to write an interpreter.</li>
+	  <li>Continuations, and why are they important.</li>
+	  <li>Writing a compiler.</li>
+	  <li>How to transform code to continuation-passing style.</li>
+	  <li>A few basic optimization techniques.</li>
+	  <li>Examples of what our λanguage brings new over plain JavaScript.</li>
+	</ul>
+      </div>
+      <div class="columnR">
+	<h3>
+	  我们将会学到
+	</h3>
+	<ul>
+	  <li>什么是解析器，以及如何编写一个解析器。</li>
+	  <li>如何写一个解释器。</li>
+	  <li>延续性，以及为何它们如此重要。</li>
+	  <li>写一个编译器。</li>
+	  <li>如何将代码转换成CPS(continuation-passing style)</li>
+	  <li>一些基本的优化技巧。</li>
+	  <li>一些λanguage在纯JavaScript带来了新东西的例子。</li>
+	</ul>
+      </div>
+    </div>
+
+    <div class="row">
+      <div class="columnL">
+	<p>
+	  In between, I'm going to argue why Lisp is a great programming
+	  language.  <b>However, the language we will work on is <em>not</em> a
+	    Lisp</b>.  It has a richer syntax (classical infix notation that everybody
+	  knows) and will be about as powerful as Scheme, except for macros.  Sadly
+	  or not, macros are the ultimate bastion of Lisp, something that other
+	  languages just can't conquer (unless they are called <em>Lisp
+	    dialects</em>).  [Yes, I know about SweetJS… close but no cigar.]
+	</p>
+      </div>
+      <div class="columnR">
+	<p>
+	  在教程中，我将会讨论为什么Lisp是一个很好的编程语言。 <b>当然，我们即将
+	    编写的语言<em>不是</em>一个Lisp。</b>. 它有更加丰富的语法（大家都知道的
+	  经典中缀表达式）和除了宏与Scheme一样强大的功能。不幸的是，宏是Lisp的终极
+	  堡垒，而其他语言则无法攻克（除非它们被称为<em> Lisp方言</em>）。[是的，
+	  我知道SweetJS… 很接近。]
+	</p>
+      </div>
+    </div>
+
+
+    <div class="row">
+      <div class="columnL">
+	<p>
+	  But first, let's dream up a programming language.
+	</p>
+      </div>
+      <div class="columnR">
+	<p>
+	  不过首先，让我们先想象一个编程语言。
+	</p>
+      </div>
+    </div>
+
+    <footer>
+      <a rel="license" href="http://creativecommons.org/licenses/by-nc/4.0/"><img alt="知识共享许可协议" style="border-width:0" src="https://i.creativecommons.org/l/by-nc/4.0/88x31.png" /></a><br />本作品采用<a rel="license" href="http://creativecommons.org/licenses/by-nc/4.0/">知识共享署名-非商业性使用 4.0 国际许可协议</a>进行许可。
+    </footer>
+  </body>
+</html>

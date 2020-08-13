@@ -1,0 +1,221 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8">
+    <title>Informal description of the λanguage</title>
+    <link rel="stylesheet" href="./styles/default.css">
+    <script src="highlight.pack.js"></script>
+    <script>hljs.initHighlightingOnLoad();</script>
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <style>
+      body {
+	  margin: 0% 10%;
+      }
+      * {
+	  box-sizing: border-box;
+      }
+
+      .row {
+	  display: flex;
+      }
+
+      /* Create two equal columns that sits next to each other */
+      .column {
+	  flex: 50%;
+	  padding: 10px;
+	  /*height: 300px;  Should be removed. Only for demonstration */
+      }
+
+      .columnL {
+	  flex: 50%;
+	  padding: 0 2%;
+	  background-color:#aaa;
+      }
+
+      .columnR {
+	  flex: 50%;
+	  padding: 0 2%;
+	  background-color:#bbb;
+      }
+
+      .code {
+	  margin: auto;
+      }
+    </style>
+  </head>
+  <body>
+
+    <h2>Writing a parser</h2>
+    <h2>写一个解析器</h2>
+    翻译自：http://lisperator.net/pltut/parser
+
+    <div class="row">
+        <div class="columnL">
+      <p>
+        Writing a parser is, depending on the language, a moderately complex task. In essence, it must transform a piece of code (which we inspect by looking at the characters) into an “abstract syntax tree” (AST). The AST is a structured in-memory representation of the program, and it's “abstract” in the sense that it does not care exactly what characters is the source code made of, but it faithfully represents the semantics of it. I wrote a separate page to <a href="http://lisperator.net/pltut/parser/the-ast"> our AST.</a>
+      </p>
+        </div>
+        <div class="columnR">
+      <p>
+        编写一个解析器，根据语言的不同，是一项适度复杂的任务。从本质上讲，它必须将一段代码（我们通过观察字符来检查）转化为一个 "抽象语法树"（AST）。AST是程序在内存中的结构化表示，它的 "抽象 "之处在于，它并不关心源代码到底是由什么字符组成的，但它忠实地表示了它的语义。我给<a href="http://lisperator.net/pltut/parser/the-ast">我们的AST</a>单独写了一个页面。
+      </p>  
+        </div>
+    </div>
+
+    <div class="row">
+        <div class="columnL">
+      <p>
+        For example, for the following program text: 
+      </p>
+        </div>
+        <div class="columnR">
+      <p>
+        例如，对于下面的程序文本：
+      </p>  
+        </div>
+    </div>
+
+    <div class="row">
+        <pre class="code"><code class="plaintext">sum = lambda(a, b) {
+  a + b;
+};
+print(sum(1, 2));</code></pre>
+    </div>
+
+    <div class="row">
+        <div class="columnL">
+      <p>
+        our parser will generate the following AST, as a JavaScript object: 
+      </p>
+        </div>
+        <div class="columnR">
+      <p>
+        我们的解析器将生成以下AST，作为一个JavaScript对象：
+      </p>  
+        </div>
+    </div>
+    <div class="row">
+        <pre class="code"><code class="JavaScript">{
+    type: "prog",
+    prog: [
+        // first line:
+        {
+        type: "assign",
+        operator: "=",
+        left: { type: "var", value: "sum" },
+        right: {
+            type: "lambda",
+            vars: [ "a", "b" ],
+            body: {
+            // the body should be a "prog", but because
+            // it contains a single expression, our parser
+            // reduces it to the expression itself.
+            type: "binary",
+            operator: "+",
+            left: { type: "var", value: "a" },
+            right: { type: "var", value: "b" }
+            }
+        }
+        },
+        // second line:
+        {
+        type: "call",
+        func: { type: "var", value: "print" },
+        args: [{
+            type: "call",
+            func: { type: "var", value: "sum" },
+            args: [ { type: "num", value: 1 },
+                    { type: "num", value: 2 } ]
+        }]
+        }
+    ]
+}</code></pre>
+    </div>
+
+    <div class="row">
+        <div class="columnL">
+      <p>
+        The main difficulty in writing a parser consists in a failure to properly organize the code. The parser should operate at a higher level than reading characters from a string. A few advices on how to keep complexity manageable:
+      </p>
+      <ul>
+        <li><p>Write many functions and keep them small.  In every function, do
+        one thing and do it well.</p></li>
+      
+        <li><p>Do not try to use regexps for parsing.  They don't work.  Regexps
+        can be helpful in the <a href="/pltut/parser/./token-stream" class="inside">lexer</a> though, but
+        I suggest to limit them to very simple things.</p></li>
+      
+        <li><p>Don't attempt to guess.  When unsure how to parse something, throw
+        an error and make sure the message contains the error location
+        (line/column).</p></li>
+      </ul>
+        </div>
+        <div class="columnR">
+      <p>
+        编写解析器的主要困难在于不能正确组织代码。解析器应该在比从字符串中读取字符更高的层次上运行。一些关于如何保持复杂性可控的建议：
+      </p>  
+      <ul>
+        <li><p>编写更多的函数，并使每个函数保持精简。 在每个函数中，只做一件事并且把它做好。</p></li>
+      
+        <li><p>不要试图使用正则表达式进行解析。 它们不起作用。 正则表达式可以在<a href="/pltut/parser/./token-stream" class="inside">词法分析</a>中发挥作用，但我建议把它们限制在非常简单的事情上。</p></li>
+      
+        <li><p>不要试图去猜测。 当不确定如何解析某些内容时，抛出一个错误，并确保消息中包含错误位置（行/列）。</p></li>
+      </ul>
+        </div>
+    </div>
+
+    <div class="row">
+        <div class="columnL">
+      <p>
+        To keep it simple I've split my code in three parts, which are further divided into many small functions: 
+      </p>
+      <ul>
+        <li><a href="/pltut/parser/./input-stream" class="inside">The character input stream</a></li>
+        <li><a href="/pltut/parser/./token-stream" class="inside">The token input stream</a> (lexer)</li>
+        <li><a href="/pltut/parser/./the-parser" class="inside">The parser</a></li>
+      </ul>
+        </div>
+        <div class="columnR">
+      <p>
+        为了简单起见，我把我的代码分成了三部分，又分为很多小函数。
+      </p>  
+      <ul>
+        <li><a href="/pltut/parser/./input-stream" class="inside">字符输入流</a></li>
+        <li><a href="/pltut/parser/./token-stream" class="inside">词法记号(语元)输入流</a> (lexer)</li>
+        <li><a href="/pltut/parser/./the-parser" class="inside">解析器</a></li>
+      </ul>
+        </div>
+    </div>
+<!--     
+    <div class="row">
+      <pre class="code"><code class="plaintext">Hello World!
+14
+610
+1, 2, 3, 4, 5</code></pre>
+    </div>
+    
+    <div class="row">
+      <div class="columnL">
+	<p>
+	  English 
+	</p>
+      </div>
+      <div class="columnR">
+	<p>
+	  中文
+	</p>  
+      </div>
+    </div> -->
+
+    <footer>
+        <div class="row">
+            <div class="columnL">
+            </div>
+            <div class="columnR">
+              <a rel="license" href="http://creativecommons.org/licenses/by-nc/4.0/"><img alt="Creative Commons License" style="border-width:0" src="https://i.creativecommons.org/l/by-nc/4.0/88x31.png" /></a><br />This work is licensed under a <a rel="license" href="http://creativecommons.org/licenses/by-nc/4.0/">Creative Commons Attribution-NonCommercial 4.0 International License</a>.
+              <br />
+              <a rel="license" href="http://creativecommons.org/licenses/by-nc/4.0/"><img alt="知识共享许可协议" style="border-width:0" src="https://i.creativecommons.org/l/by-nc/4.0/88x31.png" /></a><br />本作品采用<a rel="license" href="http://creativecommons.org/licenses/by-nc/4.0/">知识共享署名-非商业性使用 4.0 国际许可协议</a>进行许可。
+            </div>
+          </footer>
+  </body>
+</html>

@@ -1,0 +1,415 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8">
+    <title>Informal description of the λanguage</title>
+    <link rel="stylesheet" href="./styles/default.css">
+    <script src="highlight.pack.js"></script>
+    <script>hljs.initHighlightingOnLoad();</script>
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <style>
+      body {
+	  margin: 0% 10%;
+      }
+      * {
+	  box-sizing: border-box;
+      }
+
+      .row {
+	  display: flex;
+      }
+
+      /* Create two equal columns that sits next to each other */
+      .column {
+	  flex: 50%;
+	  padding: 10px;
+	  /*height: 300px;  Should be removed. Only for demonstration */
+      }
+
+      .columnL {
+	  flex: 50%;
+	  padding: 0 2%;
+	  background-color:#aaa;
+      }
+
+      .columnR {
+	  flex: 50%;
+	  padding: 0 2%;
+	  background-color:#bbb;
+      }
+
+      .code {
+	  margin: auto;
+      }
+    </style>
+  </head>
+  <body>
+
+    <h2>The token input stream</h2>
+    <h2>词法记号(语元)输入流</h2>
+    翻译自：http://lisperator.net/pltut/parser/token-stream
+
+    
+    
+    <div class="row">
+      <div class="columnL">
+	<p>
+        The tokenizer (also called “lexer”) operates on a <a href="http://lisperator.net/pltut/parser/input-stream">character input stream</a> and returns a stream object with the same interface, but the values returned by peek() / next() will be tokens. A token is an object with two properties: type and value. Here are some examples with supported tokens:
+	</p>
+      </div>
+      <div class="columnR">
+	<p>
+        tokenizer（也称为 "lexer"）对 <a href="./input-stream.html">字符输入流</a>进行操作，并返回一个具有相同接口的流对象，但peek() / next()返回的值将是token。token是一个具有两个属性的对象：类型和值。以下是一些支持令牌的例子。
+	</p>  
+      </div>
+    </div>
+
+    <div class="row">
+        <pre class="code"><code class="javascript">{ type: "punc", value: "(" }           // punctuation: parens, comma, semicolon etc.
+{ type: "num", value: 5 }              // numbers
+{ type: "str", value: "Hello World!" } // strings
+{ type: "kw", value: "lambda" }        // keywords
+{ type: "var", value: "a" }            // identifiers
+{ type: "op", value: "!=" }            // operators</code></pre>
+      </div>
+
+    <div class="row">
+        <div class="columnL">
+      <p>
+        Whitespace and comments are skipped over, no tokens are returned. 
+      </p>
+        </div>
+        <div class="columnR">
+      <p>
+        中文
+      </p>  
+        </div>
+    </div>
+
+    <div class="row">
+        <div class="columnL">
+      <p>
+        In order to write the tokenizer we need to look more closely into the syntax of our language. The idea is to notice that depending on the current character (as returned by input.peek()) we can decide what kind of token to read: 
+      </p>
+        </div>
+        <div class="columnR">
+      <p>
+        中文
+      </p>  
+        </div>
+    </div>
+
+    <div class="row">
+        <div class="columnL">
+            <ul>
+                <li>First off, skip over whitespace.</li>
+                <li>If <code class="ColoroloC" lang="js"><span class="symbol">input</span>.<span class="symbol">eof</span><span class="list"><span class="list-start">(</span><span class="list-end">)</span></span></code> then return <code class="ColoroloC" lang="js"><span class="constant">null</span></code>.</li>
+                <li>If it's a sharp sign (<code class="ColoroloC" lang="lambda"><span class="comment"><span class="comment-start">#</span></span></code>), skip comment (retry after the end of line).</li>
+                <li>If it's a quote then read a string.</li>
+                <li>If it's a digit, then we proceed to read a number.</li>
+                <li>If it's a “letter”, then read an identifier or a keyword token.</li>
+                <li>If it's one of the punctuation characters, return a punctuation token.</li>
+                <li>If it's one of the operator characters, return an operator token.</li>
+                <li>If none of the above, error out with <code class="ColoroloC" lang="js"><span class="symbol">input</span>.<span class="symbol">croak</span><span class="list"><span class="list-start">(</span><span class="list-end">)</span></span></code>.</li>
+              </ul>
+        </div>
+        <div class="columnR">
+      <p>
+        中文
+      </p>  
+        </div>
+    </div>
+
+    <div class="row">
+        <div class="columnL">
+      <p>
+        So here's the “read_next” function — the “core” of the tokenizer — which implements the above: 
+      </p>
+        </div>
+        <div class="columnR">
+      <p>
+        中文
+      </p>  
+        </div>
+    </div>
+
+    <div class="row">
+        <pre class="code"><code class="javascript">function read_next() {
+    read_while(is_whitespace);
+    if (input.eof()) return null;
+    var ch = input.peek();
+    if (ch == "#") {
+        skip_comment();
+        return read_next();
+    }
+    if (ch == '"') return read_string();
+    if (is_digit(ch)) return read_number();
+    if (is_id_start(ch)) return read_ident();
+    if (is_punc(ch)) return {
+        type  : "punc",
+        value : input.next()
+    };
+    if (is_op_char(ch)) return {
+        type  : "op",
+        value : read_while(is_op_char)
+    };
+    input.croak("Can't handle character: " + ch);
+}</code></pre>
+      </div>
+
+    <div class="row">
+        <div class="columnL">
+      <p>
+        This is a “dispatcher” function and it's what next() will call in order to fetch the next token. Note it uses many utilities that are focused on particular token types, like read_string(), read_number() etc. There's no point to complicate the dispatcher with code from those functions, even if we never call them elsewhere. 
+      </p>
+        </div>
+        <div class="columnR">
+      <p>
+        中文
+      </p>  
+        </div>
+    </div>
+
+    <div class="row">
+        <div class="columnL">
+      <p>
+        Another thing to notice is that we don't consume all the input stream in one step. Each time the parser will call for next token, we read one token. In case of a parse error we don't even reach the end of the stream. 
+      </p>
+        </div>
+        <div class="columnR">
+      <p>
+        中文
+      </p>  
+        </div>
+    </div>
+
+    <div class="row">
+        <div class="columnL">
+      <p>
+        read_ident() will read characters as long as they are allowed as part of an identifier (is_id). Identifiers must start with a letter, or λ or _, and can contain further such characters, or digits, or one of the following: ?!-<>=. Therefore, foo-bar will not be read as three tokens but as a single identifier (a "var" token). The reason for this rule is that I'd like to be able to define functions named is-pair? or string>= (sorry, it's the Lisper in me). 
+      </p>
+        </div>
+        <div class="columnR">
+      <p>
+        中文
+      </p>  
+        </div>
+    </div>
+
+    <div class="row">
+        <div class="columnL">
+      <p>
+        Also, the read_ident() function will check the identifier against the list of known keywords, and if it's there it will return a "kw" token, instead of a "var" one. 
+      </p>
+        </div>
+        <div class="columnR">
+      <p>
+        中文
+      </p>  
+        </div>
+    </div>
+
+    <div class="row">
+        <div class="columnL">
+      <p>
+        I think the code pretty much speaks for itself now, so here is the complete tokenizer for our language. Couple of small other notes below. 
+      </p>
+        </div>
+        <div class="columnR">
+      <p>
+        中文
+      </p>  
+        </div>
+    </div>
+
+    <div class="row">
+        <pre class="code"><code class="javascript">function TokenStream(input) {
+    var current = null;
+    var keywords = " if then else lambda λ true false ";
+    return {
+        next  : next,
+        peek  : peek,
+        eof   : eof,
+        croak : input.croak
+    };
+    function is_keyword(x) {
+        return keywords.indexOf(" " + x + " ") >= 0;
+    }
+    function is_digit(ch) {
+        return /[0-9]/i.test(ch);
+    }
+    function is_id_start(ch) {
+        return /[a-zλ_]/i.test(ch);
+    }
+    function is_id(ch) {
+        return is_id_start(ch) || "?!-<>=0123456789".indexOf(ch) >= 0;
+    }
+    function is_op_char(ch) {
+        return "+-*/%=&|<>!".indexOf(ch) >= 0;
+    }
+    function is_punc(ch) {
+        return ",;(){}[]".indexOf(ch) >= 0;
+    }
+    function is_whitespace(ch) {
+        return " \t\n".indexOf(ch) >= 0;
+    }
+    function read_while(predicate) {
+        var str = "";
+        while (!input.eof() && predicate(input.peek()))
+            str += input.next();
+        return str;
+    }
+    function read_number() {
+        var has_dot = false;
+        var number = read_while(function(ch){
+            if (ch == ".") {
+                if (has_dot) return false;
+                has_dot = true;
+                return true;
+            }
+            return is_digit(ch);
+        });
+        return { type: "num", value: parseFloat(number) };
+    }
+    function read_ident() {
+        var id = read_while(is_id);
+        return {
+            type  : is_keyword(id) ? "kw" : "var",
+            value : id
+        };
+    }
+    function read_escaped(end) {
+        var escaped = false, str = "";
+        input.next();
+        while (!input.eof()) {
+            var ch = input.next();
+            if (escaped) {
+                str += ch;
+                escaped = false;
+            } else if (ch == "\\") {
+                escaped = true;
+            } else if (ch == end) {
+                break;
+            } else {
+                str += ch;
+            }
+        }
+        return str;
+    }
+    function read_string() {
+        return { type: "str", value: read_escaped('"') };
+    }
+    function skip_comment() {
+        read_while(function(ch){ return ch != "\n" });
+        input.next();
+    }
+    function read_next() {
+        read_while(is_whitespace);
+        if (input.eof()) return null;
+        var ch = input.peek();
+        if (ch == "#") {
+            skip_comment();
+            return read_next();
+        }
+        if (ch == '"') return read_string();
+        if (is_digit(ch)) return read_number();
+        if (is_id_start(ch)) return read_ident();
+        if (is_punc(ch)) return {
+            type  : "punc",
+            value : input.next()
+        };
+        if (is_op_char(ch)) return {
+            type  : "op",
+            value : read_while(is_op_char)
+        };
+        input.croak("Can't handle character: " + ch);
+    }
+    function peek() {
+        return current || (current = read_next());
+    }
+    function next() {
+        var tok = current;
+        current = null;
+        return tok || read_next();
+    }
+    function eof() {
+        return peek() == null;
+    }
+}</code></pre>
+      </div>
+      
+      <div class="row">
+        <div class="columnL">
+            <ul>
+                <li><p>The <code>next()</code> function doesn't always
+                call <code>read_next()</code>, because it might have been peeked before
+                (in which case read_next() was already called and the stream advanced).
+                Therefore we need a <code>current</code> variable which keeps track of the
+                current token.</p></li>
+              
+                <li><p>We only support decimal numbers with the usual notation (no 1E5
+                stuff, no hex, no octal).  But if we ever need more, the changes go only
+                in read_number() and are pretty easy to do.</p></li>
+              
+                <li><p>Unlike JavaScript, the only characters that cannot appear unquoted
+                in a string are the quote character itself and the backslash.  You need to
+                backslash them.  Otherwise strings can contain hard newlines, tabs, and
+                whatnot.  We don't interpret the usual escapes like <span class="special">\n</span>,
+                <span class="special">\t</span> etc. though again, the changes would be pretty trivial (in
+                “read_string”).</p></li>
+              </ul>
+        </div>
+        <div class="columnR">
+      <p>
+        中文
+      </p>  
+        </div>
+      </div>
+
+      <div class="row">
+        <div class="columnL">
+            <p>
+                We now have sufficiently powerful tools to easily write <a href="http://lisperator.net/pltut/parser/./the-parser">the parser</a>, but first I'd recommend you to look at
+                the <a href="http://lisperator.net/pltut/parser/./the-ast">description of the AST</a>.
+              </p>
+        </div>
+        <div class="columnR">
+      <p>
+        中文
+      </p>  
+        </div>
+      </div>
+      
+<!--     
+    <div class="row">
+      <pre class="code"><code class="plaintext">Hello World!
+14
+610
+1, 2, 3, 4, 5</code></pre>
+    </div>
+    
+    <div class="row">
+      <div class="columnL">
+	<p>
+	  English 
+	</p>
+      </div>
+      <div class="columnR">
+	<p>
+	  中文
+	</p>  
+      </div>
+    </div> -->
+
+    <footer>
+        <div class="row">
+            <div class="columnL">
+            </div>
+            <div class="columnR">
+              <a rel="license" href="http://creativecommons.org/licenses/by-nc/4.0/"><img alt="Creative Commons License" style="border-width:0" src="https://i.creativecommons.org/l/by-nc/4.0/88x31.png" /></a><br />This work is licensed under a <a rel="license" href="http://creativecommons.org/licenses/by-nc/4.0/">Creative Commons Attribution-NonCommercial 4.0 International License</a>.
+              <br />
+              <a rel="license" href="http://creativecommons.org/licenses/by-nc/4.0/"><img alt="知识共享许可协议" style="border-width:0" src="https://i.creativecommons.org/l/by-nc/4.0/88x31.png" /></a><br />本作品采用<a rel="license" href="http://creativecommons.org/licenses/by-nc/4.0/">知识共享署名-非商业性使用 4.0 国际许可协议</a>进行许可。
+            </div>
+          </footer>
+  </body>
+</html>

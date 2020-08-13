@@ -1,0 +1,235 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8">
+    <title>Informal description of the λanguage</title>
+    <link rel="stylesheet" href="./styles/default.css">
+    <script src="highlight.pack.js"></script>
+    <script>hljs.initHighlightingOnLoad();</script>
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <style>
+      body {
+	  margin: 0% 10%;
+      }
+      * {
+	  box-sizing: border-box;
+      }
+
+      .row {
+	  display: flex;
+      }
+
+      /* Create two equal columns that sits next to each other */
+      .column {
+	  flex: 50%;
+	  padding: 10px;
+	  /*height: 300px;  Should be removed. Only for demonstration */
+      }
+
+      .columnL {
+	  flex: 50%;
+	  padding: 0 2%;
+	  background-color:#aaa;
+      }
+
+      .columnR {
+	  flex: 50%;
+	  padding: 0 2%;
+	  background-color:#bbb;
+      }
+
+      .code {
+	  margin: auto;
+      }
+    </style>
+  </head>
+  <body>
+
+    <h2>The character input stream</h2>
+    <h2>字符输入流</h2>
+    翻译自：http://lisperator.net/pltut/parser/input-stream
+
+    
+    
+    <div class="row">
+      <div class="columnL">
+	<p>
+        This is the smallest part. We're going to create a “stream object” which provides operations to read characters from a string. A stream object has 4 methods:
+	</p>
+      </div>
+      <div class="columnR">
+	<p>
+        这是最小的部分。我们将创建一个 "流对象"，它提供从字符串中读取字符的操作。一个流对象有4个方法。
+	</p>  
+      </div>
+    </div>
+
+    <div class="row">
+        <div class="columnL">
+            <ul>
+                <li><code>peek()</code> — returns the next value but without removing it
+                from the stream.</li>
+              
+                <li><code>next()</code> — returns the next value and also discards it from
+                the stream.</li>
+              
+                <li><code>eof()</code> — returns true if and only if there are no more
+                values in the stream.</li>
+              
+                <li><code>croak(msg)</code> — does <code>throw new Error(msg)</code>. </li></ul>
+        </div>
+        <div class="columnR">
+      <p>
+        <ul>
+            <li><code>peek()</code> - 返回下一个值，但不从流中删除。</li>
+          
+            <li><code>next()</code> - 返回下一个值，同时从流中丢弃。</li>
+          
+            <li><code>eof()</code> - 如果且仅当流中没有更多的值时才返回 true。</li>
+          
+            <li><code>croak(msg)</code> - <code>throw new Error(msg)</code>。</li>
+        </ul>
+      </p>  
+        </div>
+      </div>
+
+      <div class="row">
+        <div class="columnL">
+      <p>
+        The reason why I'm including the last one is that the stream can easily keep track of the current location (i.e. line/column), which is important to display in the case of an error message. 
+      </p>
+        </div>
+        <div class="columnR">
+      <p>
+        我包括最后一个原因是，流可以很容易地跟踪当前的位置（即行/列），这在显示错误信息的情况下很重要。
+      </p>  
+        </div>
+      </div>
+
+      <div class="row">
+        <div class="columnL">
+      <p>
+        Feel free to add more methods here, depending on your needs, but for my tutorial these will suffice. 
+      </p>
+        </div>
+        <div class="columnR">
+      <p>
+        根据你的需要，你可以在这里添加更多的方法，但对于我的教程来说，这些就足够了。
+      </p>  
+        </div>
+      </div>
+
+      <div class="row">
+        <div class="columnL">
+      <p>
+        The character input stream deals with characters, so the values that next() / peek() return are chars (well, since JS doesn't have a char type, they're strings containing one character). 
+      </p>
+        </div>
+        <div class="columnR">
+      <p>
+        字符输入流处理的是字符，所以next()/peek()返回的值都是chars（好吧，因为JS没有char类型，所以它们是包含一个字符的字符串）。
+      </p>  
+        </div>
+      </div>
+
+      <div class="row">
+        <div class="columnL">
+      <p>
+        Here is the full code of this object, which I will call “InputStream”. It's small enough and you should have no problem to understand it: 
+      </p>
+        </div>
+        <div class="columnR">
+      <p>
+        下面是这个对象的完整代码，我称之为 "InputStream"。它足够小，你理解它应该没有问题。
+      </p>  
+        </div>
+      </div>
+
+      <div class="row">
+        <pre class="code"><code class="javascript">function InputStream(input) {
+    var pos = 0, line = 1, col = 0;
+    return {
+        next  : next,
+        peek  : peek,
+        eof   : eof,
+        croak : croak,
+    };
+    function next() {
+        var ch = input.charAt(pos++);
+        if (ch == "\n") line++, col = 0; else col++;
+        return ch;
+    }
+    function peek() {
+        return input.charAt(pos);
+    }
+    function eof() {
+        return peek() == "";
+    }
+    function croak(msg) {
+        throw new Error(msg + " (" + line + ":" + col + ")");
+    }
+}</code></pre>
+      </div>
+
+      <div class="row">
+        <div class="columnL">
+      <p>
+        Note that it's not a standard object (the kind you create with new). You just do var stream = InputStream(string) to get a stream object. 
+      </p>
+        </div>
+        <div class="columnR">
+      <p>
+        请注意，它不是一个标准对象（用new创建的那种）。你只需要做var stream = InputStream(string)来得到一个流对象。
+      </p>  
+        </div>
+      </div>
+
+      <div class="row">
+        <div class="columnL">
+            <p>
+                Next we're going to write another abstraction on top of this object:
+                <a href="http://lisperator.net/pltut/parser/./token-stream" class="inside">the tokenizer</a>.
+              </p>
+        </div>
+        <div class="columnR">
+      <p>
+        接下来我们要在这个对象之上再写一个抽象：<a href="http://lisperator.net/pltut/parser/./token-stream" class="inside">tokenizer</a>。
+      </p>  
+        </div>
+      </div>
+
+      
+
+<!--     
+    <div class="row">
+      <pre class="code"><code class="plaintext">Hello World!
+14
+610
+1, 2, 3, 4, 5</code></pre>
+    </div>
+    
+    <div class="row">
+      <div class="columnL">
+	<p>
+	  English 
+	</p>
+      </div>
+      <div class="columnR">
+	<p>
+	  中文
+	</p>  
+      </div>
+    </div> -->
+
+    <footer>
+        <div class="row">
+            <div class="columnL">
+            </div>
+            <div class="columnR">
+              <a rel="license" href="http://creativecommons.org/licenses/by-nc/4.0/"><img alt="Creative Commons License" style="border-width:0" src="https://i.creativecommons.org/l/by-nc/4.0/88x31.png" /></a><br />This work is licensed under a <a rel="license" href="http://creativecommons.org/licenses/by-nc/4.0/">Creative Commons Attribution-NonCommercial 4.0 International License</a>.
+              <br />
+              <a rel="license" href="http://creativecommons.org/licenses/by-nc/4.0/"><img alt="知识共享许可协议" style="border-width:0" src="https://i.creativecommons.org/l/by-nc/4.0/88x31.png" /></a><br />本作品采用<a rel="license" href="http://creativecommons.org/licenses/by-nc/4.0/">知识共享署名-非商业性使用 4.0 国际许可协议</a>进行许可。
+            </div>
+          </footer>
+  </body>
+</html>
