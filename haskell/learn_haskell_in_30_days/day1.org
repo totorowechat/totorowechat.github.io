@@ -1,0 +1,351 @@
+#+TITLE: DAY 1
+#+AUTHOR: LINGAO JIN
+#+EMAIL: jinlingao@outlook.com
+#+EXPORT_FILE_NAME: ./exports/day-1
+# #+SETUPFILE: https://fniessen.github.io/org-html-themes/org/theme-bigblow.setup
+
+* Starting-out
+
+** the journey 
+
+I have to admit that I am a rookie, so I have written this series of 
+articles, not to prove anything, but just to record my journey and give
+a little comfort to people who are learning on the road of programming 
+languages.
+
+** Interpreter
+
+Usage of ~GHCI~. It's a normal interpreter can evaluate some form.
+
+For example:
+
+#+BEGIN_SRC bash
+# simple arithmetic
+ghci> 2 + 15  
+17  
+ghci> 49 * 100  
+4900  
+ghci> 1892 - 1472  
+420  
+ghci> 5 / 2  
+2.5  
+
+# calling a function
+ghci> succ 8  
+9
+ghci> succ 9 + max 5 4 + 1  
+16  
+ghci> (succ 9) + (max 5 4) + 1  
+16
+#+END_SRC
+
+*** Funtion Call
+
+The ~succ~ function takes anything that has a defined successor and returns that successor.
+
+** Basic Function
+
+-----
+
+Q: How to define a function with one parameter?
+
+A: 
+#+BEGIN_SRC 
+-- '--' is comment in haskell.
+
+-- define a function in haskell.
+             +---+> variables
+doubleMe x = x + x
+ |       +> function parameter
+ +> function name
+
+-- define a function with two parameters.
+         +-+> function parameters
+doubleUs x y = x*2 + y*2
+ |             +-----+> variables
+ +> function name
+#+END_SRC
+
+-----
+
+Q: How to run the function with two parameters?
+
+A:
+#+BEGIN_SRC
+ghci> doubleUs 4 9  
+26  
+ghci> doubleUs 2.3 34.2  
+73.0  
+ghci> doubleUs 28 88 + doubleMe 123  
+478
+#+END_SRC
+
+-----
+
+Q: Define a function inside other function?
+
+A:
+#+BEGIN_SRC haskell
+doubleUs x y = doubleMe x + doubleMe y
+#+END_SRC
+
+-----
+
+Q: Does the function defination order matters?
+
+A: No. Functions in Haskell don't have to be in any particular order,
+so it doesn't matter if you define ~doubleMe~ first and then 
+~doubleUs~ or if you do it the other way around.
+
+-----
+
+Q: Define a function that multiplies a number by 2 but only if that
+number is smaller than or equal to 100.
+
+A: 
+#+BEGIN_SRC haskell
+doubleSmallNumber x = if x > 100
+                        then x
+                        else x*2
+#+END_SRC
+
+We introduced Haskell's ~if~ statement. The difference between 
+Haskell's ~if~ statement and ~if~ statements in *imperative* languages
+is that the ~else~ part is *mandatory* in Haskell. In *imperative*
+languages you can just skip a couple of steps if the condition isn't 
+satisfied but in Haskell every expression and function must *return*
+something.
+
+-----
+
+Q: What is *expression* in haskell
+
+A: An *expression* is basically a piece of code that returns a value.
+~5~ is an *expression* because it returns ~5~, ~4~ + ~8~ is an 
+*expression*, ~x + y~ is an *expression* because it returns the sum of
+ ~x~ and ~y~. 
+
+-----
+
+Q:
+#+BEGIN_SRC haskell
+doubleSmallNumber' x = (if x > 100 then x else x*2) + 1
+#+END_SRC
+
+A: It would have added ~1~ only if ~x~ wasn't greater than ~100~. Note
+the ~'~ at the end of the function name. That *apostrophe* *doesn't* 
+have any special meaning in Haskell's syntax. It's a valid character
+to use in a function name. We usually use ~'~ to either denote a 
+*strict* version of a function (one that isn't *lazy*) or a slightly 
+modified version of a function or a variable. Because ~'~ is a valid
+character in functions, we can make a function like this.
+
+-----
+
+Q: 
+#+BEGIN_SRC haskell
+conanO'Brien = "It's a-me, Conan O'Brien!"   
+#+END_SRC
+
+A:
+
+- Functions can't begin with uppercase letters.
+- When a function doesn't take any parameters, we usually say it's a
+    definition (or a name). Once we've defined them, conanO'Brien and the
+    string ~It's a-me, Conan O'Brien!~ can be used interchangeably.
+
+** An intro to lists
+
+In Haskell, lists are a *homogenous* data structure. It stores several
+elements of the same type. That means that we can have a list of 
+integers or a list of characters but we can't have a list that has a 
+few integers and then a few characters.
+
+----- 
+
+Note: We can use the ~let~ keyword to define a name right in *GHCI*.
+Doing ~let a = 1~ inside *GHCI* is the equivalent of writing ~a = 1~
+in a script and then loading it.
+
+-----
+
+#+BEGIN_SRC bash
+# define list
+ghci> let lostNumbers = [4,8,15,16,23,42]  
+ghci> lostNumbers  
+[4,8,15,16,23,42e]
+
+# putting two lists together
+ghci> [1,2,3,4] ++ [9,10,11,12]  
+[1,2,3,4,9,10,11,12]  
+ghci> "hello" ++ " " ++ "world"  
+"hello world"  
+ghci> ['w','o'] ++ ['o','t']  
+"woot"
+
+# putting something at the beginning of a list using the : operator 
+# (also called the cons operator) is instantaneous.
+ghci> 'A':" SMALL CAT"  
+"A SMALL CAT"  
+ghci> 5:[1,2,3,4,5]  
+[5,1,2,3,4,5]
+
+# get an element out of a list by index
+ghci> "Steve Buscemi" !! 6  
+'B'  
+ghci> [9.4,33.2,96.2,11.2,23.25] !! 1  
+33.2
+
+# compare lists using <, <=, > and >=. they are compared in 
+# lexicographical order
+ghci> [3,2,1] > [2,1,0]  
+True
+ghci> [3,2,1] > [2,10,100]  
+True
+ghci> [3,4,2] > [3,4]  
+True
+ghci> [3,4,2] > [2,4]  
+True
+ghci> [3,4,2] == [3,4,2]  
+True
+#+END_SRC
+
+-----
+
+Some basic functions that operate on lists.
+
+#+BEGIN_SRC
+ +> head
+ | 
+[5,4,3,2,1]
+   |     |
+   +-----+> tail
+
+ +-----+> init
+ |     |
+[5,4,3,2,1]
+         |
+         +> last
+#+END_SRC
+
+#+BEGIN_SRC bash
+# head
+ghci> head [5,4,3,2,1]  
+5
+# tail
+ghci> tail [5,4,3,2,1]  
+[4,3,2,1]
+# last
+ghci> last [5,4,3,2,1]  
+1
+# init
+ghci> init [5,4,3,2,1]  
+[5,4,3,2]
+# length
+ghci> length [5,4,3,2,1]  
+5
+# null
+ghci> null [1,2,3]  
+False
+ghci> null []  
+True
+# reverse
+ghci> reverse [5,4,3,2,1]  
+[1,2,3,4,5]
+# take
+ghci> take 3 [5,4,3,2,1]  
+[5,4,3]
+ghci> take 1 [3,9,3]  
+[3]
+ghci> take 5 [1,2]  
+[1,2]
+ghci> take 0 [6,6,6]  
+[]
+# drop
+ghci> drop 3 [8,4,2,1,5,6]  
+[1,5,6]
+ghci> drop 0 [1,2,3,4]  
+[1,2,3,4]
+ghci> drop 100 [1,2,3,4]  
+[]
+# maximum and minimum
+ghci> minimum [8,4,2,1,5,6]  
+1
+ghci> maximum [1,9,2,3,4]  
+9
+# sum and product
+ghci> sum [5,2,1,6,3,2,5,7]  
+31
+ghci> product [6,2,1,2]  
+24
+ghci> product [1,2,5,6,7,9,2,0]  
+0
+# elem
+ghci> 4 `elem` [3,4,5,6]  
+True 
+ghci> 10 `elem` [3,4,5,6]  
+False
+# cycle takes a list and cycles it into an infinite list.
+ghci> take 10 (cycle [1,2,3])  
+[1,2,3,1,2,3,1,2,3,1]  
+ghci> take 12 (cycle "LOL ")  
+"LOL LOL LOL "
+# repeat takes an element and produces an infinite list of just that element.
+ghci> take 10 (repeat 5)  
+[5,5,5,5,5,5,5,5,5,5]
+# replicate
+ghci> replicate 3 10
+[10,10,10]
+#+END_SRC
+
+-----
+
+Q: But what happens if we try to get the head of an empty list?
+
+A: Exception: Prelude.head: empty list
+
+-----
+
+Q: What if we want a list of all numbers between 1 and 20?
+
+A: 
+#+BEGIN_SRC bash
+ghci> [1..20]  
+[1,2,3,4,5,6,7,8,9,10,11,12,13,14,15,16,17,18,19,20]  
+ghci> ['a'..'z']  
+"abcdefghijklmnopqrstuvwxyz"  
+ghci> ['K'..'Z']  
+"KLMNOPQRSTUVWXYZ"
+#+END_SRC
+
+Q: What if we want all even numbers between 1 and 20?
+
+A:
+#+BEGIN_SRC bash
+ghci> [2,4..20]  
+[2,4,6,8,10,12,14,16,18,20]  
+ghci> [3,6..20]  
+[3,6,9,12,15,18]  
+#+END_SRC
+
+Q: To make a list with all the numbers from 20 to 1?
+
+A: You can't just do ~[20..1]~, you have to do ~[20,19..1]~.
+
+Watch out when using floating point numbers in ranges
+
+#+BEGIN_SRC bash
+ghci> [0.1, 0.3 .. 1]
+[0.1,0.3,0.5,0.7,0.8999999999999999,1.0999999999999999]  8]
+#+END_SRC
+
+Q: Make infinite lists?
+
+A: ~[13,26..]~
+
+Q: How you would get the first 24 multiples of 13?
+
+A: ~take 24 [13,26..]~
+
+-----
+

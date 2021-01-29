@@ -1,0 +1,114 @@
+#+TITLE: DAY 5
+#+AUTHOR: LINGAO JIN
+#+EMAIL: jinlingao@outlook.com
+#+EXPORT_FILE_NAME: ./exports/day-5
+# #+SETUPFILE: https://fniessen.github.io/org-html-themes/org/theme-bigblow.setup
+
+** Curried functions
+
+Infix functions can also be partially applied by using sections. To 
+section an infix function, simply surround it with *parentheses* and 
+only supply a parameter on one side. That creates a function that 
+takes one parameter and then applies it to the side that's missing an 
+operand. An insultingly trivial function:
+
+#+BEGIN_SRC haskell
+divideByTen :: (Floating a) => a -> a  
+divideByTen = (/10)  
+
+-- Calling, say, divideByTen 200 is equivalent to doing 200 / 10, as 
+-- is doing (/10) 200. A function that checks if a character supplied
+-- to it is an uppercase letter:
+
+isUpperAlphanum :: Char -> Bool  
+isUpperAlphanum = (`elem` ['A'..'Z']) 
+#+END_SRC
+
+What happens if we try to just do ~multThree 3 4~ in GHCI instead of 
+binding it to a name with a let or passing it to another function?
+
+#+BEGIN_SRC
+ghci> multThree 3 4  
+<interactive>:1:0:  
+    No instance for (Show (t -> t))  
+      arising from a use of `print' at <interactive>:1:0-12  
+    Possible fix: add an instance declaration for (Show (t -> t))  
+    In the expression: print it  
+    In a 'do' expression: print it  
+#+END_SRC
+
+GHCI is telling us that the expression produced a function of type ~a 
+-> a~ but it doesn't know how to print it to the screen. Functions 
+aren't instances of the ~Show~ typeclass, so we can't get a neat 
+string representation of a function. When we do, say, ~1 + 1~ at the 
+GHCI prompt, it first calculates that to ~2~ and then calls ~show~ on
+~2~ to get a textual representation of that number. And the textual 
+representation of ~2~ is just the string ~"2"~, which then gets
+printed to our screen.
+
+
+** Some higher-orderism is in order
+
+Functions can take functions as parameters and also return functions. 
+To illustrate this, we're going to make a function that takes a 
+function and then applies it twice to something!
+
+#+BEGIN_SRC haskell
+applyTwice :: (a -> a) -> a -> a  
+applyTwice f x = f (f x) 
+#+END_SRC
+
+First of all, notice the type declaration. Before, we didn't need 
+parentheses because ~->~ is naturally right-associative. However, 
+here, they're mandatory. They indicate that the first parameter is a 
+function that takes something and returns that same thing. The second 
+parameter is something of that type also and the return value is also 
+of the same type. We could read this type declaration in the curried 
+way, but to save ourselves a headache, we'll just say that this 
+function takes two parameters and returns one thing. The first 
+parameter is a function (of type ~a -> a~) and the second is that 
+same ~a~. The function can also be ~Int -> Int~ or ~String -> String~ 
+or whatever. But then, the second parameter to also has to be of that 
+type.
+
+The body of the function is pretty simple. We just use the parameter 
+~f~ as a function, applying ~x~ to it by separating them with a space
+and then applying the result to ~f~ again. Anyway, playing around with
+the function:
+
+#+BEGIN_SRC
+ghci> applyTwice (+3) 10  
+16  
+ghci> applyTwice (++ " HAHA") "HEY"  
+"HEY HAHA HAHA"  
+ghci> applyTwice ("HAHA " ++) "HEY"  
+"HAHA HAHA HEY"  
+ghci> applyTwice (multThree 2 2) 9  
+144  
+ghci> applyTwice (3:) [1]  
+[3,3,1]  
+#+END_SRC
+
+Now we're going to use higher order programming to implement a really 
+useful function that's in the standard library. It's called zipWith. 
+It takes a function and two lists as parameters and then joins the 
+two lists by applying the function between corresponding elements. 
+Here's how we'll implement it:
+
+#+BEGIN_SRC
+zipWith' :: (a -> b -> c) -> [a] -> [b] -> [c]  
+zipWith' _ [] _ = []  
+zipWith' _ _ [] = []  
+zipWith' f (x:xs) (y:ys) = f x y : zipWith' f xs ys 
+#+END_SRC
+
+
+** Maps and filters
+
+** Lambdas
+
+** Only folds and horses
+
+** Function application with $
+
+** Function composition
