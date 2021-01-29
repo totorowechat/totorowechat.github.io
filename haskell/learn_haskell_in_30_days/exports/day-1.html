@@ -1,0 +1,721 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN"
+"http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" lang="en" xml:lang="en">
+<head>
+<!-- 2021-01-29 五 18:44 -->
+<meta http-equiv="Content-Type" content="text/html;charset=utf-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1" />
+<title>DAY 1</title>
+<meta name="generator" content="Org mode" />
+<meta name="author" content="LINGAO JIN" />
+<style type="text/css">
+ <!--/*--><![CDATA[/*><!--*/
+  .title  { text-align: center;
+             margin-bottom: .2em; }
+  .subtitle { text-align: center;
+              font-size: medium;
+              font-weight: bold;
+              margin-top:0; }
+  .todo   { font-family: monospace; color: red; }
+  .done   { font-family: monospace; color: green; }
+  .priority { font-family: monospace; color: orange; }
+  .tag    { background-color: #eee; font-family: monospace;
+            padding: 2px; font-size: 80%; font-weight: normal; }
+  .timestamp { color: #bebebe; }
+  .timestamp-kwd { color: #5f9ea0; }
+  .org-right  { margin-left: auto; margin-right: 0px;  text-align: right; }
+  .org-left   { margin-left: 0px;  margin-right: auto; text-align: left; }
+  .org-center { margin-left: auto; margin-right: auto; text-align: center; }
+  .underline { text-decoration: underline; }
+  #postamble p, #preamble p { font-size: 90%; margin: .2em; }
+  p.verse { margin-left: 3%; }
+  pre {
+    border: 1px solid #ccc;
+    box-shadow: 3px 3px 3px #eee;
+    padding: 8pt;
+    font-family: monospace;
+    overflow: auto;
+    margin: 1.2em;
+  }
+  pre.src {
+    position: relative;
+    overflow: visible;
+    padding-top: 1.2em;
+  }
+  pre.src:before {
+    display: none;
+    position: absolute;
+    background-color: white;
+    top: -10px;
+    right: 10px;
+    padding: 3px;
+    border: 1px solid black;
+  }
+  pre.src:hover:before { display: inline;}
+  /* Languages per Org manual */
+  pre.src-asymptote:before { content: 'Asymptote'; }
+  pre.src-awk:before { content: 'Awk'; }
+  pre.src-C:before { content: 'C'; }
+  /* pre.src-C++ doesn't work in CSS */
+  pre.src-clojure:before { content: 'Clojure'; }
+  pre.src-css:before { content: 'CSS'; }
+  pre.src-D:before { content: 'D'; }
+  pre.src-ditaa:before { content: 'ditaa'; }
+  pre.src-dot:before { content: 'Graphviz'; }
+  pre.src-calc:before { content: 'Emacs Calc'; }
+  pre.src-emacs-lisp:before { content: 'Emacs Lisp'; }
+  pre.src-fortran:before { content: 'Fortran'; }
+  pre.src-gnuplot:before { content: 'gnuplot'; }
+  pre.src-haskell:before { content: 'Haskell'; }
+  pre.src-hledger:before { content: 'hledger'; }
+  pre.src-java:before { content: 'Java'; }
+  pre.src-js:before { content: 'Javascript'; }
+  pre.src-latex:before { content: 'LaTeX'; }
+  pre.src-ledger:before { content: 'Ledger'; }
+  pre.src-lisp:before { content: 'Lisp'; }
+  pre.src-lilypond:before { content: 'Lilypond'; }
+  pre.src-lua:before { content: 'Lua'; }
+  pre.src-matlab:before { content: 'MATLAB'; }
+  pre.src-mscgen:before { content: 'Mscgen'; }
+  pre.src-ocaml:before { content: 'Objective Caml'; }
+  pre.src-octave:before { content: 'Octave'; }
+  pre.src-org:before { content: 'Org mode'; }
+  pre.src-oz:before { content: 'OZ'; }
+  pre.src-plantuml:before { content: 'Plantuml'; }
+  pre.src-processing:before { content: 'Processing.js'; }
+  pre.src-python:before { content: 'Python'; }
+  pre.src-R:before { content: 'R'; }
+  pre.src-ruby:before { content: 'Ruby'; }
+  pre.src-sass:before { content: 'Sass'; }
+  pre.src-scheme:before { content: 'Scheme'; }
+  pre.src-screen:before { content: 'Gnu Screen'; }
+  pre.src-sed:before { content: 'Sed'; }
+  pre.src-sh:before { content: 'shell'; }
+  pre.src-sql:before { content: 'SQL'; }
+  pre.src-sqlite:before { content: 'SQLite'; }
+  /* additional languages in org.el's org-babel-load-languages alist */
+  pre.src-forth:before { content: 'Forth'; }
+  pre.src-io:before { content: 'IO'; }
+  pre.src-J:before { content: 'J'; }
+  pre.src-makefile:before { content: 'Makefile'; }
+  pre.src-maxima:before { content: 'Maxima'; }
+  pre.src-perl:before { content: 'Perl'; }
+  pre.src-picolisp:before { content: 'Pico Lisp'; }
+  pre.src-scala:before { content: 'Scala'; }
+  pre.src-shell:before { content: 'Shell Script'; }
+  pre.src-ebnf2ps:before { content: 'ebfn2ps'; }
+  /* additional language identifiers per "defun org-babel-execute"
+       in ob-*.el */
+  pre.src-cpp:before  { content: 'C++'; }
+  pre.src-abc:before  { content: 'ABC'; }
+  pre.src-coq:before  { content: 'Coq'; }
+  pre.src-groovy:before  { content: 'Groovy'; }
+  /* additional language identifiers from org-babel-shell-names in
+     ob-shell.el: ob-shell is the only babel language using a lambda to put
+     the execution function name together. */
+  pre.src-bash:before  { content: 'bash'; }
+  pre.src-csh:before  { content: 'csh'; }
+  pre.src-ash:before  { content: 'ash'; }
+  pre.src-dash:before  { content: 'dash'; }
+  pre.src-ksh:before  { content: 'ksh'; }
+  pre.src-mksh:before  { content: 'mksh'; }
+  pre.src-posh:before  { content: 'posh'; }
+  /* Additional Emacs modes also supported by the LaTeX listings package */
+  pre.src-ada:before { content: 'Ada'; }
+  pre.src-asm:before { content: 'Assembler'; }
+  pre.src-caml:before { content: 'Caml'; }
+  pre.src-delphi:before { content: 'Delphi'; }
+  pre.src-html:before { content: 'HTML'; }
+  pre.src-idl:before { content: 'IDL'; }
+  pre.src-mercury:before { content: 'Mercury'; }
+  pre.src-metapost:before { content: 'MetaPost'; }
+  pre.src-modula-2:before { content: 'Modula-2'; }
+  pre.src-pascal:before { content: 'Pascal'; }
+  pre.src-ps:before { content: 'PostScript'; }
+  pre.src-prolog:before { content: 'Prolog'; }
+  pre.src-simula:before { content: 'Simula'; }
+  pre.src-tcl:before { content: 'tcl'; }
+  pre.src-tex:before { content: 'TeX'; }
+  pre.src-plain-tex:before { content: 'Plain TeX'; }
+  pre.src-verilog:before { content: 'Verilog'; }
+  pre.src-vhdl:before { content: 'VHDL'; }
+  pre.src-xml:before { content: 'XML'; }
+  pre.src-nxml:before { content: 'XML'; }
+  /* add a generic configuration mode; LaTeX export needs an additional
+     (add-to-list 'org-latex-listings-langs '(conf " ")) in .emacs */
+  pre.src-conf:before { content: 'Configuration File'; }
+
+  table { border-collapse:collapse; }
+  caption.t-above { caption-side: top; }
+  caption.t-bottom { caption-side: bottom; }
+  td, th { vertical-align:top;  }
+  th.org-right  { text-align: center;  }
+  th.org-left   { text-align: center;   }
+  th.org-center { text-align: center; }
+  td.org-right  { text-align: right;  }
+  td.org-left   { text-align: left;   }
+  td.org-center { text-align: center; }
+  dt { font-weight: bold; }
+  .footpara { display: inline; }
+  .footdef  { margin-bottom: 1em; }
+  .figure { padding: 1em; }
+  .figure p { text-align: center; }
+  .equation-container {
+    display: table;
+    text-align: center;
+    width: 100%;
+  }
+  .equation {
+    vertical-align: middle;
+  }
+  .equation-label {
+    display: table-cell;
+    text-align: right;
+    vertical-align: middle;
+  }
+  .inlinetask {
+    padding: 10px;
+    border: 2px solid gray;
+    margin: 10px;
+    background: #ffffcc;
+  }
+  #org-div-home-and-up
+   { text-align: right; font-size: 70%; white-space: nowrap; }
+  textarea { overflow-x: auto; }
+  .linenr { font-size: smaller }
+  .code-highlighted { background-color: #ffff00; }
+  .org-info-js_info-navigation { border-style: none; }
+  #org-info-js_console-label
+    { font-size: 10px; font-weight: bold; white-space: nowrap; }
+  .org-info-js_search-highlight
+    { background-color: #ffff00; color: #000000; font-weight: bold; }
+  .org-svg { width: 90%; }
+  /*]]>*/-->
+</style>
+<script type="text/javascript">
+/*
+@licstart  The following is the entire license notice for the
+JavaScript code in this tag.
+
+Copyright (C) 2012-2020 Free Software Foundation, Inc.
+
+The JavaScript code in this tag is free software: you can
+redistribute it and/or modify it under the terms of the GNU
+General Public License (GNU GPL) as published by the Free Software
+Foundation, either version 3 of the License, or (at your option)
+any later version.  The code is distributed WITHOUT ANY WARRANTY;
+without even the implied warranty of MERCHANTABILITY or FITNESS
+FOR A PARTICULAR PURPOSE.  See the GNU GPL for more details.
+
+As additional permission under GNU GPL version 3 section 7, you
+may distribute non-source (e.g., minimized or compacted) forms of
+that code without the copy of the GNU GPL normally required by
+section 4, provided you include this license notice and a URL
+through which recipients can access the Corresponding Source.
+
+
+@licend  The above is the entire license notice
+for the JavaScript code in this tag.
+*/
+<!--/*--><![CDATA[/*><!--*/
+ function CodeHighlightOn(elem, id)
+ {
+   var target = document.getElementById(id);
+   if(null != target) {
+     elem.cacheClassElem = elem.className;
+     elem.cacheClassTarget = target.className;
+     target.className = "code-highlighted";
+     elem.className   = "code-highlighted";
+   }
+ }
+ function CodeHighlightOff(elem, id)
+ {
+   var target = document.getElementById(id);
+   if(elem.cacheClassElem)
+     elem.className = elem.cacheClassElem;
+   if(elem.cacheClassTarget)
+     target.className = elem.cacheClassTarget;
+ }
+/*]]>*///-->
+</script>
+</head>
+<body>
+<div id="content">
+<h1 class="title">DAY 1</h1>
+<div id="table-of-contents">
+<h2>Table of Contents</h2>
+<div id="text-table-of-contents">
+<ul>
+<li><a href="#org2e1e88f">1. Starting-out</a>
+<ul>
+<li><a href="#org593327b">1.1. the journey</a></li>
+<li><a href="#orgc8719e5">1.2. Interpreter</a>
+<ul>
+<li><a href="#orge43c9d3">1.2.1. Funtion Call</a></li>
+</ul>
+</li>
+<li><a href="#org282b92e">1.3. Basic Function</a></li>
+<li><a href="#orgefc36cc">1.4. An intro to lists</a></li>
+</ul>
+</li>
+</ul>
+</div>
+</div>
+
+<div id="outline-container-org2e1e88f" class="outline-2">
+<h2 id="org2e1e88f"><span class="section-number-2">1</span> Starting-out</h2>
+<div class="outline-text-2" id="text-1">
+</div>
+<div id="outline-container-org593327b" class="outline-3">
+<h3 id="org593327b"><span class="section-number-3">1.1</span> the journey</h3>
+<div class="outline-text-3" id="text-1-1">
+<p>
+I have to admit that I am a rookie, so I have written this series of 
+articles, not to prove anything, but just to record my journey and give
+a little comfort to people who are learning on the road of programming 
+languages.
+</p>
+</div>
+</div>
+
+<div id="outline-container-orgc8719e5" class="outline-3">
+<h3 id="orgc8719e5"><span class="section-number-3">1.2</span> Interpreter</h3>
+<div class="outline-text-3" id="text-1-2">
+<p>
+Usage of <code>GHCI</code>. It's a normal interpreter can evaluate some form.
+</p>
+
+<p>
+For example:
+</p>
+
+<div class="org-src-container">
+<pre class="src src-bash"><span style="color: #b22222;"># </span><span style="color: #b22222;">simple arithmetic</span>
+ghci&gt; 2 + 15  
+17  
+ghci&gt; 49 * 100  
+4900  
+ghci&gt; 1892 - 1472  
+420  
+ghci&gt; 5 / 2  
+2.5  
+
+<span style="color: #b22222;"># </span><span style="color: #b22222;">calling a function</span>
+ghci&gt; succ 8  
+9
+ghci&gt; succ 9 + max 5 4 + 1  
+16  
+ghci&gt; (succ 9) + (max 5 4) + 1  
+16
+</pre>
+</div>
+</div>
+
+<div id="outline-container-orge43c9d3" class="outline-4">
+<h4 id="orge43c9d3"><span class="section-number-4">1.2.1</span> Funtion Call</h4>
+<div class="outline-text-4" id="text-1-2-1">
+<p>
+The <code>succ</code> function takes anything that has a defined successor and returns that successor.
+</p>
+</div>
+</div>
+</div>
+
+<div id="outline-container-org282b92e" class="outline-3">
+<h3 id="org282b92e"><span class="section-number-3">1.3</span> Basic Function</h3>
+<div class="outline-text-3" id="text-1-3">
+<hr />
+
+<p>
+Q: How to define a function with one parameter?
+</p>
+
+<p>
+A: 
+</p>
+<pre class="example">
+-- '--' is comment in haskell.
+
+-- define a function in haskell.
+	     +---+&gt; variables
+doubleMe x = x + x
+ |       +&gt; function parameter
+ +&gt; function name
+
+-- define a function with two parameters.
+	 +-+&gt; function parameters
+doubleUs x y = x*2 + y*2
+ |             +-----+&gt; variables
+ +&gt; function name
+</pre>
+
+<hr />
+
+<p>
+Q: How to run the function with two parameters?
+</p>
+
+<p>
+A:
+</p>
+<pre class="example">
+ghci&gt; doubleUs 4 9  
+26  
+ghci&gt; doubleUs 2.3 34.2  
+73.0  
+ghci&gt; doubleUs 28 88 + doubleMe 123  
+478
+</pre>
+
+<hr />
+
+<p>
+Q: Define a function inside other function?
+</p>
+
+<p>
+A:
+</p>
+<div class="org-src-container">
+<pre class="src src-haskell"><span style="color: #0000ff;">doubleUs</span> x y <span style="color: #a0522d;">=</span> doubleMe x <span style="color: #a0522d;">+</span> doubleMe y
+</pre>
+</div>
+
+<hr />
+
+<p>
+Q: Does the function defination order matters?
+</p>
+
+<p>
+A: No. Functions in Haskell don't have to be in any particular order,
+so it doesn't matter if you define <code>doubleMe</code> first and then 
+<code>doubleUs</code> or if you do it the other way around.
+</p>
+
+<hr />
+
+<p>
+Q: Define a function that multiplies a number by 2 but only if that
+number is smaller than or equal to 100.
+</p>
+
+<p>
+A: 
+</p>
+<div class="org-src-container">
+<pre class="src src-haskell"><span style="color: #0000ff;">doubleSmallNumber</span> x <span style="color: #a0522d;">=</span> <span style="color: #a020f0;">if</span> x <span style="color: #a0522d;">&gt;</span> 100
+                        <span style="color: #a020f0;">then</span> x
+                        <span style="color: #a020f0;">else</span> x<span style="color: #a0522d;">*</span>2
+</pre>
+</div>
+
+<p>
+We introduced Haskell's <code>if</code> statement. The difference between 
+Haskell's <code>if</code> statement and <code>if</code> statements in <b>imperative</b> languages
+is that the <code>else</code> part is <b>mandatory</b> in Haskell. In <b>imperative</b>
+languages you can just skip a couple of steps if the condition isn't 
+satisfied but in Haskell every expression and function must <b>return</b>
+something.
+</p>
+
+<hr />
+
+<p>
+Q: What is <b>expression</b> in haskell
+</p>
+
+<p>
+A: An <b>expression</b> is basically a piece of code that returns a value.
+<code>5</code> is an <b>expression</b> because it returns <code>5</code>, <code>4</code> + <code>8</code> is an 
+<b>expression</b>, <code>x + y</code> is an <b>expression</b> because it returns the sum of
+ <code>x</code> and <code>y</code>. 
+</p>
+
+<hr />
+
+<p>
+Q:
+</p>
+<div class="org-src-container">
+<pre class="src src-haskell"><span style="color: #0000ff;">doubleSmallNumber'</span> x <span style="color: #a0522d;">=</span> (<span style="color: #a020f0;">if</span> x <span style="color: #a0522d;">&gt;</span> 100 <span style="color: #a020f0;">then</span> x <span style="color: #a020f0;">else</span> x<span style="color: #a0522d;">*</span>2) <span style="color: #a0522d;">+</span> 1
+</pre>
+</div>
+
+<p>
+A: It would have added <code>1</code> only if <code>x</code> wasn't greater than <code>100</code>. Note
+the <code>'</code> at the end of the function name. That <b>apostrophe</b> <b>doesn't</b> 
+have any special meaning in Haskell's syntax. It's a valid character
+to use in a function name. We usually use <code>'</code> to either denote a 
+<b>strict</b> version of a function (one that isn't <b>lazy</b>) or a slightly 
+modified version of a function or a variable. Because <code>'</code> is a valid
+character in functions, we can make a function like this.
+</p>
+
+<hr />
+
+<p>
+Q: 
+</p>
+<div class="org-src-container">
+<pre class="src src-haskell"><span style="color: #0000ff;">conanO'Brien</span> <span style="color: #a0522d;">=</span> <span style="color: #8b2252;">"It's a-me, Conan O'Brien!"</span>   
+</pre>
+</div>
+
+<p>
+A:
+</p>
+
+<ul class="org-ul">
+<li>Functions can't begin with uppercase letters.</li>
+<li>When a function doesn't take any parameters, we usually say it's a
+definition (or a name). Once we've defined them, conanO'Brien and the
+string <code>It's a-me, Conan O'Brien!</code> can be used interchangeably.</li>
+</ul>
+</div>
+</div>
+
+<div id="outline-container-orgefc36cc" class="outline-3">
+<h3 id="orgefc36cc"><span class="section-number-3">1.4</span> An intro to lists</h3>
+<div class="outline-text-3" id="text-1-4">
+<p>
+In Haskell, lists are a <b>homogenous</b> data structure. It stores several
+elements of the same type. That means that we can have a list of 
+integers or a list of characters but we can't have a list that has a 
+few integers and then a few characters.
+</p>
+
+<hr />
+
+<p>
+Note: We can use the <code>let</code> keyword to define a name right in <b>GHCI</b>.
+Doing <code>let a = 1</code> inside <b>GHCI</b> is the equivalent of writing <code>a = 1</code>
+in a script and then loading it.
+</p>
+
+<hr />
+
+<div class="org-src-container">
+<pre class="src src-bash"><span style="color: #b22222;"># </span><span style="color: #b22222;">define list</span>
+ghci&gt; let lostNumbers = [4,8,15,16,23,42]  
+ghci&gt; lostNumbers  
+[4,8,15,16,23,42e]
+
+<span style="color: #b22222;"># </span><span style="color: #b22222;">putting two lists together</span>
+ghci&gt; [1,2,3,4] ++ [9,10,11,12]  
+[1,2,3,4,9,10,11,12]  
+ghci&gt; <span style="color: #8b2252;">"hello"</span> ++ <span style="color: #8b2252;">" "</span> ++ <span style="color: #8b2252;">"world"</span>  
+<span style="color: #8b2252;">"hello world"</span>  
+ghci&gt; [<span style="color: #8b2252;">'w'</span>,<span style="color: #8b2252;">'o'</span>] ++ [<span style="color: #8b2252;">'o'</span>,<span style="color: #8b2252;">'t'</span>]  
+<span style="color: #8b2252;">"woot"</span>
+
+<span style="color: #b22222;"># </span><span style="color: #b22222;">putting something at the beginning of a list using the : operator </span>
+<span style="color: #b22222;"># </span><span style="color: #b22222;">(also called the cons operator) is instantaneous.</span>
+ghci&gt; <span style="color: #8b2252;">'A'</span>:<span style="color: #8b2252;">" SMALL CAT"</span>  
+<span style="color: #8b2252;">"A SMALL CAT"</span>  
+ghci&gt; 5:[1,2,3,4,5]  
+[5,1,2,3,4,5]
+
+<span style="color: #b22222;"># </span><span style="color: #b22222;">get an element out of a list by index</span>
+ghci&gt; <span style="color: #8b2252;">"Steve Buscemi"</span> !! 6  
+<span style="color: #8b2252;">'B'</span>  
+ghci&gt; [9.4,33.2,96.2,11.2,23.25] !! 1  
+33.2
+
+<span style="color: #b22222;"># </span><span style="color: #b22222;">compare lists using &lt;, &lt;=, &gt; and &gt;=. they are compared in </span>
+<span style="color: #b22222;"># </span><span style="color: #b22222;">lexicographical order</span>
+ghci&gt; [3,2,1] &gt; [2,1,0]  
+True
+ghci&gt; [3,2,1] &gt; [2,10,100]  
+True
+ghci&gt; [3,4,2] &gt; [3,4]  
+True
+ghci&gt; [3,4,2] &gt; [2,4]  
+True
+ghci&gt; [3,4,2] == [3,4,2]  
+True
+</pre>
+</div>
+
+<hr />
+
+<p>
+Some basic functions that operate on lists.
+</p>
+
+<pre class="example">
+ +&gt; head
+ | 
+[5,4,3,2,1]
+   |     |
+   +-----+&gt; tail
+
+ +-----+&gt; init
+ |     |
+[5,4,3,2,1]
+	 |
+	 +&gt; last
+</pre>
+
+<div class="org-src-container">
+<pre class="src src-bash"><span style="color: #b22222;"># </span><span style="color: #b22222;">head</span>
+ghci&gt; head [5,4,3,2,1]  
+5
+<span style="color: #b22222;"># </span><span style="color: #b22222;">tail</span>
+ghci&gt; tail [5,4,3,2,1]  
+[4,3,2,1]
+<span style="color: #b22222;"># </span><span style="color: #b22222;">last</span>
+ghci&gt; last [5,4,3,2,1]  
+1
+<span style="color: #b22222;"># </span><span style="color: #b22222;">init</span>
+ghci&gt; init [5,4,3,2,1]  
+[5,4,3,2]
+<span style="color: #b22222;"># </span><span style="color: #b22222;">length</span>
+ghci&gt; length [5,4,3,2,1]  
+5
+<span style="color: #b22222;"># </span><span style="color: #b22222;">null</span>
+ghci&gt; null [1,2,3]  
+False
+ghci&gt; null []  
+True
+<span style="color: #b22222;"># </span><span style="color: #b22222;">reverse</span>
+ghci&gt; reverse [5,4,3,2,1]  
+[1,2,3,4,5]
+<span style="color: #b22222;"># </span><span style="color: #b22222;">take</span>
+ghci&gt; take 3 [5,4,3,2,1]  
+[5,4,3]
+ghci&gt; take 1 [3,9,3]  
+[3]
+ghci&gt; take 5 [1,2]  
+[1,2]
+ghci&gt; take 0 [6,6,6]  
+[]
+<span style="color: #b22222;"># </span><span style="color: #b22222;">drop</span>
+ghci&gt; drop 3 [8,4,2,1,5,6]  
+[1,5,6]
+ghci&gt; drop 0 [1,2,3,4]  
+[1,2,3,4]
+ghci&gt; drop 100 [1,2,3,4]  
+[]
+<span style="color: #b22222;"># </span><span style="color: #b22222;">maximum and minimum</span>
+ghci&gt; minimum [8,4,2,1,5,6]  
+1
+ghci&gt; maximum [1,9,2,3,4]  
+9
+<span style="color: #b22222;"># </span><span style="color: #b22222;">sum and product</span>
+ghci&gt; sum [5,2,1,6,3,2,5,7]  
+31
+ghci&gt; product [6,2,1,2]  
+24
+ghci&gt; product [1,2,5,6,7,9,2,0]  
+0
+<span style="color: #b22222;"># </span><span style="color: #b22222;">elem</span>
+ghci&gt; 4 <span style="color: #ff00ff;">`elem`</span> [3,4,5,6]  
+True 
+ghci&gt; 10 <span style="color: #ff00ff;">`elem`</span> [3,4,5,6]  
+False
+<span style="color: #b22222;"># </span><span style="color: #b22222;">cycle takes a list and cycles it into an infinite list.</span>
+ghci&gt; take 10 (cycle [1,2,3])  
+[1,2,3,1,2,3,1,2,3,1]  
+ghci&gt; take 12 (cycle <span style="color: #8b2252;">"LOL "</span>)  
+<span style="color: #8b2252;">"LOL LOL LOL "</span>
+<span style="color: #b22222;"># </span><span style="color: #b22222;">repeat takes an element and produces an infinite list of just that element.</span>
+ghci&gt; take 10 (repeat 5)  
+[5,5,5,5,5,5,5,5,5,5]
+<span style="color: #b22222;"># </span><span style="color: #b22222;">replicate</span>
+ghci&gt; replicate 3 10
+[10,10,10]
+</pre>
+</div>
+
+<hr />
+
+<p>
+Q: But what happens if we try to get the head of an empty list?
+</p>
+
+<p>
+A: Exception: Prelude.head: empty list
+</p>
+
+<hr />
+
+<p>
+Q: What if we want a list of all numbers between 1 and 20?
+</p>
+
+<p>
+A: 
+</p>
+<div class="org-src-container">
+<pre class="src src-bash">ghci&gt; [1..20]  
+[1,2,3,4,5,6,7,8,9,10,11,12,13,14,15,16,17,18,19,20]  
+ghci&gt; [<span style="color: #8b2252;">'a'</span>..<span style="color: #8b2252;">'z'</span>]  
+<span style="color: #8b2252;">"abcdefghijklmnopqrstuvwxyz"</span>  
+ghci&gt; [<span style="color: #8b2252;">'K'</span>..<span style="color: #8b2252;">'Z'</span>]  
+<span style="color: #8b2252;">"KLMNOPQRSTUVWXYZ"</span>
+</pre>
+</div>
+
+<p>
+Q: What if we want all even numbers between 1 and 20?
+</p>
+
+<p>
+A:
+</p>
+<div class="org-src-container">
+<pre class="src src-bash">ghci&gt; [2,4..20]  
+[2,4,6,8,10,12,14,16,18,20]  
+ghci&gt; [3,6..20]  
+[3,6,9,12,15,18]  
+</pre>
+</div>
+
+<p>
+Q: To make a list with all the numbers from 20 to 1?
+</p>
+
+<p>
+A: You can't just do <code>[20..1]</code>, you have to do <code>[20,19..1]</code>.
+</p>
+
+<p>
+Watch out when using floating point numbers in ranges
+</p>
+
+<div class="org-src-container">
+<pre class="src src-bash">ghci&gt; [0.1, 0.3 .. 1]
+[0.1,0.3,0.5,0.7,0.8999999999999999,1.0999999999999999]  8]
+</pre>
+</div>
+
+<p>
+Q: Make infinite lists?
+</p>
+
+<p>
+A: <code>[13,26..]</code>
+</p>
+
+<p>
+Q: How you would get the first 24 multiples of 13?
+</p>
+
+<p>
+A: <code>take 24 [13,26..]</code>
+</p>
+
+<hr />
+</div>
+</div>
+</div>
+</div>
+<div id="postamble" class="status">
+<p class="author">Author: LINGAO JIN</p>
+<p class="date">Created: 2021-01-29 五 18:44</p>
+<p class="validation"><a href="http://validator.w3.org/check?uri=referer">Validate</a></p>
+</div>
+</body>
+</html>

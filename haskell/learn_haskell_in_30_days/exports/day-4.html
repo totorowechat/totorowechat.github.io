@@ -1,0 +1,705 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN"
+"http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" lang="en" xml:lang="en">
+<head>
+<!-- 2021-01-27 三 18:58 -->
+<meta http-equiv="Content-Type" content="text/html;charset=utf-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1" />
+<title>DAY 4</title>
+<meta name="generator" content="Org mode" />
+<meta name="author" content="LINGAO JIN" />
+<style type="text/css">
+ <!--/*--><![CDATA[/*><!--*/
+  .title  { text-align: center;
+             margin-bottom: .2em; }
+  .subtitle { text-align: center;
+              font-size: medium;
+              font-weight: bold;
+              margin-top:0; }
+  .todo   { font-family: monospace; color: red; }
+  .done   { font-family: monospace; color: green; }
+  .priority { font-family: monospace; color: orange; }
+  .tag    { background-color: #eee; font-family: monospace;
+            padding: 2px; font-size: 80%; font-weight: normal; }
+  .timestamp { color: #bebebe; }
+  .timestamp-kwd { color: #5f9ea0; }
+  .org-right  { margin-left: auto; margin-right: 0px;  text-align: right; }
+  .org-left   { margin-left: 0px;  margin-right: auto; text-align: left; }
+  .org-center { margin-left: auto; margin-right: auto; text-align: center; }
+  .underline { text-decoration: underline; }
+  #postamble p, #preamble p { font-size: 90%; margin: .2em; }
+  p.verse { margin-left: 3%; }
+  pre {
+    border: 1px solid #ccc;
+    box-shadow: 3px 3px 3px #eee;
+    padding: 8pt;
+    font-family: monospace;
+    overflow: auto;
+    margin: 1.2em;
+  }
+  pre.src {
+    position: relative;
+    overflow: visible;
+    padding-top: 1.2em;
+  }
+  pre.src:before {
+    display: none;
+    position: absolute;
+    background-color: white;
+    top: -10px;
+    right: 10px;
+    padding: 3px;
+    border: 1px solid black;
+  }
+  pre.src:hover:before { display: inline;}
+  /* Languages per Org manual */
+  pre.src-asymptote:before { content: 'Asymptote'; }
+  pre.src-awk:before { content: 'Awk'; }
+  pre.src-C:before { content: 'C'; }
+  /* pre.src-C++ doesn't work in CSS */
+  pre.src-clojure:before { content: 'Clojure'; }
+  pre.src-css:before { content: 'CSS'; }
+  pre.src-D:before { content: 'D'; }
+  pre.src-ditaa:before { content: 'ditaa'; }
+  pre.src-dot:before { content: 'Graphviz'; }
+  pre.src-calc:before { content: 'Emacs Calc'; }
+  pre.src-emacs-lisp:before { content: 'Emacs Lisp'; }
+  pre.src-fortran:before { content: 'Fortran'; }
+  pre.src-gnuplot:before { content: 'gnuplot'; }
+  pre.src-haskell:before { content: 'Haskell'; }
+  pre.src-hledger:before { content: 'hledger'; }
+  pre.src-java:before { content: 'Java'; }
+  pre.src-js:before { content: 'Javascript'; }
+  pre.src-latex:before { content: 'LaTeX'; }
+  pre.src-ledger:before { content: 'Ledger'; }
+  pre.src-lisp:before { content: 'Lisp'; }
+  pre.src-lilypond:before { content: 'Lilypond'; }
+  pre.src-lua:before { content: 'Lua'; }
+  pre.src-matlab:before { content: 'MATLAB'; }
+  pre.src-mscgen:before { content: 'Mscgen'; }
+  pre.src-ocaml:before { content: 'Objective Caml'; }
+  pre.src-octave:before { content: 'Octave'; }
+  pre.src-org:before { content: 'Org mode'; }
+  pre.src-oz:before { content: 'OZ'; }
+  pre.src-plantuml:before { content: 'Plantuml'; }
+  pre.src-processing:before { content: 'Processing.js'; }
+  pre.src-python:before { content: 'Python'; }
+  pre.src-R:before { content: 'R'; }
+  pre.src-ruby:before { content: 'Ruby'; }
+  pre.src-sass:before { content: 'Sass'; }
+  pre.src-scheme:before { content: 'Scheme'; }
+  pre.src-screen:before { content: 'Gnu Screen'; }
+  pre.src-sed:before { content: 'Sed'; }
+  pre.src-sh:before { content: 'shell'; }
+  pre.src-sql:before { content: 'SQL'; }
+  pre.src-sqlite:before { content: 'SQLite'; }
+  /* additional languages in org.el's org-babel-load-languages alist */
+  pre.src-forth:before { content: 'Forth'; }
+  pre.src-io:before { content: 'IO'; }
+  pre.src-J:before { content: 'J'; }
+  pre.src-makefile:before { content: 'Makefile'; }
+  pre.src-maxima:before { content: 'Maxima'; }
+  pre.src-perl:before { content: 'Perl'; }
+  pre.src-picolisp:before { content: 'Pico Lisp'; }
+  pre.src-scala:before { content: 'Scala'; }
+  pre.src-shell:before { content: 'Shell Script'; }
+  pre.src-ebnf2ps:before { content: 'ebfn2ps'; }
+  /* additional language identifiers per "defun org-babel-execute"
+       in ob-*.el */
+  pre.src-cpp:before  { content: 'C++'; }
+  pre.src-abc:before  { content: 'ABC'; }
+  pre.src-coq:before  { content: 'Coq'; }
+  pre.src-groovy:before  { content: 'Groovy'; }
+  /* additional language identifiers from org-babel-shell-names in
+     ob-shell.el: ob-shell is the only babel language using a lambda to put
+     the execution function name together. */
+  pre.src-bash:before  { content: 'bash'; }
+  pre.src-csh:before  { content: 'csh'; }
+  pre.src-ash:before  { content: 'ash'; }
+  pre.src-dash:before  { content: 'dash'; }
+  pre.src-ksh:before  { content: 'ksh'; }
+  pre.src-mksh:before  { content: 'mksh'; }
+  pre.src-posh:before  { content: 'posh'; }
+  /* Additional Emacs modes also supported by the LaTeX listings package */
+  pre.src-ada:before { content: 'Ada'; }
+  pre.src-asm:before { content: 'Assembler'; }
+  pre.src-caml:before { content: 'Caml'; }
+  pre.src-delphi:before { content: 'Delphi'; }
+  pre.src-html:before { content: 'HTML'; }
+  pre.src-idl:before { content: 'IDL'; }
+  pre.src-mercury:before { content: 'Mercury'; }
+  pre.src-metapost:before { content: 'MetaPost'; }
+  pre.src-modula-2:before { content: 'Modula-2'; }
+  pre.src-pascal:before { content: 'Pascal'; }
+  pre.src-ps:before { content: 'PostScript'; }
+  pre.src-prolog:before { content: 'Prolog'; }
+  pre.src-simula:before { content: 'Simula'; }
+  pre.src-tcl:before { content: 'tcl'; }
+  pre.src-tex:before { content: 'TeX'; }
+  pre.src-plain-tex:before { content: 'Plain TeX'; }
+  pre.src-verilog:before { content: 'Verilog'; }
+  pre.src-vhdl:before { content: 'VHDL'; }
+  pre.src-xml:before { content: 'XML'; }
+  pre.src-nxml:before { content: 'XML'; }
+  /* add a generic configuration mode; LaTeX export needs an additional
+     (add-to-list 'org-latex-listings-langs '(conf " ")) in .emacs */
+  pre.src-conf:before { content: 'Configuration File'; }
+
+  table { border-collapse:collapse; }
+  caption.t-above { caption-side: top; }
+  caption.t-bottom { caption-side: bottom; }
+  td, th { vertical-align:top;  }
+  th.org-right  { text-align: center;  }
+  th.org-left   { text-align: center;   }
+  th.org-center { text-align: center; }
+  td.org-right  { text-align: right;  }
+  td.org-left   { text-align: left;   }
+  td.org-center { text-align: center; }
+  dt { font-weight: bold; }
+  .footpara { display: inline; }
+  .footdef  { margin-bottom: 1em; }
+  .figure { padding: 1em; }
+  .figure p { text-align: center; }
+  .equation-container {
+    display: table;
+    text-align: center;
+    width: 100%;
+  }
+  .equation {
+    vertical-align: middle;
+  }
+  .equation-label {
+    display: table-cell;
+    text-align: right;
+    vertical-align: middle;
+  }
+  .inlinetask {
+    padding: 10px;
+    border: 2px solid gray;
+    margin: 10px;
+    background: #ffffcc;
+  }
+  #org-div-home-and-up
+   { text-align: right; font-size: 70%; white-space: nowrap; }
+  textarea { overflow-x: auto; }
+  .linenr { font-size: smaller }
+  .code-highlighted { background-color: #ffff00; }
+  .org-info-js_info-navigation { border-style: none; }
+  #org-info-js_console-label
+    { font-size: 10px; font-weight: bold; white-space: nowrap; }
+  .org-info-js_search-highlight
+    { background-color: #ffff00; color: #000000; font-weight: bold; }
+  .org-svg { width: 90%; }
+  /*]]>*/-->
+</style>
+<script type="text/javascript">
+/*
+@licstart  The following is the entire license notice for the
+JavaScript code in this tag.
+
+Copyright (C) 2012-2020 Free Software Foundation, Inc.
+
+The JavaScript code in this tag is free software: you can
+redistribute it and/or modify it under the terms of the GNU
+General Public License (GNU GPL) as published by the Free Software
+Foundation, either version 3 of the License, or (at your option)
+any later version.  The code is distributed WITHOUT ANY WARRANTY;
+without even the implied warranty of MERCHANTABILITY or FITNESS
+FOR A PARTICULAR PURPOSE.  See the GNU GPL for more details.
+
+As additional permission under GNU GPL version 3 section 7, you
+may distribute non-source (e.g., minimized or compacted) forms of
+that code without the copy of the GNU GPL normally required by
+section 4, provided you include this license notice and a URL
+through which recipients can access the Corresponding Source.
+
+
+@licend  The above is the entire license notice
+for the JavaScript code in this tag.
+*/
+<!--/*--><![CDATA[/*><!--*/
+ function CodeHighlightOn(elem, id)
+ {
+   var target = document.getElementById(id);
+   if(null != target) {
+     elem.cacheClassElem = elem.className;
+     elem.cacheClassTarget = target.className;
+     target.className = "code-highlighted";
+     elem.className   = "code-highlighted";
+   }
+ }
+ function CodeHighlightOff(elem, id)
+ {
+   var target = document.getElementById(id);
+   if(elem.cacheClassElem)
+     elem.className = elem.cacheClassElem;
+   if(elem.cacheClassTarget)
+     target.className = elem.cacheClassTarget;
+ }
+/*]]>*///-->
+</script>
+<script type="text/x-mathjax-config">
+    MathJax.Hub.Config({
+        displayAlign: "center",
+        displayIndent: "0em",
+
+        "HTML-CSS": { scale: 100,
+                        linebreaks: { automatic: "false" },
+                        webFont: "TeX"
+                       },
+        SVG: {scale: 100,
+              linebreaks: { automatic: "false" },
+              font: "TeX"},
+        NativeMML: {scale: 100},
+        TeX: { equationNumbers: {autoNumber: "AMS"},
+               MultLineWidth: "85%",
+               TagSide: "right",
+               TagIndent: ".8em"
+             }
+});
+</script>
+<script type="text/javascript"
+        src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.0/MathJax.js?config=TeX-AMS_HTML"></script>
+</head>
+<body>
+<div id="content">
+<h1 class="title">DAY 4</h1>
+<div id="table-of-contents">
+<h2>Table of Contents</h2>
+<div id="text-table-of-contents">
+<ul>
+<li><a href="#org87f9855">1. Recursion</a>
+<ul>
+<li><a href="#orgeb5e15c">1.1. Maximum awesome</a></li>
+<li><a href="#orga0f032b">1.2. A few more recursive functions</a></li>
+<li><a href="#orgd8707ef">1.3. Quick, sort!</a></li>
+<li><a href="#orgc66bc5e">1.4. Thinking recursively</a></li>
+</ul>
+</li>
+<li><a href="#orgcb4562b">2. Higher order functions</a>
+<ul>
+<li><a href="#org46e1c49">2.1. Curried functions</a></li>
+</ul>
+</li>
+</ul>
+</div>
+</div>
+
+<div id="outline-container-org87f9855" class="outline-2">
+<h2 id="org87f9855"><span class="section-number-2">1</span> Recursion</h2>
+<div class="outline-text-2" id="text-1">
+<p>
+We mention recursion briefly in the previous chapter. In this chapter,
+we'll take a closer look at recursion, why it's important to Haskell
+and how we can work out very concise and elegant solutions to problems
+by thinking recursively.
+</p>
+</div>
+
+
+
+<div id="outline-container-orgeb5e15c" class="outline-3">
+<h3 id="orgeb5e15c"><span class="section-number-3">1.1</span> Maximum awesome</h3>
+<div class="outline-text-3" id="text-1-1">
+<p>
+The <code>maximum</code> function takes a list of things that can be ordered
+(e.g. instances of the <code>Ord</code> typeclass) and returns the biggest of
+them. 
+</p>
+
+<p>
+You'd probably set up a variable to hold the maximum value so far and
+then you'd loop through the elements of a list and if an element is
+bigger than then the current maximum value, you'd replace it with that
+element.
+</p>
+
+<div class="org-src-container">
+<pre class="src src-haskell"><span style="color: #0000ff;">maximum'</span> <span style="color: #a0522d;">::</span> (<span style="color: #228b22;">Ord</span> a) <span style="color: #a0522d;">=&gt;</span> [a] <span style="color: #a0522d;">-&gt;</span> a  
+<span style="color: #0000ff;">maximum'</span> <span style="color: #228b22;">[]</span> <span style="color: #a0522d;">=</span> error <span style="color: #8b2252;">"maximum of empty list"</span>  
+<span style="color: #0000ff;">maximum'</span> [x] <span style="color: #a0522d;">=</span> x  
+<span style="color: #0000ff;">maximum'</span> (x<span style="color: #228b22;">:</span>xs)   
+    <span style="color: #a0522d;">|</span> x <span style="color: #a0522d;">&gt;</span> maxTail <span style="color: #a0522d;">=</span> x  
+    <span style="color: #a0522d;">|</span> otherwise <span style="color: #a0522d;">=</span> maxTail  
+    <span style="color: #a020f0;">where</span> maxTail <span style="color: #a0522d;">=</span> maximum' xs  
+
+<span style="color: #0000ff;">minimum'</span> <span style="color: #a0522d;">::</span> (<span style="color: #228b22;">Ord</span> a) <span style="color: #a0522d;">=&gt;</span> [a] <span style="color: #a0522d;">-&gt;</span> a
+<span style="color: #0000ff;">minimum'</span> <span style="color: #228b22;">[]</span> <span style="color: #a0522d;">=</span> error <span style="color: #8b2252;">"minimum of empty list"</span>
+<span style="color: #0000ff;">minimum'</span> [x] <span style="color: #a0522d;">=</span> x
+<span style="color: #0000ff;">minimum'</span> (x<span style="color: #228b22;">:</span>xs)
+    <span style="color: #a0522d;">|</span> x <span style="color: #a0522d;">&lt;</span> minTail <span style="color: #a0522d;">=</span> x
+    <span style="color: #a0522d;">|</span> otherwise <span style="color: #a0522d;">=</span> minTail
+    <span style="color: #a020f0;">where</span> minTail <span style="color: #a0522d;">=</span> minimum' xs
+</pre>
+</div>
+
+
+<p>
+An even clearer way to write this function is to use <code>max</code>. If you
+remember, max is a function that takes two numbers and returns the
+bigger of them. Here's how we could rewrite maximum' by using max:
+</p>
+
+<div class="org-src-container">
+<pre class="src src-haskell"><span style="color: #0000ff;">maximum'</span> <span style="color: #a0522d;">::</span> (<span style="color: #228b22;">Ord</span> a) <span style="color: #a0522d;">=&gt;</span> [a] <span style="color: #a0522d;">-&gt;</span> a  
+<span style="color: #0000ff;">maximum'</span> <span style="color: #228b22;">[]</span> <span style="color: #a0522d;">=</span> error <span style="color: #8b2252;">"maximum of empty list"</span>  
+<span style="color: #0000ff;">maximum'</span> [x] <span style="color: #a0522d;">=</span> x
+<span style="color: #0000ff;">maximum'</span> (x<span style="color: #228b22;">:</span>xs) <span style="color: #a0522d;">=</span> max x (maximum' xs)
+</pre>
+</div>
+
+
+\begin{equation}
+\begin{split}
+maximum \: [2,5,1] & \rightarrow max \: 2 \: ( maximum \: [5,1]) \\
+                   & \rightarrow max \: 2 \: ( max \: 5 \: (maximum \: [1])) \\
+                   & \rightarrow max \: 2 \: ( max \: 5 \: 1) \\
+                   & \rightarrow max \: 2 \: 5 \\
+                   & \rightarrow 5
+\end{split}
+\end{equation}
+</div>
+</div>
+
+<div id="outline-container-orga0f032b" class="outline-3">
+<h3 id="orga0f032b"><span class="section-number-3">1.2</span> A few more recursive functions</h3>
+<div class="outline-text-3" id="text-1-2">
+<p>
+First off, we'll implement <code>replicate</code>. <code>replicate</code> takes an <code>Int</code> and
+some element and returns a <b>list</b> that has several repetitions of the
+same element. For instance, <code>replicate 3 5</code> returns <code>[5,5,5]</code>. 
+</p>
+
+<div class="org-src-container">
+<pre class="src src-haskell"><span style="color: #0000ff;">replicate'</span> <span style="color: #a0522d;">::</span> (<span style="color: #228b22;">Num</span> i, <span style="color: #228b22;">Ord</span> i) <span style="color: #a0522d;">=&gt;</span> i <span style="color: #a0522d;">-&gt;</span> a <span style="color: #a0522d;">-&gt;</span> [a]  
+<span style="color: #0000ff;">replicate'</span> n x  
+    <span style="color: #a0522d;">|</span> n <span style="color: #a0522d;">&lt;=</span> 0    <span style="color: #a0522d;">=</span> <span style="color: #228b22;">[]</span>  
+    <span style="color: #a0522d;">|</span> otherwise <span style="color: #a0522d;">=</span> x<span style="color: #228b22;">:</span>replicate' (n<span style="color: #a0522d;">-</span>1) x
+</pre>
+</div>
+
+<p>
+We used guards here instead of patterns because we're testing for a
+boolean condition. If <code>n</code> is less than or equal to 0, return an empty
+list. Otherwise return a list that has <code>x</code> as the first element and
+then <code>x</code> replicated <code>n-1</code> times as the tail. Eventually, the <code>(n-1)</code>
+part will cause our function to reach the edge conditio.
+</p>
+
+\begin{equation}
+\begin{split}
+replicate'\:10\:9 \rightarrow &\:9:(replicate'\:9\:3) \\
+                  \rightarrow &\:9:9:(replicate'\:8\:3) \\
+                            . &\:\\
+                            . &\:\\
+                            . &\:\\
+                  \rightarrow &\:9:9:9:9:9:9:9:9:9:9:(replicate'\:0\:3) \\
+                  \rightarrow &\:9:9:9:9:9:9:9:9:9:9:[] \\
+\end{split}
+\end{equation}
+
+<p>
+Next up, we'll implement <code>take</code>. It takes a certain number of elements
+from a <b>list</b>. For instance, <code>take 3 [5,4,3,2,1]</code> will return
+<code>[5,4,3]</code>.
+</p>
+
+<div class="org-src-container">
+<pre class="src src-haskell"><span style="color: #0000ff;">take'</span> <span style="color: #a0522d;">::</span> (<span style="color: #228b22;">Num</span> i, <span style="color: #228b22;">Ord</span> i) <span style="color: #a0522d;">=&gt;</span> i <span style="color: #a0522d;">-&gt;</span> [a] <span style="color: #a0522d;">-&gt;</span> [a]  
+<span style="color: #0000ff;">take'</span> n <span style="color: #a020f0;">_</span>  
+    <span style="color: #a0522d;">|</span> n <span style="color: #a0522d;">&lt;=</span> 0   <span style="color: #a0522d;">=</span> <span style="color: #228b22;">[]</span>  
+<span style="color: #0000ff;">take'</span> <span style="color: #a020f0;">_</span> <span style="color: #228b22;">[]</span>     <span style="color: #a0522d;">=</span> <span style="color: #228b22;">[]</span>  
+<span style="color: #0000ff;">take'</span> n (x<span style="color: #228b22;">:</span>xs) <span style="color: #a0522d;">=</span> x <span style="color: #228b22;">:</span> take' (n<span style="color: #a0522d;">-</span>1) xs  
+</pre>
+</div>
+
+<p>
+<code>reverse</code> simply reverses a list.
+</p>
+
+<div class="org-src-container">
+<pre class="src src-haskell"><span style="color: #0000ff;">reverse'</span> <span style="color: #a0522d;">::</span> [a] <span style="color: #a0522d;">-&gt;</span> [a]  
+<span style="color: #0000ff;">reverse'</span> <span style="color: #228b22;">[]</span> <span style="color: #a0522d;">=</span> <span style="color: #228b22;">[]</span>  
+<span style="color: #0000ff;">reverse'</span> (x<span style="color: #228b22;">:</span>xs) <span style="color: #a0522d;">=</span> reverse' xs <span style="color: #a0522d;">++</span> [x]   
+</pre>
+</div>
+
+<p>
+Because Haskell supports <b>infinite</b> lists, our recursion doesn't
+really have to have an edge condition.
+</p>
+
+<div class="org-src-container">
+<pre class="src src-haskell"><span style="color: #0000ff;">repeat'</span> <span style="color: #a0522d;">::</span> a <span style="color: #a0522d;">-&gt;</span> [a]  
+<span style="color: #0000ff;">repeat'</span> x <span style="color: #a0522d;">=</span> x<span style="color: #228b22;">:</span>repeat' x 
+</pre>
+</div>
+
+<p>
+Calling <code>repeat 3</code> will give us a list that starts with 3 and then
+has an infinite amount of 3's as a tail. So calling repeat 3 would
+evaluate like <code>3:repeat 3</code>, which is <code>3:(3:repeat 3)</code>, which is 
+<code>3:(3:(3:repeat 3))</code>, etc. repeat 3 will never finish evaluating,
+whereas <code>take 5 (repeat 3)</code> will give us a list of five 3's. It's like
+doing <code>replicate 5 3</code>.
+</p>
+
+<p>
+Let's implement one more standard library function — <code>elem</code>.
+</p>
+
+<div class="org-src-container">
+<pre class="src src-haskell"><span style="color: #0000ff;">elem'</span> <span style="color: #a0522d;">::</span> (<span style="color: #228b22;">Eq</span> a) <span style="color: #a0522d;">=&gt;</span> a <span style="color: #a0522d;">-&gt;</span> [a] <span style="color: #a0522d;">-&gt;</span> <span style="color: #228b22;">Bool</span>  
+<span style="color: #0000ff;">elem'</span> a <span style="color: #228b22;">[]</span> <span style="color: #a0522d;">=</span> <span style="color: #228b22;">False</span>  
+<span style="color: #0000ff;">elem'</span> a (x<span style="color: #228b22;">:</span>xs)  
+    <span style="color: #a0522d;">|</span> a <span style="color: #a0522d;">==</span> x    <span style="color: #a0522d;">=</span> <span style="color: #228b22;">True</span>  
+    <span style="color: #a0522d;">|</span> otherwise <span style="color: #a0522d;">=</span> a <span style="color: #a0522d;">`elem'`</span> xs   
+</pre>
+</div>
+</div>
+</div>
+
+<div id="outline-container-orgd8707ef" class="outline-3">
+<h3 id="orgd8707ef"><span class="section-number-3">1.3</span> Quick, sort!</h3>
+<div class="outline-text-3" id="text-1-3">
+<p>
+The type signature is going to be 
+<code>quicksort :: (Ord a) =&gt; [a] -&gt; [a]</code>. No surprises there. The edge
+condition? Empty list, as is expected. A sorted empty list is an empty
+list. Now here comes the main algorithm:
+</p>
+
+<blockquote>
+<p>
+a sorted list is a list that has all the values smaller than (or equal
+to) the head of the list in front (and those values are sorted), then
+comes the head of the list in the middle and then come all the values
+that are bigger than the head (they're also sorted).
+</p>
+</blockquote>
+
+<div class="org-src-container">
+<pre class="src src-haskell"><span style="color: #0000ff;">quicksort</span> <span style="color: #a0522d;">::</span> (<span style="color: #228b22;">Ord</span> a) <span style="color: #a0522d;">=&gt;</span> [a] <span style="color: #a0522d;">-&gt;</span> [a]  
+<span style="color: #0000ff;">quicksort</span> <span style="color: #228b22;">[]</span> <span style="color: #a0522d;">=</span> <span style="color: #228b22;">[]</span>  
+<span style="color: #0000ff;">quicksort</span> (x<span style="color: #228b22;">:</span>xs) <span style="color: #a0522d;">=</span>   
+    <span style="color: #a020f0;">let</span> smallerSorted <span style="color: #a0522d;">=</span> quicksort [a <span style="color: #a0522d;">|</span> a <span style="color: #a0522d;">&lt;-</span> xs, a <span style="color: #a0522d;">&lt;=</span> x]  
+        biggerSorted <span style="color: #a0522d;">=</span> quicksort [a <span style="color: #a0522d;">|</span> a <span style="color: #a0522d;">&lt;-</span> xs, a <span style="color: #a0522d;">&gt;</span> x]  
+    <span style="color: #a020f0;">in</span>  smallerSorted <span style="color: #a0522d;">++</span> [x] <span style="color: #a0522d;">++</span> biggerSorted    
+</pre>
+</div>
+
+<pre class="example">
+([5,1,9,4,6,7,3]) -&gt; ([1,4,3]) ++ [5] ++ ([9,6,7])
+
+-- left part [1,4,3]
+([1,4,3]) -&gt; [] ++ [1] ++ ([4,3]) 
+          -&gt; [] ++ [1] ++ ([3]) ++ [4] ++ []
+          -&gt; [] ++ [1] ++ [] ++ [3] ++ [] ++ [4] ++ []
+
+-- right part [9,6,7]
+([9,6,7]) -&gt; ([6,7]) ++ [9] ++ [] 
+          -&gt; [] ++ [6] ++ ([7]) ++ [9] ++ []
+          -&gt; [] ++ [6] ++ [] ++ [7] ++ [] ++ [9] ++ []
+
+[] ++ [1] ++ [] ++ [3] ++ [] ++ [4] ++ [] ++ [5] ++ [] ++ [6] ++ []
+   ++ [7] ++ [] ++ [9] ++ []
+</pre>
+</div>
+</div>
+
+<div id="outline-container-orgc66bc5e" class="outline-3">
+<h3 id="orgc66bc5e"><span class="section-number-3">1.4</span> Thinking recursively</h3>
+<div class="outline-text-3" id="text-1-4">
+<p>
+We did quite a bit of recursion so far and as you've probably noticed,
+there's a pattern here. Usually you define an edge case and then you
+define a function that does something between some element and the
+function applied to the rest. It doesn't matter if it's a list, a tree
+or any other data structure. A sum is the first element of a list plus
+the sum of the rest of the list. A product of a list is the first
+element of the list times the product of the rest of the list.The
+length of a list is one plus the length of the tail of the list.
+Ekcetera, ekcetera &#x2026;
+</p>
+
+<p>
+Of course, these also have edge cases. Usually the edge case is some
+scenario where a recursive application doesn't make sense. When
+dealing with lists, the edge case is most often the empty list. If
+you're dealing with trees, the edge case is usually a node that
+doesn't have any children.
+</p>
+
+<p>
+It's similar when you're dealing with numbers recursively. Usually it
+has to do with some number and the function applied to that number
+modified. We did the factorial function earlier and it's the product
+of a number and the factorial of that number minus one. Such a
+recursive application doesn't make sense with zero, because factorials
+are defined only for positive integers. Often the edge case value
+turns out to be an identity. The identity for multiplication is 1
+because if you multiply something by 1, you get that something back.
+Also when doing sums of lists, we define the sum of an empty list as 0
+and 0 is the identity for addition. In quicksort, the edge case is the
+empty list and the identity is also the empty list, because if you add
+an empty list to a list, you just get the original list back.
+</p>
+
+<p>
+So when trying to think of a recursive way to solve a problem, try to
+think of when a recursive solution doesn't apply and see if you can
+use that as an edge case, think about identities and think about
+whether you'll break apart the parameters of the function (for
+instance, lists are usually broken into a head and a tail via pattern
+matching) and on which part you'll use the recursive call.
+</p>
+</div>
+</div>
+</div>
+
+<div id="outline-container-orgcb4562b" class="outline-2">
+<h2 id="orgcb4562b"><span class="section-number-2">2</span> Higher order functions</h2>
+<div class="outline-text-2" id="text-2">
+<p>
+Haskell functions can take functions as parameters and return 
+functions as return values. A function that does either of those is 
+called a higher order function. Higher order functions aren't just a 
+part of the Haskell experience, they pretty much are the Haskell 
+experience. It turns out that if you want to define computations by 
+defining what stuff is instead of defining steps that change some 
+state and maybe looping them, higher order functions are 
+indispensable. They're a really powerful way of solving problems and 
+thinking about programs.
+</p>
+</div>
+
+<div id="outline-container-org46e1c49" class="outline-3">
+<h3 id="org46e1c49"><span class="section-number-3">2.1</span> Curried functions</h3>
+<div class="outline-text-3" id="text-2-1">
+<p>
+Every function in Haskell officially only takes one parameter. So how 
+is it possible that we defined and used several functions that take 
+more than one parameter so far? Well, it's a clever trick! All the 
+functions that accepted several parameters so far have been <b>curried 
+functions</b>.
+</p>
+
+<p>
+Let's take our good friend, the <code>max</code> function. It looks like it 
+takes two parameters and returns the one that's bigger. Doing <code>max 4 
+5</code> first creates a function that takes a parameter and returns either 
+4 or that parameter, depending on which is bigger. Then, <code>5</code> is 
+applied to that function and that function produces our desired 
+result. That sounds like a mouthful but it's actually a really cool 
+concept. The following two calls are equivalent:
+</p>
+
+<pre class="example">
+ghci&gt; max 4 5  
+5  
+ghci&gt; (max 4) 5  
+5  
+</pre>
+
+<p>
+Putting a space between two things is simply function application. 
+The space is sort of like an operator and it has the highest 
+precedence. Let's examine the type of <code>max</code>. It's <code>max :: (Ord a) =&gt; 
+a -&gt; a -&gt; a</code>. That can also be written as <code>max :: (Ord a) =&gt; a -&gt; (a 
+-&gt; a)</code>. That could be read as: <code>max</code> takes an a and returns (that's 
+the <code>-&gt;</code>) a function that takes an <code>a</code> and returns an <code>a</code>. That's why 
+the return type and the parameters of functions are all simply 
+separated with arrows.
+</p>
+
+<p>
+So how is that beneficial to us? Simply speaking, if we call a 
+function with too few parameters, we get back a partially applied 
+function, meaning a function that takes as many parameters as we left 
+out.
+</p>
+
+<div class="org-src-container">
+<pre class="src src-haskell"><span style="color: #b22222;">-- </span><span style="color: #b22222;">Take a look at this offensively simple function:</span>
+<span style="color: #0000ff;">multThree</span> <span style="color: #a0522d;">::</span> (<span style="color: #228b22;">Num</span> a) <span style="color: #a0522d;">=&gt;</span> a <span style="color: #a0522d;">-&gt;</span> a <span style="color: #a0522d;">-&gt;</span> a <span style="color: #a0522d;">-&gt;</span> a  
+<span style="color: #0000ff;">multThree</span> x y z <span style="color: #a0522d;">=</span> x <span style="color: #a0522d;">*</span> y <span style="color: #a0522d;">*</span> z  d    
+</pre>
+</div>
+
+<p>
+What really happens when we do <code>multThree 3 5 9</code> or 
+<code>((multThree 3)5) 9)</code> ? First, <code>3</code> is applied to <code>multThree</code>, 
+because they're separated by a space. That creates a <b>function</b> that 
+takes one parameter and returns a <b>function</b>. So then <code>5</code> is applied 
+to that, which creates a function that will take a parameter and 
+multiply it by <code>15</code>. <code>9</code> is applied to that function and the result 
+is <code>135</code> or something. Remember that this function's type could also 
+be written as <code>multThree :: (Num a) =&gt; a -&gt; (a -&gt; (a -&gt; a))</code> The 
+thing before the <code>-&gt;</code> is the parameter that a function takes and the 
+thing after it is what it returns. So our function takes an <code>a</code> and 
+returns a function of type <code>(Num a) =&gt; a -&gt; (a -&gt; a)</code>. Similarly, 
+this function takes an <code>a</code> and returns a function of type 
+<code>(Num a) =&gt; a -&gt; a</code>. And this function, finally, just takes an <code>a</code> 
+and returns an <code>a</code>. Take a look at this:
+</p>
+
+<pre class="example">
+ghci&gt; let multTwoWithNine = multThree 9  
+ghci&gt; multTwoWithNine 2 3  
+54  
+ghci&gt; let multWithEighteen = multTwoWithNine 2  
+ghci&gt; multWithEighteen 10  
+180  
+</pre>
+
+<p>
+By calling functions with too few parameters, so to speak, we're 
+creating new functions on the fly. What if we wanted to create a 
+function that takes a number and compares it to <code>100</code>? We could do 
+something like this:
+</p>
+
+<div class="org-src-container">
+<pre class="src src-haskell"><span style="color: #0000ff;">compareWithHundred</span> <span style="color: #a0522d;">::</span> (<span style="color: #228b22;">Num</span> a, <span style="color: #228b22;">Ord</span> a) <span style="color: #a0522d;">=&gt;</span> a <span style="color: #a0522d;">-&gt;</span> <span style="color: #228b22;">Ordering</span>  
+<span style="color: #0000ff;">compareWithHundred</span> x <span style="color: #a0522d;">=</span> compare 100 x  
+</pre>
+</div>
+
+<p>
+If we call it with <code>99</code>, it returns a <code>GT</code>. Simple stuff. Notice that 
+the <code>x</code> is on the right hand side on both sides of the equation. Now 
+let's think about what <code>compare 100</code> returns. It returns a function 
+that takes a number and compares it with <code>100</code>. Wow! Isn't that the 
+function we wanted? We can rewrite this as:
+</p>
+
+<div class="org-src-container">
+<pre class="src src-haskell"><span style="color: #0000ff;">compareWithHundred</span> <span style="color: #a0522d;">::</span> (<span style="color: #228b22;">Num</span> a, <span style="color: #228b22;">Ord</span> a) <span style="color: #a0522d;">=&gt;</span> a <span style="color: #a0522d;">-&gt;</span> <span style="color: #228b22;">Ordering</span>  
+<span style="color: #0000ff;">compareWithHundred</span> <span style="color: #a0522d;">=</span> compare 100  
+</pre>
+</div>
+
+<p>
+The type declaration stays the same, because <code>compare 100</code> returns a 
+function. Compare has a type of <code>(Ord a) =&gt; a -&gt; (a -&gt; Ordering)</code> and 
+calling it with <code>100</code> returns a <code>(Num a, Ord a) =&gt; a -&gt; Ordering</code>. 
+The additional class constraint sneaks up there because <code>100</code> is also 
+part of the <code>Num</code> typeclass.
+</p>
+
+<p>
+<b>Yo! Make sure you really understand how curried functions and 
+partial application work because they're really important!</b>
+</p>
+</div>
+</div>
+</div>
+</div>
+<div id="postamble" class="status">
+<p class="author">Author: LINGAO JIN</p>
+<p class="date">Created: 2021-01-27 三 18:58</p>
+<p class="validation"><a href="http://validator.w3.org/check?uri=referer">Validate</a></p>
+</div>
+</body>
+</html>

@@ -1,0 +1,775 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN"
+"http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" lang="en" xml:lang="en">
+<head>
+<!-- 2021-01-29 五 18:45 -->
+<meta http-equiv="Content-Type" content="text/html;charset=utf-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1" />
+<title>DAY 3</title>
+<meta name="generator" content="Org mode" />
+<meta name="author" content="LINGAO JIN" />
+<style type="text/css">
+ <!--/*--><![CDATA[/*><!--*/
+  .title  { text-align: center;
+             margin-bottom: .2em; }
+  .subtitle { text-align: center;
+              font-size: medium;
+              font-weight: bold;
+              margin-top:0; }
+  .todo   { font-family: monospace; color: red; }
+  .done   { font-family: monospace; color: green; }
+  .priority { font-family: monospace; color: orange; }
+  .tag    { background-color: #eee; font-family: monospace;
+            padding: 2px; font-size: 80%; font-weight: normal; }
+  .timestamp { color: #bebebe; }
+  .timestamp-kwd { color: #5f9ea0; }
+  .org-right  { margin-left: auto; margin-right: 0px;  text-align: right; }
+  .org-left   { margin-left: 0px;  margin-right: auto; text-align: left; }
+  .org-center { margin-left: auto; margin-right: auto; text-align: center; }
+  .underline { text-decoration: underline; }
+  #postamble p, #preamble p { font-size: 90%; margin: .2em; }
+  p.verse { margin-left: 3%; }
+  pre {
+    border: 1px solid #ccc;
+    box-shadow: 3px 3px 3px #eee;
+    padding: 8pt;
+    font-family: monospace;
+    overflow: auto;
+    margin: 1.2em;
+  }
+  pre.src {
+    position: relative;
+    overflow: visible;
+    padding-top: 1.2em;
+  }
+  pre.src:before {
+    display: none;
+    position: absolute;
+    background-color: white;
+    top: -10px;
+    right: 10px;
+    padding: 3px;
+    border: 1px solid black;
+  }
+  pre.src:hover:before { display: inline;}
+  /* Languages per Org manual */
+  pre.src-asymptote:before { content: 'Asymptote'; }
+  pre.src-awk:before { content: 'Awk'; }
+  pre.src-C:before { content: 'C'; }
+  /* pre.src-C++ doesn't work in CSS */
+  pre.src-clojure:before { content: 'Clojure'; }
+  pre.src-css:before { content: 'CSS'; }
+  pre.src-D:before { content: 'D'; }
+  pre.src-ditaa:before { content: 'ditaa'; }
+  pre.src-dot:before { content: 'Graphviz'; }
+  pre.src-calc:before { content: 'Emacs Calc'; }
+  pre.src-emacs-lisp:before { content: 'Emacs Lisp'; }
+  pre.src-fortran:before { content: 'Fortran'; }
+  pre.src-gnuplot:before { content: 'gnuplot'; }
+  pre.src-haskell:before { content: 'Haskell'; }
+  pre.src-hledger:before { content: 'hledger'; }
+  pre.src-java:before { content: 'Java'; }
+  pre.src-js:before { content: 'Javascript'; }
+  pre.src-latex:before { content: 'LaTeX'; }
+  pre.src-ledger:before { content: 'Ledger'; }
+  pre.src-lisp:before { content: 'Lisp'; }
+  pre.src-lilypond:before { content: 'Lilypond'; }
+  pre.src-lua:before { content: 'Lua'; }
+  pre.src-matlab:before { content: 'MATLAB'; }
+  pre.src-mscgen:before { content: 'Mscgen'; }
+  pre.src-ocaml:before { content: 'Objective Caml'; }
+  pre.src-octave:before { content: 'Octave'; }
+  pre.src-org:before { content: 'Org mode'; }
+  pre.src-oz:before { content: 'OZ'; }
+  pre.src-plantuml:before { content: 'Plantuml'; }
+  pre.src-processing:before { content: 'Processing.js'; }
+  pre.src-python:before { content: 'Python'; }
+  pre.src-R:before { content: 'R'; }
+  pre.src-ruby:before { content: 'Ruby'; }
+  pre.src-sass:before { content: 'Sass'; }
+  pre.src-scheme:before { content: 'Scheme'; }
+  pre.src-screen:before { content: 'Gnu Screen'; }
+  pre.src-sed:before { content: 'Sed'; }
+  pre.src-sh:before { content: 'shell'; }
+  pre.src-sql:before { content: 'SQL'; }
+  pre.src-sqlite:before { content: 'SQLite'; }
+  /* additional languages in org.el's org-babel-load-languages alist */
+  pre.src-forth:before { content: 'Forth'; }
+  pre.src-io:before { content: 'IO'; }
+  pre.src-J:before { content: 'J'; }
+  pre.src-makefile:before { content: 'Makefile'; }
+  pre.src-maxima:before { content: 'Maxima'; }
+  pre.src-perl:before { content: 'Perl'; }
+  pre.src-picolisp:before { content: 'Pico Lisp'; }
+  pre.src-scala:before { content: 'Scala'; }
+  pre.src-shell:before { content: 'Shell Script'; }
+  pre.src-ebnf2ps:before { content: 'ebfn2ps'; }
+  /* additional language identifiers per "defun org-babel-execute"
+       in ob-*.el */
+  pre.src-cpp:before  { content: 'C++'; }
+  pre.src-abc:before  { content: 'ABC'; }
+  pre.src-coq:before  { content: 'Coq'; }
+  pre.src-groovy:before  { content: 'Groovy'; }
+  /* additional language identifiers from org-babel-shell-names in
+     ob-shell.el: ob-shell is the only babel language using a lambda to put
+     the execution function name together. */
+  pre.src-bash:before  { content: 'bash'; }
+  pre.src-csh:before  { content: 'csh'; }
+  pre.src-ash:before  { content: 'ash'; }
+  pre.src-dash:before  { content: 'dash'; }
+  pre.src-ksh:before  { content: 'ksh'; }
+  pre.src-mksh:before  { content: 'mksh'; }
+  pre.src-posh:before  { content: 'posh'; }
+  /* Additional Emacs modes also supported by the LaTeX listings package */
+  pre.src-ada:before { content: 'Ada'; }
+  pre.src-asm:before { content: 'Assembler'; }
+  pre.src-caml:before { content: 'Caml'; }
+  pre.src-delphi:before { content: 'Delphi'; }
+  pre.src-html:before { content: 'HTML'; }
+  pre.src-idl:before { content: 'IDL'; }
+  pre.src-mercury:before { content: 'Mercury'; }
+  pre.src-metapost:before { content: 'MetaPost'; }
+  pre.src-modula-2:before { content: 'Modula-2'; }
+  pre.src-pascal:before { content: 'Pascal'; }
+  pre.src-ps:before { content: 'PostScript'; }
+  pre.src-prolog:before { content: 'Prolog'; }
+  pre.src-simula:before { content: 'Simula'; }
+  pre.src-tcl:before { content: 'tcl'; }
+  pre.src-tex:before { content: 'TeX'; }
+  pre.src-plain-tex:before { content: 'Plain TeX'; }
+  pre.src-verilog:before { content: 'Verilog'; }
+  pre.src-vhdl:before { content: 'VHDL'; }
+  pre.src-xml:before { content: 'XML'; }
+  pre.src-nxml:before { content: 'XML'; }
+  /* add a generic configuration mode; LaTeX export needs an additional
+     (add-to-list 'org-latex-listings-langs '(conf " ")) in .emacs */
+  pre.src-conf:before { content: 'Configuration File'; }
+
+  table { border-collapse:collapse; }
+  caption.t-above { caption-side: top; }
+  caption.t-bottom { caption-side: bottom; }
+  td, th { vertical-align:top;  }
+  th.org-right  { text-align: center;  }
+  th.org-left   { text-align: center;   }
+  th.org-center { text-align: center; }
+  td.org-right  { text-align: right;  }
+  td.org-left   { text-align: left;   }
+  td.org-center { text-align: center; }
+  dt { font-weight: bold; }
+  .footpara { display: inline; }
+  .footdef  { margin-bottom: 1em; }
+  .figure { padding: 1em; }
+  .figure p { text-align: center; }
+  .equation-container {
+    display: table;
+    text-align: center;
+    width: 100%;
+  }
+  .equation {
+    vertical-align: middle;
+  }
+  .equation-label {
+    display: table-cell;
+    text-align: right;
+    vertical-align: middle;
+  }
+  .inlinetask {
+    padding: 10px;
+    border: 2px solid gray;
+    margin: 10px;
+    background: #ffffcc;
+  }
+  #org-div-home-and-up
+   { text-align: right; font-size: 70%; white-space: nowrap; }
+  textarea { overflow-x: auto; }
+  .linenr { font-size: smaller }
+  .code-highlighted { background-color: #ffff00; }
+  .org-info-js_info-navigation { border-style: none; }
+  #org-info-js_console-label
+    { font-size: 10px; font-weight: bold; white-space: nowrap; }
+  .org-info-js_search-highlight
+    { background-color: #ffff00; color: #000000; font-weight: bold; }
+  .org-svg { width: 90%; }
+  /*]]>*/-->
+</style>
+<script type="text/javascript">
+/*
+@licstart  The following is the entire license notice for the
+JavaScript code in this tag.
+
+Copyright (C) 2012-2020 Free Software Foundation, Inc.
+
+The JavaScript code in this tag is free software: you can
+redistribute it and/or modify it under the terms of the GNU
+General Public License (GNU GPL) as published by the Free Software
+Foundation, either version 3 of the License, or (at your option)
+any later version.  The code is distributed WITHOUT ANY WARRANTY;
+without even the implied warranty of MERCHANTABILITY or FITNESS
+FOR A PARTICULAR PURPOSE.  See the GNU GPL for more details.
+
+As additional permission under GNU GPL version 3 section 7, you
+may distribute non-source (e.g., minimized or compacted) forms of
+that code without the copy of the GNU GPL normally required by
+section 4, provided you include this license notice and a URL
+through which recipients can access the Corresponding Source.
+
+
+@licend  The above is the entire license notice
+for the JavaScript code in this tag.
+*/
+<!--/*--><![CDATA[/*><!--*/
+ function CodeHighlightOn(elem, id)
+ {
+   var target = document.getElementById(id);
+   if(null != target) {
+     elem.cacheClassElem = elem.className;
+     elem.cacheClassTarget = target.className;
+     target.className = "code-highlighted";
+     elem.className   = "code-highlighted";
+   }
+ }
+ function CodeHighlightOff(elem, id)
+ {
+   var target = document.getElementById(id);
+   if(elem.cacheClassElem)
+     elem.className = elem.cacheClassElem;
+   if(elem.cacheClassTarget)
+     target.className = elem.cacheClassTarget;
+ }
+/*]]>*///-->
+</script>
+</head>
+<body>
+<div id="content">
+<h1 class="title">DAY 3</h1>
+<div id="table-of-contents">
+<h2>Table of Contents</h2>
+<div id="text-table-of-contents">
+<ul>
+<li><a href="#orgdca2235">1. Syntax in Functions</a>
+<ul>
+<li><a href="#orgcf6e487">1.1. Pattern matching</a></li>
+<li><a href="#org6196cc1">1.2. Guards, guards!</a></li>
+<li><a href="#org1160cd9">1.3. Where!?</a></li>
+<li><a href="#org087f095">1.4. Let it be</a></li>
+<li><a href="#org80c5edb">1.5. Case expressions</a></li>
+</ul>
+</li>
+</ul>
+</div>
+</div>
+
+<div id="outline-container-orgdca2235" class="outline-2">
+<h2 id="orgdca2235"><span class="section-number-2">1</span> Syntax in Functions</h2>
+<div class="outline-text-2" id="text-1">
+</div>
+<div id="outline-container-orgcf6e487" class="outline-3">
+<h3 id="orgcf6e487"><span class="section-number-3">1.1</span> Pattern matching</h3>
+<div class="outline-text-3" id="text-1-1">
+<p>
+When defining functions, you can define separate function bodies for
+different patterns. This leads to really neat code that's simple and
+readable. You can pattern match on any data type — numbers, 
+characters, lists, tuples, etc.
+</p>
+
+<div class="org-src-container">
+<pre class="src src-haskell"><span style="color: #0000ff;">lucky</span> <span style="color: #a0522d;">::</span> (<span style="color: #228b22;">Integral</span> a) <span style="color: #a0522d;">=&gt;</span> a <span style="color: #a0522d;">-&gt;</span> <span style="color: #228b22;">String</span>  
+<span style="color: #0000ff;">lucky</span> 7 <span style="color: #a0522d;">=</span> <span style="color: #8b2252;">"LUCKY NUMBER SEVEN!"</span>  
+<span style="color: #0000ff;">lucky</span> x <span style="color: #a0522d;">=</span> <span style="color: #8b2252;">"Sorry, you're out of luck, pal!"</span>   
+</pre>
+</div>
+
+<p>
+When you call lucky, the patterns will be checked from top to bottom
+and when it conforms to a pattern, the corresponding function body
+will be used. The only way a number can conform to the first pattern
+here is if it is 7. If it's not, it falls through to the second
+pattern, which matches anything and binds it to <code>x</code>.
+</p>
+
+<div class="org-src-container">
+<pre class="src src-haskell"><span style="color: #0000ff;">sayMe</span> <span style="color: #a0522d;">::</span> (<span style="color: #228b22;">Integral</span> a) <span style="color: #a0522d;">=&gt;</span> a <span style="color: #a0522d;">-&gt;</span> <span style="color: #228b22;">String</span>  
+<span style="color: #0000ff;">sayMe</span> 1 <span style="color: #a0522d;">=</span> <span style="color: #8b2252;">"One!"</span>  
+<span style="color: #0000ff;">sayMe</span> 2 <span style="color: #a0522d;">=</span> <span style="color: #8b2252;">"Two!"</span>  
+<span style="color: #0000ff;">sayMe</span> 3 <span style="color: #a0522d;">=</span> <span style="color: #8b2252;">"Three!"</span>  
+<span style="color: #0000ff;">sayMe</span> 4 <span style="color: #a0522d;">=</span> <span style="color: #8b2252;">"Four!"</span>  
+<span style="color: #0000ff;">sayMe</span> 5 <span style="color: #a0522d;">=</span> <span style="color: #8b2252;">"Five!"</span>  
+<span style="color: #0000ff;">sayMe</span> x <span style="color: #a0522d;">=</span> <span style="color: #8b2252;">"Not between 1 and 5"</span>  
+</pre>
+</div>
+
+<p>
+<b>Note</b> that if we moved the last pattern (the catch-all one) to the
+top, it would always say <code>"Not between 1 and 5"</code>.
+</p>
+
+<p>
+We can also define a factorial function recursively, the way it is
+usually defined in mathematics.
+</p>
+
+<div class="org-src-container">
+<pre class="src src-haskell"><span style="color: #0000ff;">factorial</span> <span style="color: #a0522d;">::</span> (<span style="color: #228b22;">Integral</span> a) <span style="color: #a0522d;">=&gt;</span> a <span style="color: #a0522d;">-&gt;</span> a  
+<span style="color: #0000ff;">factorial</span> 0 <span style="color: #a0522d;">=</span> 1  
+<span style="color: #0000ff;">factorial</span> n <span style="color: #a0522d;">=</span> n <span style="color: #a0522d;">*</span> factorial (n <span style="color: #a0522d;">-</span> 1)  
+</pre>
+</div>
+
+<p>
+Pattern matching can also <b>fail</b>. If we define a function like this:
+</p>
+
+<div class="org-src-container">
+<pre class="src src-haskell"><span style="color: #0000ff;">charName</span> <span style="color: #a0522d;">::</span> <span style="color: #228b22;">Char</span> <span style="color: #a0522d;">-&gt;</span> <span style="color: #228b22;">String</span>  
+<span style="color: #0000ff;">charName</span> <span style="color: #8b2252;">'a'</span> <span style="color: #a0522d;">=</span> <span style="color: #8b2252;">"Albert"</span>  
+<span style="color: #0000ff;">charName</span> <span style="color: #8b2252;">'b'</span> <span style="color: #a0522d;">=</span> <span style="color: #8b2252;">"Broseph"</span>  
+<span style="color: #0000ff;">charName</span> <span style="color: #8b2252;">'c'</span> <span style="color: #a0522d;">=</span> <span style="color: #8b2252;">"Cecil"</span>  
+</pre>
+</div>
+
+<p>
+and then try to call it with an input that we didn't expect, this is
+what happens:
+</p>
+
+<div class="org-src-container">
+<pre class="src src-haskell">ghci<span style="color: #0000ff;">&gt;</span> charName <span style="color: #8b2252;">'a'</span>  
+<span style="color: #8b2252;">"Albert"</span>  
+ghci<span style="color: #0000ff;">&gt;</span> charName <span style="color: #8b2252;">'b'</span>  
+<span style="color: #8b2252;">"Broseph"</span>  
+ghci<span style="color: #0000ff;">&gt;</span> charName <span style="color: #8b2252;">'h'</span>  
+<span style="color: #ff0000; font-weight: bold;">"</span><span style="color: #8b2252;">*** Exception: tut.hs:(53,0)-(55,21): Non-exhaustive patterns in function charName </span>
+</pre>
+</div>
+
+<p>
+When making patterns, we should always include a catch-all pattern so
+that our program doesn't crash if we get some unexpected input.
+</p>
+
+<p>
+To add together two vectors, we add their x components separately and
+then their y components separately. Here's how we would have done it
+if we didn't know about pattern matching:
+</p>
+
+<div class="org-src-container">
+<pre class="src src-haskell"><span style="color: #0000ff;">addVectors</span> <span style="color: #a0522d;">::</span> (<span style="color: #228b22;">Num</span> a) <span style="color: #a0522d;">=&gt;</span> (a, a) <span style="color: #a0522d;">-&gt;</span> (a, a) <span style="color: #a0522d;">-&gt;</span> (a, a)
+<span style="color: #0000ff;">addVectors</span> a b <span style="color: #a0522d;">=</span> (fst a <span style="color: #a0522d;">+</span> fst b, snd a <span style="color: #a0522d;">+</span> snd b)
+</pre>
+</div>
+
+<p>
+Well, that works, but there's a better way to do it. Let's modify the
+function so that it uses pattern matching.
+</p>
+
+<div class="org-src-container">
+<pre class="src src-haskell"><span style="color: #0000ff;">addVectors</span> <span style="color: #a0522d;">::</span> (<span style="color: #228b22;">Num</span> a) <span style="color: #a0522d;">=&gt;</span> (a, a) <span style="color: #a0522d;">-&gt;</span> (a, a) <span style="color: #a0522d;">-&gt;</span> (a, a)
+<span style="color: #0000ff;">addVectors</span> (x1, y1) (x2, y2) <span style="color: #a0522d;">=</span> (x1 <span style="color: #a0522d;">+</span> x2, y1 <span style="color: #a0522d;">+</span> y2)
+</pre>
+</div>
+
+<p>
+The type of <code>addVectors</code> (in both cases) is <code>addVectors :: (Num a) =&gt;
+(a, a) -&gt; (a, a) - &gt; (a, a)</code>, so we are guaranteed to get two pairs as
+parameters.
+</p>
+
+<p>
+<code>fst</code> and <code>snd</code> extract the components of pairs. But what about
+triples? Well, there are no provided functions that do that but we can
+make our own.
+</p>
+
+<div class="org-src-container">
+<pre class="src src-haskell"><span style="color: #0000ff;">first</span> <span style="color: #a0522d;">::</span> (a, b, c) <span style="color: #a0522d;">-&gt;</span> a  
+<span style="color: #0000ff;">first</span> (x, <span style="color: #a020f0;">_</span>, <span style="color: #a020f0;">_</span>) <span style="color: #a0522d;">=</span> x  
+
+<span style="color: #0000ff;">second</span> <span style="color: #a0522d;">::</span> (a, b, c) <span style="color: #a0522d;">-&gt;</span> b  
+<span style="color: #0000ff;">second</span> (<span style="color: #a020f0;">_</span>, y, <span style="color: #a020f0;">_</span>) <span style="color: #a0522d;">=</span> y  
+
+<span style="color: #0000ff;">third</span> <span style="color: #a0522d;">::</span> (a, b, c) <span style="color: #a0522d;">-&gt;</span> c  
+<span style="color: #0000ff;">third</span> (<span style="color: #a020f0;">_</span>, <span style="color: #a020f0;">_</span>, z) <span style="color: #a0522d;">=</span> z
+</pre>
+</div>
+
+<p>
+The <code>_</code> means the same thing as it does in list comprehensions. It
+means that we really don't care what that part is, so we just write a
+<code>_</code>.
+</p>
+
+<p>
+Which reminds me, you can also pattern match in list comprehensions.
+Check this out:
+</p>
+
+<div class="org-src-container">
+<pre class="src src-haskell">ghci<span style="color: #0000ff;">&gt;</span> <span style="color: #a020f0;">let</span> xs <span style="color: #a0522d;">=</span> [(1,3), (4,3), (2,4), (5,3), (5,6), (3,1)]  
+ghci<span style="color: #0000ff;">&gt;</span> [a<span style="color: #a0522d;">+</span>b <span style="color: #a0522d;">|</span> (a,b) <span style="color: #a0522d;">&lt;-</span> xs]  
+[4,7,6,8,11,4]
+</pre>
+</div>
+
+<p>
+Now that we know how to pattern match against list, let's make our own
+implementation of the function.
+</p>
+
+<div class="org-src-container">
+<pre class="src src-haskell"><span style="color: #0000ff;">head'</span> <span style="color: #a0522d;">::</span> [a] <span style="color: #a0522d;">-&gt;</span> a  
+<span style="color: #0000ff;">head'</span> <span style="color: #228b22;">[]</span> <span style="color: #a0522d;">=</span> error <span style="color: #8b2252;">"Can't call head on an empty list, dummy!"</span>  
+<span style="color: #0000ff;">head'</span> (x<span style="color: #228b22;">:</span><span style="color: #a020f0;">_</span>) <span style="color: #a0522d;">=</span> x 
+
+ghci<span style="color: #0000ff;">&gt;</span> head' [4,5,6]  
+4  
+ghci<span style="color: #0000ff;">&gt;</span> head' <span style="color: #8b2252;">"Hello"</span>  
+<span style="color: #8b2252;">'H'</span>  
+
+<span style="color: #0000ff;">tell</span> <span style="color: #a0522d;">::</span> (<span style="color: #228b22;">Show</span> a) <span style="color: #a0522d;">=&gt;</span> [a] <span style="color: #a0522d;">-&gt;</span> <span style="color: #228b22;">String</span>  
+<span style="color: #0000ff;">tell</span> <span style="color: #228b22;">[]</span> <span style="color: #a0522d;">=</span> <span style="color: #8b2252;">"The list is empty"</span>  
+<span style="color: #0000ff;">tell</span> (x<span style="color: #228b22;">:[]</span>) <span style="color: #a0522d;">=</span> <span style="color: #8b2252;">"The list has one element: "</span> <span style="color: #a0522d;">++</span> show x  
+<span style="color: #0000ff;">tell</span> (x<span style="color: #228b22;">:</span>y<span style="color: #228b22;">:[]</span>) <span style="color: #a0522d;">=</span> <span style="color: #8b2252;">"The list has two elements: "</span> <span style="color: #a0522d;">++</span> show x <span style="color: #a0522d;">++</span> <span style="color: #8b2252;">" and "</span> <span style="color: #a0522d;">++</span> show y  
+<span style="color: #0000ff;">tell</span> (x<span style="color: #228b22;">:</span>y<span style="color: #228b22;">:</span><span style="color: #a020f0;">_</span>) <span style="color: #a0522d;">=</span> <span style="color: #8b2252;">"This list is long. The first two elements are: "</span> <span style="color: #a0522d;">++</span> show x <span style="color: #a0522d;">++</span> <span style="color: #8b2252;">" and "</span> <span style="color: #a0522d;">++</span> show y  
+
+<span style="color: #0000ff;">length'</span> <span style="color: #a0522d;">::</span> (<span style="color: #228b22;">Num</span> b) <span style="color: #a0522d;">=&gt;</span> [a] <span style="color: #a0522d;">-&gt;</span> b  
+<span style="color: #0000ff;">length'</span> <span style="color: #228b22;">[]</span> <span style="color: #a0522d;">=</span> 0  
+<span style="color: #0000ff;">length'</span> (<span style="color: #a020f0;">_</span><span style="color: #228b22;">:</span>xs) <span style="color: #a0522d;">=</span> 1 <span style="color: #a0522d;">+</span> length' xs  
+
+<span style="color: #0000ff;">sum'</span> <span style="color: #a0522d;">::</span> (<span style="color: #228b22;">Num</span> a) <span style="color: #a0522d;">=&gt;</span> [a] <span style="color: #a0522d;">-&gt;</span> a  
+<span style="color: #0000ff;">sum'</span> <span style="color: #228b22;">[]</span> <span style="color: #a0522d;">=</span> 0  
+<span style="color: #0000ff;">sum'</span> (x<span style="color: #228b22;">:</span>xs) <span style="color: #a0522d;">=</span> x <span style="color: #a0522d;">+</span> sum' xs  
+
+</pre>
+</div>
+
+<p>
+Those are a handy way of breaking something up according to a pattern
+and binding it to names whilst still keeping a reference to the whole
+thing. You do that by putting a name and an <code>@</code> in front of a pattern.
+</p>
+
+
+<div class="org-src-container">
+<pre class="src src-haskell"><span style="color: #0000ff;">capital</span> <span style="color: #a0522d;">::</span> <span style="color: #228b22;">String</span> <span style="color: #a0522d;">-&gt;</span> <span style="color: #228b22;">String</span>  
+<span style="color: #0000ff;">capital</span> <span style="color: #8b2252;">""</span> <span style="color: #a0522d;">=</span> <span style="color: #8b2252;">"Empty string, whoops!"</span>  
+<span style="color: #0000ff;">capital</span> all<span style="color: #a0522d;">@</span>(x<span style="color: #228b22;">:</span>xs) <span style="color: #a0522d;">=</span> <span style="color: #8b2252;">"The first letter of "</span> <span style="color: #a0522d;">++</span> all <span style="color: #a0522d;">++</span> <span style="color: #8b2252;">" is "</span> <span style="color: #a0522d;">++</span> [x]  
+</pre>
+</div>
+</div>
+</div>
+
+<div id="outline-container-org6196cc1" class="outline-3">
+<h3 id="org6196cc1"><span class="section-number-3">1.2</span> Guards, guards!</h3>
+<div class="outline-text-3" id="text-1-2">
+<p>
+Whereas patterns are a way of making sure a value conforms to some
+form and deconstructing it, guards are a way of testing whether some
+property of a value (or several of them) are true or false. 
+</p>
+
+<div class="org-src-container">
+<pre class="src src-haskell"><span style="color: #0000ff;">bmiTell</span> <span style="color: #a0522d;">::</span> (<span style="color: #228b22;">RealFloat</span> a) <span style="color: #a0522d;">=&gt;</span> a <span style="color: #a0522d;">-&gt;</span> <span style="color: #228b22;">String</span>  
+<span style="color: #0000ff;">bmiTell</span> bmi  
+    <span style="color: #a0522d;">|</span> bmi <span style="color: #a0522d;">&lt;=</span> 18.5 <span style="color: #a0522d;">=</span> <span style="color: #8b2252;">"You're underweight, you emo, you!"</span>  
+    <span style="color: #a0522d;">|</span> bmi <span style="color: #a0522d;">&lt;=</span> 25.0 <span style="color: #a0522d;">=</span> <span style="color: #8b2252;">"You're supposedly normal. Pffft, I bet you're ugly!"</span>  
+    <span style="color: #a0522d;">|</span> bmi <span style="color: #a0522d;">&lt;=</span> 30.0 <span style="color: #a0522d;">=</span> <span style="color: #8b2252;">"You're fat! Lose some weight, fatty!"</span>  
+    <span style="color: #a0522d;">|</span> otherwise   <span style="color: #a0522d;">=</span> <span style="color: #8b2252;">"You're a whale, congratulations!"</span>  
+</pre>
+</div>
+
+<p>
+Guards are indicated by pipes that follow a function's name and its
+parameters. A guard is basically a boolean expression. If it evaluates
+to <code>True</code>, then the corresponding function body is used. If it 
+evaluates to <code>False</code>, checking drops through to the next guard and so
+on. 
+</p>
+
+<p>
+<b>This is very reminiscent of a big if else tree in imperative
+languages, only this is far better and more readable.</b>
+</p>
+
+<p>
+Many times, the last guard is otherwise. otherwise is defined simply
+as <code>otherwise = True</code> and catches everything.
+</p>
+
+<p>
+Of course we can use guards with functions that take as many
+parameters as we want.
+</p>
+
+<div class="org-src-container">
+<pre class="src src-haskell"><span style="color: #0000ff;">bmiTell</span> <span style="color: #a0522d;">::</span> (<span style="color: #228b22;">RealFloat</span> a) <span style="color: #a0522d;">=&gt;</span> a <span style="color: #a0522d;">-&gt;</span> a <span style="color: #a0522d;">-&gt;</span> <span style="color: #228b22;">String</span>  
+<span style="color: #0000ff;">bmiTell</span> weight height  
+    <span style="color: #a0522d;">|</span> weight <span style="color: #a0522d;">/</span> height <span style="color: #a0522d;">^</span> 2 <span style="color: #a0522d;">&lt;=</span> 18.5 <span style="color: #a0522d;">=</span> <span style="color: #8b2252;">"You're underweight, you emo, you!"</span>  
+    <span style="color: #a0522d;">|</span> weight <span style="color: #a0522d;">/</span> height <span style="color: #a0522d;">^</span> 2 <span style="color: #a0522d;">&lt;=</span> 25.0 <span style="color: #a0522d;">=</span> <span style="color: #8b2252;">"You're supposedly normal. Pffft, I bet you're ugly!"</span>  
+    <span style="color: #a0522d;">|</span> weight <span style="color: #a0522d;">/</span> height <span style="color: #a0522d;">^</span> 2 <span style="color: #a0522d;">&lt;=</span> 30.0 <span style="color: #a0522d;">=</span> <span style="color: #8b2252;">"You're fat! Lose some weight, fatty!"</span>  
+    <span style="color: #a0522d;">|</span> otherwise                 <span style="color: #a0522d;">=</span> <span style="color: #8b2252;">"You're a whale, congratulations!"</span>  
+</pre>
+</div>
+
+<p>
+Guards can also be written <b>inline</b>, although I'd advise against that
+because it's less readable, even for very short functions. But to
+demonstrate, we could write max' like this:
+</p>
+
+<div class="org-src-container">
+<pre class="src src-haskell"><span style="color: #0000ff;">max'</span> <span style="color: #a0522d;">::</span> (<span style="color: #228b22;">Ord</span> a) <span style="color: #a0522d;">=&gt;</span> a <span style="color: #a0522d;">-&gt;</span> a <span style="color: #a0522d;">-&gt;</span> a  
+<span style="color: #0000ff;">max'</span> a b <span style="color: #a0522d;">|</span> a <span style="color: #a0522d;">&gt;</span> b <span style="color: #a0522d;">=</span> a <span style="color: #a0522d;">|</span> otherwise <span style="color: #a0522d;">=</span> b 
+</pre>
+</div>
+
+<p>
+Moving on: let's implement our own compare by using guards.
+</p>
+
+<div class="org-src-container">
+<pre class="src src-haskell"><span style="color: #0000ff;">myCompare</span> <span style="color: #a0522d;">::</span> (<span style="color: #228b22;">Ord</span> a) <span style="color: #a0522d;">=&gt;</span> a <span style="color: #a0522d;">-&gt;</span> a <span style="color: #a0522d;">-&gt;</span> <span style="color: #228b22;">Ordering</span>  
+a <span style="color: #a0522d;">`</span><span style="color: #0000ff;">myCompare</span><span style="color: #a0522d;">`</span> b  
+    <span style="color: #a0522d;">|</span> a <span style="color: #a0522d;">&gt;</span> b     <span style="color: #a0522d;">=</span> <span style="color: #228b22;">GT</span>  
+    <span style="color: #a0522d;">|</span> a <span style="color: #a0522d;">==</span> b    <span style="color: #a0522d;">=</span> <span style="color: #228b22;">EQ</span>  
+    <span style="color: #a0522d;">|</span> otherwise <span style="color: #a0522d;">=</span> <span style="color: #228b22;">LT</span>  
+</pre>
+</div>
+</div>
+</div>
+
+<div id="outline-container-org1160cd9" class="outline-3">
+<h3 id="org1160cd9"><span class="section-number-3">1.3</span> Where!?</h3>
+<div class="outline-text-3" id="text-1-3">
+<p>
+In the previous section, Notice that we repeat <code>weight / height ^ 2</code>
+here three times.
+</p>
+
+<p>
+Well, we can modify our function like this:
+</p>
+
+<div class="org-src-container">
+<pre class="src src-haskell"><span style="color: #0000ff;">bmiTell</span> <span style="color: #a0522d;">::</span> (<span style="color: #228b22;">RealFloat</span> a) <span style="color: #a0522d;">=&gt;</span> a <span style="color: #a0522d;">-&gt;</span> a <span style="color: #a0522d;">-&gt;</span> <span style="color: #228b22;">String</span>  
+<span style="color: #0000ff;">bmiTell</span> weight height  
+    <span style="color: #a0522d;">|</span> bmi <span style="color: #a0522d;">&lt;=</span> 18.5 <span style="color: #a0522d;">=</span> <span style="color: #8b2252;">"You're underweight, you emo, you!"</span>  
+    <span style="color: #a0522d;">|</span> bmi <span style="color: #a0522d;">&lt;=</span> 25.0 <span style="color: #a0522d;">=</span> <span style="color: #8b2252;">"You're supposedly normal. Pffft, I bet you're ugly!"</span>  
+    <span style="color: #a0522d;">|</span> bmi <span style="color: #a0522d;">&lt;=</span> 30.0 <span style="color: #a0522d;">=</span> <span style="color: #8b2252;">"You're fat! Lose some weight, fatty!"</span>  
+    <span style="color: #a0522d;">|</span> otherwise   <span style="color: #a0522d;">=</span> <span style="color: #8b2252;">"You're a whale, congratulations!"</span>  
+    <span style="color: #a020f0;">where</span> bmi <span style="color: #a0522d;">=</span> weight <span style="color: #a0522d;">/</span> height <span style="color: #a0522d;">^</span> 2  
+
+<span style="color: #b22222;">-- </span><span style="color: #b22222;">We could go a bit overboard and present our function like this:</span>
+
+<span style="color: #0000ff;">bmiTell</span> <span style="color: #a0522d;">::</span> (<span style="color: #228b22;">RealFloat</span> a) <span style="color: #a0522d;">=&gt;</span> a <span style="color: #a0522d;">-&gt;</span> a <span style="color: #a0522d;">-&gt;</span> <span style="color: #228b22;">String</span>  
+<span style="color: #0000ff;">bmiTell</span> weight height  
+    <span style="color: #a0522d;">|</span> bmi <span style="color: #a0522d;">&lt;=</span> skinny <span style="color: #a0522d;">=</span> <span style="color: #8b2252;">"You're underweight, you emo, you!"</span>  
+    <span style="color: #a0522d;">|</span> bmi <span style="color: #a0522d;">&lt;=</span> normal <span style="color: #a0522d;">=</span> <span style="color: #8b2252;">"You're supposedly normal. Pffft, I bet you're ugly!"</span>  
+    <span style="color: #a0522d;">|</span> bmi <span style="color: #a0522d;">&lt;=</span> fat    <span style="color: #a0522d;">=</span> <span style="color: #8b2252;">"You're fat! Lose some weight, fatty!"</span>  
+    <span style="color: #a0522d;">|</span> otherwise     <span style="color: #a0522d;">=</span> <span style="color: #8b2252;">"You're a whale, congratulations!"</span>  
+    <span style="color: #a020f0;">where</span> bmi <span style="color: #a0522d;">=</span> weight <span style="color: #a0522d;">/</span> height <span style="color: #a0522d;">^</span> 2  
+          skinny <span style="color: #a0522d;">=</span> 18.5  
+          normal <span style="color: #a0522d;">=</span> 25.0  
+          fat <span style="color: #a0522d;">=</span> 30.0  
+
+<span style="color: #b22222;">-- </span><span style="color: #b22222;">You can also use where bindings to pattern match! We could have</span>
+<span style="color: #b22222;">-- </span><span style="color: #b22222;">rewritten the where section of our previous function as:</span>
+
+<span style="color: #0000ff;">bmiTell</span> <span style="color: #a0522d;">::</span> (<span style="color: #228b22;">RealFloat</span> a) <span style="color: #a0522d;">=&gt;</span> a <span style="color: #a0522d;">-&gt;</span> a <span style="color: #a0522d;">-&gt;</span> <span style="color: #228b22;">String</span>  
+<span style="color: #0000ff;">bmiTell</span> weight height  
+    <span style="color: #a0522d;">|</span> bmi <span style="color: #a0522d;">&lt;=</span> skinny <span style="color: #a0522d;">=</span> <span style="color: #8b2252;">"You're underweight, you emo, you!"</span>  
+    <span style="color: #a0522d;">|</span> bmi <span style="color: #a0522d;">&lt;=</span> normal <span style="color: #a0522d;">=</span> <span style="color: #8b2252;">"You're supposedly normal. Pffft, I bet you're ugly!"</span>  
+    <span style="color: #a0522d;">|</span> bmi <span style="color: #a0522d;">&lt;=</span> fat    <span style="color: #a0522d;">=</span> <span style="color: #8b2252;">"You're fat! Lose some weight, fatty!"</span>  
+    <span style="color: #a0522d;">|</span> otherwise     <span style="color: #a0522d;">=</span> <span style="color: #8b2252;">"You're a whale, congratulations!"</span>  
+    <span style="color: #a020f0;">where</span> bmi <span style="color: #a0522d;">=</span> weight <span style="color: #a0522d;">/</span> height <span style="color: #a0522d;">^</span> 2  
+          (skinny, normal, fat) <span style="color: #a0522d;">=</span> (18.5, 25.0, 30.0)  
+
+<span style="color: #b22222;">-- </span><span style="color: #b22222;">Let's make another fairly trivial function where we get a first and</span>
+<span style="color: #b22222;">-- </span><span style="color: #b22222;">a last name and give someone back their initials.</span>
+
+<span style="color: #0000ff;">initials</span> <span style="color: #a0522d;">::</span> <span style="color: #228b22;">String</span> <span style="color: #a0522d;">-&gt;</span> <span style="color: #228b22;">String</span> <span style="color: #a0522d;">-&gt;</span> <span style="color: #228b22;">String</span>  
+<span style="color: #0000ff;">initials</span> firstname lastname <span style="color: #a0522d;">=</span> [f] <span style="color: #a0522d;">++</span> <span style="color: #8b2252;">". "</span> <span style="color: #a0522d;">++</span> [l] <span style="color: #a0522d;">++</span> <span style="color: #8b2252;">"."</span>  
+    <span style="color: #a020f0;">where</span> (f<span style="color: #228b22;">:</span><span style="color: #a020f0;">_</span>) <span style="color: #a0522d;">=</span> firstname  
+          (l<span style="color: #228b22;">:</span><span style="color: #a020f0;">_</span>) <span style="color: #a0522d;">=</span> lastname  
+
+<span style="color: #b22222;">-- </span><span style="color: #b22222;">Just like we've defined constants in where blocks, you can also</span>
+<span style="color: #b22222;">-- </span><span style="color: #b22222;">define functions.</span>
+
+<span style="color: #0000ff;">alcBmis</span> <span style="color: #a0522d;">::</span> (<span style="color: #228b22;">RealFloat</span> a) <span style="color: #a0522d;">=&gt;</span> [(a, a)] <span style="color: #a0522d;">-&gt;</span> [a]  
+<span style="color: #0000ff;">calcBmis</span> xs <span style="color: #a0522d;">=</span> [bmi w h <span style="color: #a0522d;">|</span> (w, h) <span style="color: #a0522d;">&lt;-</span> xs]  
+    <span style="color: #a020f0;">where</span> bmi weight height <span style="color: #a0522d;">=</span> weight <span style="color: #a0522d;">/</span> height <span style="color: #a0522d;">^</span> 2
+
+</pre>
+</div>
+</div>
+</div>
+
+
+<div id="outline-container-org087f095" class="outline-3">
+<h3 id="org087f095"><span class="section-number-3">1.4</span> Let it be</h3>
+<div class="outline-text-3" id="text-1-4">
+<p>
+This is how we could define a function that gives us a cylinder's
+surface area based on its height and radius:
+</p>
+
+<div class="org-src-container">
+<pre class="src src-haskell"><span style="color: #0000ff;">cylinder</span> <span style="color: #a0522d;">::</span> (<span style="color: #228b22;">RealFloat</span> a) <span style="color: #a0522d;">=&gt;</span> a <span style="color: #a0522d;">-&gt;</span> a <span style="color: #a0522d;">-&gt;</span> a  
+<span style="color: #0000ff;">cylinder</span> r h <span style="color: #a0522d;">=</span> 
+    <span style="color: #a020f0;">let</span> sideArea <span style="color: #a0522d;">=</span> 2 <span style="color: #a0522d;">*</span> pi <span style="color: #a0522d;">*</span> r <span style="color: #a0522d;">*</span> h  
+        topArea <span style="color: #a0522d;">=</span> pi <span style="color: #a0522d;">*</span> r <span style="color: #a0522d;">^</span>2  
+    <span style="color: #a020f0;">in</span>  sideArea <span style="color: #a0522d;">+</span> 2 <span style="color: #a0522d;">*</span> topArea
+</pre>
+</div>
+
+<p>
+The form is <code>let &lt;bindings&gt; in &lt;expression&gt;</code>. The difference is that
+let bindings are expressions themselves. where bindings are just
+syntactic constructs.
+</p>
+
+<div class="org-src-container">
+<pre class="src src-haskell">ghci<span style="color: #0000ff;">&gt;</span> [<span style="color: #a020f0;">if</span> 5 <span style="color: #a0522d;">&gt;</span> 3 <span style="color: #a020f0;">then</span> <span style="color: #8b2252;">"Woo"</span> <span style="color: #a020f0;">else</span> <span style="color: #8b2252;">"Boo"</span>, <span style="color: #a020f0;">if</span> <span style="color: #8b2252;">'a'</span> <span style="color: #a0522d;">&gt;</span> <span style="color: #8b2252;">'b'</span> <span style="color: #a020f0;">then</span> <span style="color: #8b2252;">"Foo"</span> <span style="color: #a020f0;">else</span> <span style="color: #8b2252;">"Bar"</span>]  
+[<span style="color: #8b2252;">"Woo"</span>, <span style="color: #8b2252;">"Bar"</span>]  
+ghci<span style="color: #0000ff;">&gt;</span> 4 <span style="color: #a0522d;">*</span> (<span style="color: #a020f0;">if</span> 10 <span style="color: #a0522d;">&gt;</span> 5 <span style="color: #a020f0;">then</span> 10 <span style="color: #a020f0;">else</span> 0) <span style="color: #a0522d;">+</span> 2  
+42  
+
+<span style="color: #b22222;">-- </span><span style="color: #b22222;">You can also do that with let bindings.</span>
+
+ghci<span style="color: #0000ff;">&gt;</span> 4 <span style="color: #a0522d;">*</span> (<span style="color: #a020f0;">let</span> a <span style="color: #a0522d;">=</span> 9 <span style="color: #a020f0;">in</span> a <span style="color: #a0522d;">+</span> 1) <span style="color: #a0522d;">+</span> 2  
+42  
+
+<span style="color: #b22222;">-- </span><span style="color: #b22222;">They can also be used to introduce functions in a local scope:</span>
+
+ghci<span style="color: #0000ff;">&gt;</span> [<span style="color: #a020f0;">let</span> square x <span style="color: #a0522d;">=</span> x <span style="color: #a0522d;">*</span> x <span style="color: #a020f0;">in</span> (square 5, square 3, square 2)]  
+[(25,9,4)]  
+
+<span style="color: #b22222;">-- </span><span style="color: #b22222;">If we want to bind to several variables inline, we obviously</span>
+<span style="color: #b22222;">-- </span><span style="color: #b22222;">can't align them at columns. That's why we can separate them with</span>
+<span style="color: #b22222;">-- </span><span style="color: #b22222;">semicolons.</span>
+
+ghci<span style="color: #0000ff;">&gt;</span> (<span style="color: #a020f0;">let</span> a <span style="color: #a0522d;">=</span> 100; b <span style="color: #a0522d;">=</span> 200; c <span style="color: #a0522d;">=</span> 300 <span style="color: #a020f0;">in</span> a<span style="color: #a0522d;">*</span>b<span style="color: #a0522d;">*</span>c, <span style="color: #a020f0;">let</span> foo<span style="color: #a0522d;">=</span><span style="color: #8b2252;">"Hey "</span>; bar <span style="color: #a0522d;">=</span> <span style="color: #8b2252;">"there!"</span> <span style="color: #a020f0;">in</span> foo <span style="color: #a0522d;">++</span> bar)  
+(6000000,<span style="color: #8b2252;">"Hey there!"</span>)  
+
+<span style="color: #b22222;">-- </span><span style="color: #b22222;">You don't have to put a semicolon after the last binding but you</span>
+<span style="color: #b22222;">-- </span><span style="color: #b22222;">can if you want. Like we said before, you can pattern match with</span>
+<span style="color: #b22222;">-- </span><span style="color: #b22222;">let bindings. They're very useful for quickly dismantling a tuple</span>
+<span style="color: #b22222;">-- </span><span style="color: #b22222;">into components and binding them to names and such.</span>
+
+ghci<span style="color: #0000ff;">&gt;</span> (<span style="color: #a020f0;">let</span> (a,b,c) <span style="color: #a0522d;">=</span> (1,2,3) <span style="color: #a020f0;">in</span> a<span style="color: #a0522d;">+</span>b<span style="color: #a0522d;">+</span>c) <span style="color: #a0522d;">*</span> 100  
+600 
+
+<span style="color: #b22222;">-- </span><span style="color: #b22222;">You can also put let bindings inside list comprehensions. Let's</span>
+<span style="color: #b22222;">-- </span><span style="color: #b22222;">rewrite our previous example of calculating lists of weight-height</span>
+<span style="color: #b22222;">-- </span><span style="color: #b22222;">pairs to use a let inside a list comprehension instead of defining</span>
+<span style="color: #b22222;">-- </span><span style="color: #b22222;">an auxiliary function with a where.</span>
+
+<span style="color: #0000ff;">calcBmis</span> <span style="color: #a0522d;">::</span> (<span style="color: #228b22;">RealFloat</span> a) <span style="color: #a0522d;">=&gt;</span> [(a, a)] <span style="color: #a0522d;">-&gt;</span> [a]  
+<span style="color: #0000ff;">calcBmis</span> xs <span style="color: #a0522d;">=</span> [bmi <span style="color: #a0522d;">|</span> (w, h) <span style="color: #a0522d;">&lt;-</span> xs, <span style="color: #a020f0;">let</span> bmi <span style="color: #a0522d;">=</span> w <span style="color: #a0522d;">/</span> h <span style="color: #a0522d;">^</span> 2]
+
+<span style="color: #b22222;">-- </span><span style="color: #b22222;">we could make our function return only the BMIs of fat people.</span>
+
+<span style="color: #0000ff;">calcBmis</span> <span style="color: #a0522d;">::</span> (<span style="color: #228b22;">RealFloat</span> a) <span style="color: #a0522d;">=&gt;</span> [(a, a)] <span style="color: #a0522d;">-&gt;</span> [a]
+<span style="color: #0000ff;">calcBmis</span> xs <span style="color: #a0522d;">=</span> [bmi <span style="color: #a0522d;">|</span> (w, h) <span style="color: #a0522d;">&lt;-</span> xs, <span style="color: #a020f0;">let</span> bmi <span style="color: #a0522d;">=</span> w <span style="color: #a0522d;">/</span> h <span style="color: #a0522d;">^</span> 2, bmi <span style="color: #a0522d;">&gt;=</span> 25.0]
+
+<span style="color: #b22222;">-- </span><span style="color: #b22222;">The in part can also be omitted when defining functions and</span>
+<span style="color: #b22222;">-- </span><span style="color: #b22222;">constants directly in GHCi. If we do that, then the names will be</span>
+<span style="color: #b22222;">-- </span><span style="color: #b22222;">visible throughout the entire interactive session.</span>
+
+<span style="color: #a020f0;">let</span> zoot x y z <span style="color: #a0522d;">=</span> x <span style="color: #a0522d;">*</span> y <span style="color: #a0522d;">+</span> z  
+<span style="color: #0000ff;">zoot</span> 3 9 2
+<span style="color: #a020f0;">let</span> boot x y z <span style="color: #a0522d;">=</span> x <span style="color: #a0522d;">*</span> y <span style="color: #a0522d;">+</span> z <span style="color: #a020f0;">in</span> boot 3 4 2
+
+</pre>
+</div>
+
+<p>
+Since let bindings are expressions and are fairly local in their
+scope, they can't be used across guards. Some people prefer where
+bindings because the names come after the function they're being used
+in. That way, the function body is closer to its name and type
+declaration and to some that's more readable.
+</p>
+</div>
+</div>
+
+<div id="outline-container-org80c5edb" class="outline-3">
+<h3 id="org80c5edb"><span class="section-number-3">1.5</span> Case expressions</h3>
+<div class="outline-text-3" id="text-1-5">
+<p>
+Many imperative languages (C, C++, Java, etc.) have <code>case</code> syntax and
+if you've ever programmed in them, you probably know what it's about.
+</p>
+
+<p>
+Pattern matching on parameters in function definitions! Well, that's
+actually just syntactic sugar for case expressions. These two pieces
+of code do the same thing and are interchangeable:
+</p>
+
+<div class="org-src-container">
+<pre class="src src-haskell"><span style="color: #0000ff;">head'</span> <span style="color: #a0522d;">::</span> [a] <span style="color: #a0522d;">-&gt;</span> a  
+<span style="color: #0000ff;">head'</span> <span style="color: #228b22;">[]</span> <span style="color: #a0522d;">=</span> error <span style="color: #8b2252;">"No head for empty lists!"</span>  
+<span style="color: #0000ff;">head'</span> (x<span style="color: #228b22;">:</span><span style="color: #a020f0;">_</span>) <span style="color: #a0522d;">=</span> x  
+
+<span style="color: #0000ff;">head'</span> <span style="color: #a0522d;">::</span> [a] <span style="color: #a0522d;">-&gt;</span> a  
+<span style="color: #0000ff;">head'</span> xs <span style="color: #a0522d;">=</span> <span style="color: #a020f0;">case</span> xs <span style="color: #a020f0;">of</span> <span style="color: #228b22;">[]</span> <span style="color: #a0522d;">-&gt;</span> error <span style="color: #8b2252;">"No head for empty lists!"</span>  
+                      (x<span style="color: #228b22;">:</span><span style="color: #a020f0;">_</span>) <span style="color: #a0522d;">-&gt;</span> x
+<span style="color: #b22222;">-- </span><span style="color: #b22222;">As you can see, the syntax for case expressions is pretty simple:</span>
+
+<span style="color: #a020f0;">case</span> expression <span style="color: #a020f0;">of</span> <span style="color: #a020f0;">pattern</span> <span style="color: #a0522d;">-&gt;</span> result  
+                   <span style="color: #a020f0;">pattern</span> <span style="color: #a0522d;">-&gt;</span> result  
+                   <span style="color: #a020f0;">pattern</span> <span style="color: #a0522d;">-&gt;</span> result
+</pre>
+</div>
+
+<p>
+expression is matched against the patterns. The pattern matching
+action is the same as expected: the first pattern that matches the
+expression is used. If it falls through the whole case expression and
+no suitable pattern is found, a runtime error occurs.
+</p>
+
+<p>
+Whereas pattern matching on function parameters can only be done when
+defining functions, case expressions can be used pretty much anywhere.
+For instance:
+</p>
+
+<div class="org-src-container">
+<pre class="src src-haskell"><span style="color: #0000ff;">describeList</span> <span style="color: #a0522d;">::</span> [a] <span style="color: #a0522d;">-&gt;</span> <span style="color: #228b22;">String</span>  
+<span style="color: #0000ff;">describeList</span> xs <span style="color: #a0522d;">=</span> <span style="color: #8b2252;">"The list is "</span> <span style="color: #a0522d;">++</span> <span style="color: #a020f0;">case</span> xs <span style="color: #a020f0;">of</span> <span style="color: #228b22;">[]</span> <span style="color: #a0522d;">-&gt;</span> <span style="color: #8b2252;">"empty."</span>  
+                                               [x] <span style="color: #a0522d;">-&gt;</span> <span style="color: #8b2252;">"a singleton list."</span>   
+                                               xs <span style="color: #a0522d;">-&gt;</span> <span style="color: #8b2252;">"a longer list."</span>  
+</pre>
+</div>
+
+<p>
+They are useful for pattern matching against something in the middle
+of an expression. Because pattern matching in function definitions is
+syntactic sugar for case expressions, we could have also defined this
+like so:
+</p>
+
+<div class="org-src-container">
+<pre class="src src-haskell"><span style="color: #0000ff;">describeList</span> <span style="color: #a0522d;">::</span> [a] <span style="color: #a0522d;">-&gt;</span> <span style="color: #228b22;">String</span>  
+<span style="color: #0000ff;">describeList</span> xs <span style="color: #a0522d;">=</span> <span style="color: #8b2252;">"The list is "</span> <span style="color: #a0522d;">++</span> what xs  
+    <span style="color: #a020f0;">where</span> what <span style="color: #228b22;">[]</span> <span style="color: #a0522d;">=</span> <span style="color: #8b2252;">"empty."</span>  
+          what [x] <span style="color: #a0522d;">=</span> <span style="color: #8b2252;">"a singleton list."</span>  
+          what xs <span style="color: #a0522d;">=</span> <span style="color: #8b2252;">"a longer list."</span>  
+</pre>
+</div>
+</div>
+</div>
+</div>
+</div>
+<div id="postamble" class="status">
+<p class="author">Author: LINGAO JIN</p>
+<p class="date">Created: 2021-01-29 五 18:45</p>
+<p class="validation"><a href="http://validator.w3.org/check?uri=referer">Validate</a></p>
+</div>
+</body>
+</html>

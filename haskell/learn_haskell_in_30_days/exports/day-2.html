@@ -1,0 +1,907 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN"
+"http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" lang="en" xml:lang="en">
+<head>
+<!-- 2021-01-26 二 00:16 -->
+<meta http-equiv="Content-Type" content="text/html;charset=utf-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1" />
+<title>DAY 2</title>
+<meta name="generator" content="Org mode" />
+<meta name="author" content="LINGAO JIN" />
+<style type="text/css">
+ <!--/*--><![CDATA[/*><!--*/
+  .title  { text-align: center;
+             margin-bottom: .2em; }
+  .subtitle { text-align: center;
+              font-size: medium;
+              font-weight: bold;
+              margin-top:0; }
+  .todo   { font-family: monospace; color: red; }
+  .done   { font-family: monospace; color: green; }
+  .priority { font-family: monospace; color: orange; }
+  .tag    { background-color: #eee; font-family: monospace;
+            padding: 2px; font-size: 80%; font-weight: normal; }
+  .timestamp { color: #bebebe; }
+  .timestamp-kwd { color: #5f9ea0; }
+  .org-right  { margin-left: auto; margin-right: 0px;  text-align: right; }
+  .org-left   { margin-left: 0px;  margin-right: auto; text-align: left; }
+  .org-center { margin-left: auto; margin-right: auto; text-align: center; }
+  .underline { text-decoration: underline; }
+  #postamble p, #preamble p { font-size: 90%; margin: .2em; }
+  p.verse { margin-left: 3%; }
+  pre {
+    border: 1px solid #ccc;
+    box-shadow: 3px 3px 3px #eee;
+    padding: 8pt;
+    font-family: monospace;
+    overflow: auto;
+    margin: 1.2em;
+  }
+  pre.src {
+    position: relative;
+    overflow: visible;
+    padding-top: 1.2em;
+  }
+  pre.src:before {
+    display: none;
+    position: absolute;
+    background-color: white;
+    top: -10px;
+    right: 10px;
+    padding: 3px;
+    border: 1px solid black;
+  }
+  pre.src:hover:before { display: inline;}
+  /* Languages per Org manual */
+  pre.src-asymptote:before { content: 'Asymptote'; }
+  pre.src-awk:before { content: 'Awk'; }
+  pre.src-C:before { content: 'C'; }
+  /* pre.src-C++ doesn't work in CSS */
+  pre.src-clojure:before { content: 'Clojure'; }
+  pre.src-css:before { content: 'CSS'; }
+  pre.src-D:before { content: 'D'; }
+  pre.src-ditaa:before { content: 'ditaa'; }
+  pre.src-dot:before { content: 'Graphviz'; }
+  pre.src-calc:before { content: 'Emacs Calc'; }
+  pre.src-emacs-lisp:before { content: 'Emacs Lisp'; }
+  pre.src-fortran:before { content: 'Fortran'; }
+  pre.src-gnuplot:before { content: 'gnuplot'; }
+  pre.src-haskell:before { content: 'Haskell'; }
+  pre.src-hledger:before { content: 'hledger'; }
+  pre.src-java:before { content: 'Java'; }
+  pre.src-js:before { content: 'Javascript'; }
+  pre.src-latex:before { content: 'LaTeX'; }
+  pre.src-ledger:before { content: 'Ledger'; }
+  pre.src-lisp:before { content: 'Lisp'; }
+  pre.src-lilypond:before { content: 'Lilypond'; }
+  pre.src-lua:before { content: 'Lua'; }
+  pre.src-matlab:before { content: 'MATLAB'; }
+  pre.src-mscgen:before { content: 'Mscgen'; }
+  pre.src-ocaml:before { content: 'Objective Caml'; }
+  pre.src-octave:before { content: 'Octave'; }
+  pre.src-org:before { content: 'Org mode'; }
+  pre.src-oz:before { content: 'OZ'; }
+  pre.src-plantuml:before { content: 'Plantuml'; }
+  pre.src-processing:before { content: 'Processing.js'; }
+  pre.src-python:before { content: 'Python'; }
+  pre.src-R:before { content: 'R'; }
+  pre.src-ruby:before { content: 'Ruby'; }
+  pre.src-sass:before { content: 'Sass'; }
+  pre.src-scheme:before { content: 'Scheme'; }
+  pre.src-screen:before { content: 'Gnu Screen'; }
+  pre.src-sed:before { content: 'Sed'; }
+  pre.src-sh:before { content: 'shell'; }
+  pre.src-sql:before { content: 'SQL'; }
+  pre.src-sqlite:before { content: 'SQLite'; }
+  /* additional languages in org.el's org-babel-load-languages alist */
+  pre.src-forth:before { content: 'Forth'; }
+  pre.src-io:before { content: 'IO'; }
+  pre.src-J:before { content: 'J'; }
+  pre.src-makefile:before { content: 'Makefile'; }
+  pre.src-maxima:before { content: 'Maxima'; }
+  pre.src-perl:before { content: 'Perl'; }
+  pre.src-picolisp:before { content: 'Pico Lisp'; }
+  pre.src-scala:before { content: 'Scala'; }
+  pre.src-shell:before { content: 'Shell Script'; }
+  pre.src-ebnf2ps:before { content: 'ebfn2ps'; }
+  /* additional language identifiers per "defun org-babel-execute"
+       in ob-*.el */
+  pre.src-cpp:before  { content: 'C++'; }
+  pre.src-abc:before  { content: 'ABC'; }
+  pre.src-coq:before  { content: 'Coq'; }
+  pre.src-groovy:before  { content: 'Groovy'; }
+  /* additional language identifiers from org-babel-shell-names in
+     ob-shell.el: ob-shell is the only babel language using a lambda to put
+     the execution function name together. */
+  pre.src-bash:before  { content: 'bash'; }
+  pre.src-csh:before  { content: 'csh'; }
+  pre.src-ash:before  { content: 'ash'; }
+  pre.src-dash:before  { content: 'dash'; }
+  pre.src-ksh:before  { content: 'ksh'; }
+  pre.src-mksh:before  { content: 'mksh'; }
+  pre.src-posh:before  { content: 'posh'; }
+  /* Additional Emacs modes also supported by the LaTeX listings package */
+  pre.src-ada:before { content: 'Ada'; }
+  pre.src-asm:before { content: 'Assembler'; }
+  pre.src-caml:before { content: 'Caml'; }
+  pre.src-delphi:before { content: 'Delphi'; }
+  pre.src-html:before { content: 'HTML'; }
+  pre.src-idl:before { content: 'IDL'; }
+  pre.src-mercury:before { content: 'Mercury'; }
+  pre.src-metapost:before { content: 'MetaPost'; }
+  pre.src-modula-2:before { content: 'Modula-2'; }
+  pre.src-pascal:before { content: 'Pascal'; }
+  pre.src-ps:before { content: 'PostScript'; }
+  pre.src-prolog:before { content: 'Prolog'; }
+  pre.src-simula:before { content: 'Simula'; }
+  pre.src-tcl:before { content: 'tcl'; }
+  pre.src-tex:before { content: 'TeX'; }
+  pre.src-plain-tex:before { content: 'Plain TeX'; }
+  pre.src-verilog:before { content: 'Verilog'; }
+  pre.src-vhdl:before { content: 'VHDL'; }
+  pre.src-xml:before { content: 'XML'; }
+  pre.src-nxml:before { content: 'XML'; }
+  /* add a generic configuration mode; LaTeX export needs an additional
+     (add-to-list 'org-latex-listings-langs '(conf " ")) in .emacs */
+  pre.src-conf:before { content: 'Configuration File'; }
+
+  table { border-collapse:collapse; }
+  caption.t-above { caption-side: top; }
+  caption.t-bottom { caption-side: bottom; }
+  td, th { vertical-align:top;  }
+  th.org-right  { text-align: center;  }
+  th.org-left   { text-align: center;   }
+  th.org-center { text-align: center; }
+  td.org-right  { text-align: right;  }
+  td.org-left   { text-align: left;   }
+  td.org-center { text-align: center; }
+  dt { font-weight: bold; }
+  .footpara { display: inline; }
+  .footdef  { margin-bottom: 1em; }
+  .figure { padding: 1em; }
+  .figure p { text-align: center; }
+  .equation-container {
+    display: table;
+    text-align: center;
+    width: 100%;
+  }
+  .equation {
+    vertical-align: middle;
+  }
+  .equation-label {
+    display: table-cell;
+    text-align: right;
+    vertical-align: middle;
+  }
+  .inlinetask {
+    padding: 10px;
+    border: 2px solid gray;
+    margin: 10px;
+    background: #ffffcc;
+  }
+  #org-div-home-and-up
+   { text-align: right; font-size: 70%; white-space: nowrap; }
+  textarea { overflow-x: auto; }
+  .linenr { font-size: smaller }
+  .code-highlighted { background-color: #ffff00; }
+  .org-info-js_info-navigation { border-style: none; }
+  #org-info-js_console-label
+    { font-size: 10px; font-weight: bold; white-space: nowrap; }
+  .org-info-js_search-highlight
+    { background-color: #ffff00; color: #000000; font-weight: bold; }
+  .org-svg { width: 90%; }
+  /*]]>*/-->
+</style>
+<script type="text/javascript">
+/*
+@licstart  The following is the entire license notice for the
+JavaScript code in this tag.
+
+Copyright (C) 2012-2020 Free Software Foundation, Inc.
+
+The JavaScript code in this tag is free software: you can
+redistribute it and/or modify it under the terms of the GNU
+General Public License (GNU GPL) as published by the Free Software
+Foundation, either version 3 of the License, or (at your option)
+any later version.  The code is distributed WITHOUT ANY WARRANTY;
+without even the implied warranty of MERCHANTABILITY or FITNESS
+FOR A PARTICULAR PURPOSE.  See the GNU GPL for more details.
+
+As additional permission under GNU GPL version 3 section 7, you
+may distribute non-source (e.g., minimized or compacted) forms of
+that code without the copy of the GNU GPL normally required by
+section 4, provided you include this license notice and a URL
+through which recipients can access the Corresponding Source.
+
+
+@licend  The above is the entire license notice
+for the JavaScript code in this tag.
+*/
+<!--/*--><![CDATA[/*><!--*/
+ function CodeHighlightOn(elem, id)
+ {
+   var target = document.getElementById(id);
+   if(null != target) {
+     elem.cacheClassElem = elem.className;
+     elem.cacheClassTarget = target.className;
+     target.className = "code-highlighted";
+     elem.className   = "code-highlighted";
+   }
+ }
+ function CodeHighlightOff(elem, id)
+ {
+   var target = document.getElementById(id);
+   if(elem.cacheClassElem)
+     elem.className = elem.cacheClassElem;
+   if(elem.cacheClassTarget)
+     target.className = elem.cacheClassTarget;
+ }
+/*]]>*///-->
+</script>
+<script type="text/x-mathjax-config">
+    MathJax.Hub.Config({
+        displayAlign: "center",
+        displayIndent: "0em",
+
+        "HTML-CSS": { scale: 100,
+                        linebreaks: { automatic: "false" },
+                        webFont: "TeX"
+                       },
+        SVG: {scale: 100,
+              linebreaks: { automatic: "false" },
+              font: "TeX"},
+        NativeMML: {scale: 100},
+        TeX: { equationNumbers: {autoNumber: "AMS"},
+               MultLineWidth: "85%",
+               TagSide: "right",
+               TagIndent: ".8em"
+             }
+});
+</script>
+<script type="text/javascript"
+        src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.0/MathJax.js?config=TeX-AMS_HTML"></script>
+</head>
+<body>
+<div id="content">
+<h1 class="title">DAY 2</h1>
+<div id="table-of-contents">
+<h2>Table of Contents</h2>
+<div id="text-table-of-contents">
+<ul>
+<li><a href="#orga5cb858">1. List Comprehension</a></li>
+<li><a href="#org742fbad">2. Tuples</a>
+<ul>
+<li><a href="#orgbbcb6ad">2.1. Tuples Function</a></li>
+</ul>
+</li>
+<li><a href="#org38924e1">3. Types and Typeclasses</a>
+<ul>
+<li><a href="#orgd762ddd">3.1. Type variables</a></li>
+<li><a href="#org8a33288">3.2. Typeclasses 101</a></li>
+<li><a href="#orgd7281c2">3.3. Some basic typeclasses:</a></li>
+</ul>
+</li>
+</ul>
+</div>
+</div>
+
+<div id="outline-container-orga5cb858" class="outline-2">
+<h2 id="orga5cb858"><span class="section-number-2">1</span> List Comprehension</h2>
+<div class="outline-text-2" id="text-1">
+<p>
+A basic comprehension for a set that contains the first ten even 
+natural numbers is
+</p>
+
+\begin{equation}
+S = \{ 2x | x \in \mathbb{N}, x \leq 10\}
+\end{equation}
+
+<p>
+The part before the pipe is called the output function, \(x\) is the
+variable, \(\mathbb{N}\) is the input set and \(x \leq 10\) is the
+predicate. 
+</p>
+
+<p>
+Getting the first 10 even numbers
+</p>
+
+<div class="org-src-container">
+<pre class="src src-bash">ghci&gt; [x*2 | x &lt;- [1..10]]  
+[2,4,6,8,10,12,14,16,18,20] 
+</pre>
+</div>
+
+<p>
+Now let's add a condition (or a predicate) to that comprehension.
+</p>
+
+<div class="org-src-container">
+<pre class="src src-bash">ghci&gt; [x*2 | x &lt;- [1..10], x*2 &gt;= 12]  
+[12,14,16,18,20]
+</pre>
+</div>
+
+<p>
+How about if we wanted all numbers from 50 to 100 whose remainder when
+divided with the number 7 is 3?
+</p>
+
+<div class="org-src-container">
+<pre class="src src-bash">ghci&gt; [ x | x &lt;- [50..100], x <span style="color: #ff00ff;">`mod`</span> 7 == 3]
+[52,59,66,73,80,87,94]
+</pre>
+</div>
+
+<p>
+Note that weeding out lists by predicates is also called <b>filtering</b>.
+Now for another example. Let's say we want a comprehension that 
+replaces each odd number greater than 10 with "BANG!" and each odd 
+number that's less than 10 with "BOOM!".
+</p>
+
+<div class="org-src-container">
+<pre class="src src-bash">boomBangs xs = [ if x &lt; 10 then <span style="color: #8b2252;">"BOOM!"</span> else <span style="color: #8b2252;">"BANG!"</span> | x &lt;- xs, odd x]
+ghci&gt; boomBangs [7..13]  
+[<span style="color: #8b2252;">"BOOM!"</span>,<span style="color: #8b2252;">"BOOM!"</span>,<span style="color: #8b2252;">"BANG!"</span>,<span style="color: #8b2252;">"BANG!"</span>]  
+</pre>
+</div>
+
+<p>
+The last part of the comprehension is the <b>predicate</b>. The function 
+odd returns <code>True</code> on an odd number and <code>False</code> on an even one. The
+element is included in the list only if all the predicates evaluate to
+<code>True</code>.
+</p>
+
+<p>
+We can include several predicates. If we wanted all numbers from 10 to
+20 that are not 13, 15 or 19, we'd do:
+</p>
+
+<div class="org-src-container">
+<pre class="src src-bash">ghci&gt; [ x | x &lt;- [10..20], x /= 13, x /= 15, x /= 19]
+[10,11,12,14,16,17,18,20]
+</pre>
+</div>
+
+<p>
+Not only can we have multiple predicates in list comprehensions (an 
+element must satisfy all the predicates to be included in the 
+resulting list), we can also draw from <b>several</b> lists. 
+</p>
+
+<p>
+If we have two lists, [2,5,10] and [8,10,11] and we want to get the 
+products of all the possible combinations between numbers in those 
+lists
+</p>
+
+<div class="org-src-container">
+<pre class="src src-bash">ghci&gt; [ x*y | x &lt;- [2,5,10], y &lt;- [8,10,11]]
+[16,20,22,40,50,55,80,100,110]  
+</pre>
+</div>
+
+<p>
+As expected, the length of the new list is 9. What if we wanted all 
+possible products that are more than 50?
+</p>
+
+<div class="org-src-container">
+<pre class="src src-bash">ghci&gt; [ x*y | x &lt;- [2,5,10], y &lt;- [8,10,11], x*y &gt; 50]
+[55,80,100,110]
+</pre>
+</div>
+
+<p>
+How about a list comprehension that combines a list of adjectives and 
+a list of nouns … for epic hilarity.
+</p>
+
+<div class="org-src-container">
+<pre class="src src-bash">ghci&gt; let nouns = [<span style="color: #8b2252;">"hobo"</span>,<span style="color: #8b2252;">"frog"</span>,<span style="color: #8b2252;">"pope"</span>]  
+ghci&gt; let adjectives = [<span style="color: #8b2252;">"lazy"</span>,<span style="color: #8b2252;">"grouchy"</span>,<span style="color: #8b2252;">"scheming"</span>]  
+ghci&gt; [adjective ++ <span style="color: #8b2252;">" "</span> ++ noun | adjective &lt;- adjectives, noun &lt;- nouns]  
+[<span style="color: #8b2252;">"lazy hobo"</span>,<span style="color: #8b2252;">"lazy frog"</span>,<span style="color: #8b2252;">"lazy pope"</span>,<span style="color: #8b2252;">"grouchy hobo"</span>,<span style="color: #8b2252;">"grouchy frog"</span>,  
+<span style="color: #8b2252;">"grouchy pope"</span>,<span style="color: #8b2252;">"scheming hobo"</span>,<span style="color: #8b2252;">"scheming frog"</span>,<span style="color: #8b2252;">"scheming pope"</span>]
+</pre>
+</div>
+
+<p>
+Let's write our own version of <code>length</code>! We'll call it <code>length'</code>.
+</p>
+
+<div class="org-src-container">
+<pre class="src src-haskell"><span style="color: #0000ff;">length'</span> xs <span style="color: #a0522d;">=</span> sum [1 <span style="color: #a0522d;">|</span> <span style="color: #a020f0;">_</span> <span style="color: #a0522d;">&lt;-</span> xs]
+</pre>
+</div>
+
+<p>
+<code>_</code> means that we don't care what we'll draw from the list anyway so 
+instead of writing a variable name that we'll never use, we just write
+<code>_</code>. This function replaces every element of a list with 1 and then 
+sums that up. This means that the resulting sum will be the length of
+our list.
+</p>
+
+<p>
+because strings are lists, we can use list comprehensions to process
+and produce strings. Here's a function that takes a string and removes
+everything except uppercase letters from it.
+</p>
+
+<div class="org-src-container">
+<pre class="src src-bash">removeNonUppercase st = [ c | c &lt;- st, c <span style="color: #ff00ff;">`elem`</span> [<span style="color: #8b2252;">'A'</span>..<span style="color: #8b2252;">'Z'</span>]]
+<span style="color: #b22222;"># </span><span style="color: #b22222;">testing it out:</span>
+ghci&gt; removeNonUppercase <span style="color: #8b2252;">"Hahaha! Ahahaha!"</span>
+<span style="color: #8b2252;">"HA"</span>
+ghci&gt; removeNonUppercase <span style="color: #8b2252;">"IdontLIKEFROGS"</span>
+<span style="color: #8b2252;">"ILIKEFROGS"</span>
+</pre>
+</div>
+
+<p>
+The predicate here does all the work. It says that the character will
+be included in the new list only if it's an element of the list
+<code>['A'..'Z']</code>.
+</p>
+
+<p>
+Let's remove all odd numbers without flattening the list.
+</p>
+
+<div class="org-src-container">
+<pre class="src src-bash">ghci&gt; let xxs = [[1,3,5,2,3,1,2,4,5],[1,2,3,4,5,6,7,8,9],[1,2,4,2,1,6,3,1,3,2,3,6]]  
+ghci&gt; [ [ x | x &lt;- xs, even x ] | xs &lt;- xxs]  
+[[2,2,4],[2,4,6,8],[2,4,2,6,2,6]]
+</pre>
+</div>
+
+<p>
+You can write list comprehensions across several lines. So if you're
+not in GHCI, it's better to split longer list comprehensions across
+multiple lines, especially if they're nested.
+</p>
+</div>
+</div>
+
+<div id="outline-container-org742fbad" class="outline-2">
+<h2 id="org742fbad"><span class="section-number-2">2</span> Tuples</h2>
+<div class="outline-text-2" id="text-2">
+<ol class="org-ol">
+<li>They are denoted with parentheses and their components are
+separated by commas.</li>
+<li>Tuples are used when you know exactly how many values you want to 
+combine and its type depends on how many components it has and the
+types of the components.</li>
+</ol>
+
+<blockquote>
+<p>
+Personal understanding <b>Tuples</b> has two attributes, <b>size</b> and <b>type</b>.
+Instead List only got type. So <code>[(1,1), (1,2,3)]</code> is invalid because
+tuple <code>(1,1)</code> and <code>(1,2,3)</code> is in different types they got different
+<b>size</b>.
+</p>
+</blockquote>
+</div>
+
+<div id="outline-container-orgbbcb6ad" class="outline-3">
+<h3 id="orgbbcb6ad"><span class="section-number-3">2.1</span> Tuples Function</h3>
+<div class="outline-text-3" id="text-2-1">
+<div class="org-src-container">
+<pre class="src src-bash"><span style="color: #b22222;"># </span><span style="color: #b22222;">fst takes a pair and returns its first component.</span>
+ghci&gt; fst (8,11)  
+8
+ghci&gt; fst (<span style="color: #8b2252;">"Wow"</span>, False)  
+<span style="color: #8b2252;">"Wow"</span>
+
+<span style="color: #b22222;"># </span><span style="color: #b22222;">snd takes a pair and returns its second component. Surprise!</span>
+ghci&gt; snd (8,11)  
+11  
+ghci&gt; snd (<span style="color: #8b2252;">"Wow"</span>, False)  
+False  
+
+<span style="color: #b22222;"># </span><span style="color: #b22222;">zip  takes two lists and then zips them together into one list by </span>
+<span style="color: #b22222;"># </span><span style="color: #b22222;">joining the matching elements into pairs.</span>
+ghci&gt; zip [1,2,3,4,5] [5,5,5,5,5]  
+[(1,5),(2,5),(3,5),(4,5),(5,5)]  
+ghci&gt; zip [1 .. 5] [<span style="color: #8b2252;">"one"</span>, <span style="color: #8b2252;">"two"</span>, <span style="color: #8b2252;">"three"</span>, <span style="color: #8b2252;">"four"</span>, <span style="color: #8b2252;">"five"</span>]  
+[(1,<span style="color: #8b2252;">"one"</span>),(2,<span style="color: #8b2252;">"two"</span>),(3,<span style="color: #8b2252;">"three"</span>),(4,<span style="color: #8b2252;">"four"</span>),(5,<span style="color: #8b2252;">"five"</span>)] 
+ghci&gt; zip [1..] [<span style="color: #8b2252;">"apple"</span>, <span style="color: #8b2252;">"orange"</span>, <span style="color: #8b2252;">"cherry"</span>, <span style="color: #8b2252;">"mango"</span>]  
+[(1,<span style="color: #8b2252;">"apple"</span>),(2,<span style="color: #8b2252;">"orange"</span>),(3,<span style="color: #8b2252;">"cherry"</span>),(4,<span style="color: #8b2252;">"mango"</span>)]
+</pre>
+</div>
+
+<p>
+which right triangle that has integers for all sides and all sides
+equal to or smaller than 10 has a perimeter of 24?
+</p>
+
+<div class="org-src-container">
+<pre class="src src-haskell"><span style="color: #b22222;">-- </span><span style="color: #b22222;">First, let's try generating all triangles with sides equal to or </span>
+<span style="color: #b22222;">-- </span><span style="color: #b22222;">smaller than 10</span>
+<span style="color: #a020f0;">let</span> triangles <span style="color: #a0522d;">=</span> [ (a,b,c) <span style="color: #a0522d;">|</span> c <span style="color: #a0522d;">&lt;-</span> [1<span style="color: #a0522d;">..</span>10], b <span style="color: #a0522d;">&lt;-</span> [1<span style="color: #a0522d;">..</span>10], a <span style="color: #a0522d;">&lt;-</span> [1<span style="color: #a0522d;">..</span>10] ]
+<span style="color: #b22222;">-- </span><span style="color: #b22222;">Next, we'll add a condition that they all have to be right</span>
+<span style="color: #b22222;">-- </span><span style="color: #b22222;">triangles. </span>
+<span style="color: #a020f0;">let</span> rightTriangles <span style="color: #a0522d;">=</span> [ (a,b,c) <span style="color: #a0522d;">|</span> c <span style="color: #a0522d;">&lt;-</span> [1<span style="color: #a0522d;">..</span>10], b <span style="color: #a0522d;">&lt;-</span> [1<span style="color: #a0522d;">..</span>c], a <span style="color: #a0522d;">&lt;-</span> [1<span style="color: #a0522d;">..</span>b], a<span style="color: #a0522d;">^</span>2 <span style="color: #a0522d;">+</span> b<span style="color: #a0522d;">^</span>2 <span style="color: #a0522d;">==</span> c<span style="color: #a0522d;">^</span>2]
+<span style="color: #b22222;">-- </span><span style="color: #b22222;">We're almost done. Now, we just modify the function by saying that</span>
+<span style="color: #b22222;">-- </span><span style="color: #b22222;">we want the ones where the perimeter is 24.</span>
+<span style="color: #a020f0;">let</span> rightTriangles' <span style="color: #a0522d;">=</span> [ (a,b,c) <span style="color: #a0522d;">|</span> c <span style="color: #a0522d;">&lt;-</span> [1<span style="color: #a0522d;">..</span>10], b <span style="color: #a0522d;">&lt;-</span> [1<span style="color: #a0522d;">..</span>c], a <span style="color: #a0522d;">&lt;-</span> [1<span style="color: #a0522d;">..</span>b], a<span style="color: #a0522d;">^</span>2 <span style="color: #a0522d;">+</span> b<span style="color: #a0522d;">^</span>2 <span style="color: #a0522d;">==</span> c<span style="color: #a0522d;">^</span>2, a<span style="color: #a0522d;">+</span>b<span style="color: #a0522d;">+</span>c <span style="color: #a0522d;">==</span> 24]
+</pre>
+</div>
+</div>
+</div>
+</div>
+
+<div id="outline-container-org38924e1" class="outline-2">
+<h2 id="org38924e1"><span class="section-number-2">3</span> Types and Typeclasses</h2>
+<div class="outline-text-2" id="text-3">
+<p>
+Now we'll use GHCI to examine the types of some expressions. 
+</p>
+
+<div class="org-src-container">
+<pre class="src src-bash">ghci&gt; :t <span style="color: #8b2252;">'a'</span>  
+<span style="color: #8b2252;">'a'</span> :: Char  
+ghci&gt; :t True  
+True :: Bool  
+ghci&gt; :t <span style="color: #8b2252;">"HELLO!"</span>  
+<span style="color: #8b2252;">"HELLO!"</span> :: [Char]  
+ghci&gt; :t (True, <span style="color: #8b2252;">'a'</span>)  
+(True, <span style="color: #8b2252;">'a'</span>) :: (Bool, Char)  
+ghci&gt; :t 4 == 5  
+4 == 5 :: Bool  
+bomb
+</pre>
+</div>
+
+<p>
+<code>::</code> is read as "has type of". <code>(True, 'a')</code> has a type of <code>(Bool, 
+Char)</code>, <code>('a','b','c')</code> would have the type of <code>(Char, Char, Char)</code>.
+</p>
+
+<p>
+Functions also have types. We can choose to give them an explicit type
+declaration. This is generally considered to be good practice except 
+when writing very short functions.
+</p>
+
+<p>
+From here on, we'll give all the functions that we make type 
+declarations.
+</p>
+
+<div class="org-src-container">
+<pre class="src src-haskell"><span style="color: #0000ff;">removeNonUppercase</span> <span style="color: #a0522d;">::</span> [<span style="color: #228b22;">Char</span>] <span style="color: #a0522d;">-&gt;</span> [<span style="color: #228b22;">Char</span>]  
+<span style="color: #0000ff;">removeNonUppercase</span> st <span style="color: #a0522d;">=</span> [ c <span style="color: #a0522d;">|</span> c <span style="color: #a0522d;">&lt;-</span> st, c <span style="color: #a0522d;">`elem`</span> [<span style="color: #8b2252;">'A'</span><span style="color: #a0522d;">..</span><span style="color: #8b2252;">'Z'</span>]]
+</pre>
+</div>
+
+<p>
+<code>removeNonUppercase</code> has a type of <code>[Char] -&gt; [Char]</code>, meaning that it
+maps from a <code>String</code> to a <code>String</code>. The <code>[Char]</code> type is synonymous 
+with String. so it's clearer if we write <code>removeNonUppercase :: String
+ -&gt; String</code>.
+</p>
+
+<p>
+But how do we write out the type of a function that takes several 
+parameters?
+</p>
+
+<div class="org-src-container">
+<pre class="src src-haskell"><span style="color: #0000ff;">addThree</span> <span style="color: #a0522d;">::</span> <span style="color: #228b22;">Int</span> <span style="color: #a0522d;">-&gt;</span> <span style="color: #228b22;">Int</span> <span style="color: #a0522d;">-&gt;</span> <span style="color: #228b22;">Int</span> <span style="color: #a0522d;">-&gt;</span> <span style="color: #228b22;">Int</span>  
+<span style="color: #0000ff;">addThree</span> x y z <span style="color: #a0522d;">=</span> x <span style="color: #a0522d;">+</span> y <span style="color: #a0522d;">+</span> z
+</pre>
+</div>
+
+<p>
+Later on we'll see why they're all just separated with <code>-&gt;</code> instead of
+having some more explicit distinction between the return types and the
+parameters like <code>Int, Int, Int -&gt; Int</code> or something.
+</p>
+
+<p>
+If you want to give your function a type declaration but are unsure as
+to what it should be, you can always just write the function without
+it and then check it with <code>:t</code>. Functions are expressions too, so <code>:t</code>
+works on them without a problem.
+</p>
+
+<p>
+<code>Int</code> stands for integer. Usually on <b>32-bit</b> machines the maximum 
+possible <code>Int</code> is 2147483647 and the minimum is -2147483648.
+</p>
+
+<p>
+<code>Integer</code> stands for, er … also integer. <code>Integer</code> stands for, er … 
+also integer. <code>Int</code>, however, is more efficient.
+</p>
+
+<div class="org-src-container">
+<pre class="src src-bash">factorial :: Integer -&gt; Integer  
+factorial n = product [1..n]  
+ghci&gt; factorial 50  
+30414093201713378043612608166064768844377641568960512000000000000
+</pre>
+</div>
+
+<p>
+<code>Float</code> is a real floating point with single precision.
+</p>
+
+<pre class="example">
+circumference :: Float -&gt; Float  
+circumference r = 2 * pi * r  
+ghci&gt; circumference 4.0  
+25.132742  
+</pre>
+
+<p>
+<code>Double</code> is a real floating point with double the precision!
+</p>
+
+<pre class="example">
+circumference' :: Double -&gt; Double  
+circumference' r = 2 * pi * r  
+ghci&gt; circumference' 4.0  
+25.132741228718345  
+</pre>
+
+<p>
+<code>Bool</code> is a boolean type. It can have only two values: <code>True</code> and
+<code>False</code>.
+</p>
+
+<p>
+<code>Char</code> represents a character. It's denoted by <b>single quotes</b>. A list
+of characters is a <code>String</code>.
+</p>
+
+<p>
+<code>Tuples</code> are types but they are dependent on their length as well as 
+the types of their components. <code>()</code> is also a type which can only have
+a single value: <code>()</code>.
+</p>
+</div>
+
+<div id="outline-container-orgd762ddd" class="outline-3">
+<h3 id="orgd762ddd"><span class="section-number-3">3.1</span> Type variables</h3>
+<div class="outline-text-3" id="text-3-1">
+<p>
+What's the type of <code>head</code> function?
+</p>
+
+<div class="org-src-container">
+<pre class="src src-bash"><span style="color: #b22222;"># </span><span style="color: #b22222;">Let's check!</span>
+ghci&gt; :t head  
+head :: [a] -&gt; a 
+</pre>
+</div>
+
+<p>
+Remember that we previously stated that types are written in <b>capital</b> 
+case, so <code>a</code> can't exactly be a type. Because it's not in capital case
+it's actually a <b>type variable</b>. That means that <code>a</code> can be of any 
+type.
+</p>
+
+<p>
+This is much like generics in other languages, only in Haskell it's 
+much more powerful because it allows us to easily write very general
+functions if they don't use any specific behavior of the types in 
+them. Functions that have type variables are called polymorphic
+functions.
+</p>
+</div>
+</div>
+
+<div id="outline-container-org8a33288" class="outline-3">
+<h3 id="org8a33288"><span class="section-number-3">3.2</span> Typeclasses 101</h3>
+<div class="outline-text-3" id="text-3-2">
+<p>
+A typeclass is a sort of <b>interface</b> that defines some behavior. You
+can think of them kind of as Java interfaces, only better.
+</p>
+
+<p>
+What's the type signature of the <code>==</code> function?
+</p>
+
+<pre class="example">
+ghci&gt; :t (==)  
+(==) :: (Eq a) =&gt; a -&gt; a -&gt; Bool
+</pre>
+
+<blockquote>
+<p>
+<b>Note:</b> the equality operator, <code>==</code> is a function. So are <code>+</code>, <code>*</code>,
+<code>-</code>, <code>/</code> and pretty much all operators. If a function is comprised
+only of special characters, it's considered an infix function by 
+default. If we want to examine its type, pass it to another function
+or call it as a prefix function, we have to surround it in
+parentheses.
+</p>
+</blockquote>
+
+<p>
+The <code>=&gt;</code> symbol is called a <b>class constraint</b>. the equality function
+takes any two values that are of the same type and returns a <code>Bool</code>.
+The type of those two values must be a member of the <code>Eq</code> class (this
+was the class constraint).
+</p>
+
+<p>
+The <code>Eq</code> typeclass provides an interface for testing for equality. Any
+type where it makes sense to test for equality between two values of
+that type should be a member of the <code>Eq</code> class. All standard Haskell
+types except for <b>IO</b> (the type for dealing with input and output) and
+functions are a part of the <code>Eq</code> typeclass.
+</p>
+
+<p>
+The <code>elem</code> function has a type of <code>(Eq a) =&gt; a -&gt; [a] -&gt; Bool</code> because
+it uses <code>==</code> over a list to check whether some value we're looking for
+is in it.
+</p>
+</div>
+</div>
+
+<div id="outline-container-orgd7281c2" class="outline-3">
+<h3 id="orgd7281c2"><span class="section-number-3">3.3</span> Some basic typeclasses:</h3>
+<div class="outline-text-3" id="text-3-3">
+<ul class="org-ul">
+<li><p>
+<code>Eq</code> is used for types that support equality testing.
+</p>
+<pre class="example">
+ghci&gt; 5 == 5  
+True  
+ghci&gt; 5 /= 5  
+False  
+ghci&gt; 'a' == 'a'  
+True  
+ghci&gt; "Ho Ho" == "Ho Ho"  
+True  
+ghci&gt; 3.432 == 3.432  
+True
+</pre></li>
+<li><p>
+<code>Ord</code> is for types that have an ordering.
+</p>
+<pre class="example">
+ghci&gt; :t (&gt;)  
+(&gt;) :: (Ord a) =&gt; a -&gt; a -&gt; Bool  
+</pre>
+<p>
+<code>Ord</code> covers all the standard comparing functions. <code>Ordering</code> is a
+type that can be <code>GT</code>, <code>LT</code> or <code>EQ</code>, meaning greater than, lesser
+than and equal, respectively.
+</p>
+
+<p>
+To be a member of <code>Ord</code>, a type must first have membership in the
+prestigious and exclusive <code>Eq</code> club.
+</p>
+
+<pre class="example">
+ghci&gt; "Abrakadabra" &lt; "Zebra"  
+True  
+ghci&gt; "Abrakadabra" `compare` "Zebra"  
+LT  
+ghci&gt; 5 &gt;= 2  
+True  
+ghci&gt; 5 `compare` 3  
+GT
+</pre></li>
+<li><p>
+<code>Show</code>, Members of Show can be presented as <code>String</code>. It takes a
+value whose type is a member of Show and presents it to us as a
+<code>String</code>.
+</p>
+
+<pre class="example">
+ghci&gt; show 3  
+"3"  
+ghci&gt; show 5.334  
+"5.334"  
+ghci&gt; show True  
+"True"
+</pre></li>
+<li><p>
+<code>Read</code> is sort of the opposite typeclass of <code>Show</code>.
+</p>
+<pre class="example">
+ghci&gt; read "True" || False  
+True  
+ghci&gt; read "8.2" + 3.8  
+12.0  
+ghci&gt; read "5" - 2  
+3  
+ghci&gt; read "[1,2,3,4]" ++ [3]  
+[1,2,3,4,3]  
+</pre>
+
+<p>
+So far so good. But
+</p>
+<pre class="example">
+ghci&gt; read "4"  
+&lt;interactive&gt;:1:0:  
+    Ambiguous type variable `a' in the constraint:  
+      `Read a' arising from a use of `read' at &lt;interactive&gt;:1:0-7  
+    Probable fix: add a type signature that fixes these type variable(s)  
+</pre>
+
+<p>
+<code>Read</code> returns a type that's part of Read but if we don't try to use
+it in some way later, it has no way of knowing which type. That's
+why we can use explicit type annotations.
+</p>
+
+<p>
+We do that by adding <code>::</code> at the end of the expression and then
+specifying a type.
+</p>
+
+<pre class="example">
+ghci&gt; read "5" :: Int  
+5  
+ghci&gt; read "5" :: Float  
+5.0  
+ghci&gt; (read "5" :: Float) * 4  
+20.0  
+ghci&gt; read "[1,2,3,4]" :: [Int]  
+[1,2,3,4]  
+ghci&gt; read "(3, 'a')" :: (Int, Char)  
+(3, 'a')  
+</pre></li>
+
+<li><code>Enum</code> members are sequentially ordered types — they can be
+enumerated.</li>
+
+<li><p>
+<code>Bounded</code> members have an upper and a lower bound.
+</p>
+<pre class="example">
+ghci&gt; minBound :: Int  
+-2147483648  
+ghci&gt; maxBound :: Char  
+'\1114111'  
+ghci&gt; maxBound :: Bool  
+True  
+ghci&gt; minBound :: Bool  
+False
+</pre></li>
+<li><p>
+<code>Num</code> is a numeric typeclass. Its members have the property of being
+able to act like numbers. Let's examine the type of a number.
+</p>
+<pre class="example">
+ghci&gt; :t 20  
+20 :: (Num t) =&gt; t
+ghci&gt; 20 :: Int  
+20  
+ghci&gt; 20 :: Integer  
+20  
+ghci&gt; 20 :: Float  
+20.0  
+ghci&gt; 20 :: Double  
+20.0  
+</pre></li>
+</ul>
+</div>
+</div>
+</div>
+</div>
+<div id="postamble" class="status">
+<p class="author">Author: LINGAO JIN</p>
+<p class="date">Created: 2021-01-26 二 00:16</p>
+<p class="validation"><a href="http://validator.w3.org/check?uri=referer">Validate</a></p>
+</div>
+</body>
+</html>
